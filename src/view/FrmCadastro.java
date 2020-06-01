@@ -53,6 +53,11 @@ public class FrmCadastro extends javax.swing.JFrame {
         });
 
         btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,7 +172,8 @@ public class FrmCadastro extends javax.swing.JFrame {
             //COMPARA O RETORNO DA VARIAVEL 'CONFIRMADO'
             if (confirmado == true){
                 acessoController.adicionaArray(usuario, email, senha);        
-                JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");            
+                JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");    
+                new FrmLogin().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!"); 
             }
@@ -175,6 +181,14 @@ public class FrmCadastro extends javax.swing.JFrame {
     
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

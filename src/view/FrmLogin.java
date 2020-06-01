@@ -1,11 +1,17 @@
 package view;
 
+import control.AcessoController;
 import javax.swing.JOptionPane;
 
 public class FrmLogin extends javax.swing.JFrame {
+    
+    //CRIA UMA VARIAVEL DO TIPO 'ACESSOCONTROLLER'
+    AcessoController acessoController;
 
     public FrmLogin() {
         initComponents();
+        //A VARIAVEL RECEBE UMA INSTANCIACAO DA CLASSE 'ACESSOCONTROLLER'
+        acessoController = new AcessoController();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -91,17 +97,17 @@ public class FrmLogin extends javax.swing.JFrame {
         if(login.isEmpty() || senha.isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos meu consagrado!");
         } else {
+            //VARIAVEL 'ACESSOARRAY' RECEBE O RETORNO DO METODO 'BUSCAUSUARIO'
+            boolean acessoArray = acessoController.verificaAcesso(login, senha);
+            
             //VERIFICA SE OS DADOS DIGITADOS ESTAO NO BANCO DE DADOS(ARRAY)
-            if(login.equals("admin") && senha.equals("123")){
-            JOptionPane.showMessageDialog(null, "Acesso concedido!");
+            if(acessoArray == true){
+                JOptionPane.showMessageDialog(null, "Acesso concedido!");
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso negado!");
             }
         }
-        
-        
-            
-
+  
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     public static void main(String args[]) {

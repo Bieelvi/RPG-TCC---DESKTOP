@@ -9,6 +9,8 @@ public class AcessoController {
 
     //CONTRUTOR QUE INICIA COM ALGUNS USUARIOS NA ARRAY, PARA TESTES
     public AcessoController() {
+        bancoDadosArray = new ArrayList();
+        
         Usuario j1 = new Usuario("admin", "admin@admin", "123");
         Usuario j2 = new Usuario("adm", "adm@adm", "1234");
         Usuario j3 = new Usuario("gabriel", "gabriel@gabriel", "12345");
@@ -46,14 +48,20 @@ public class AcessoController {
     public boolean verificaAcesso(String usuario, String senha){
         boolean acesso = false;
         
-        for(Usuario j: bancoDadosArray){
+        for (Usuario usu : bancoDadosArray) {
+            
+        }
+        
+        
+        /*for(Usuario j: bancoDadosArray){
             String u = j.getUsuario();
             String s = j.getSenha();
             
             if(u.equals(usuario) && s.equals(senha)){
                 acesso = true;                
             }
-        }        
+        }*/     
         return acesso;
     }
+
 }
