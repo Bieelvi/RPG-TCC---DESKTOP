@@ -87,19 +87,12 @@ public class FrmLogin extends javax.swing.JFrame {
         String senha = this.txtSenha.getText();
         
         if(login.equals("admin") && senha.equals("123")){
-            JOptionPane.showMessageDialog(null, "Acesso cedido!");
+            JOptionPane.showMessageDialog(null, "Acesso concedido!");
         } else {
             JOptionPane.showMessageDialog(null, "Acesso negado!");
         }
             
-        
-        
-        
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     public static void main(String args[]) {
