@@ -168,12 +168,9 @@ public class FrmCadastro extends javax.swing.JFrame {
         } else {
             //VARIAVEL 'CONFIRMADO' RECEBE O RETORNO DO METODO 'VERIFICAEMAILSENHA'
             boolean confirmado = acessoController.verificaEmailSenha(email, cEmail, senha, cSenha);
-            
-            //VERIFIA SE FOI ADD COM SUCESSO
-            boolean veri = acessoController.verificando(usuario, email, senha);
 
             //COMPARA O RETORNO DA VARIAVEL 'CONFIRMADO'
-            if (confirmado == true && veri == true){
+            if (confirmado == true){
                 acessoController.adicionaArray(usuario, email, senha);
                 JOptionPane.showMessageDialog(null, "Adicionado com sucesso!"); 
                 setVisible(false);
