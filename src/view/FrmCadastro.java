@@ -5,10 +5,12 @@ import javax.swing.JOptionPane;
 
 public class FrmCadastro extends javax.swing.JFrame {
 
+    //CRIA UMA VARIAVEL DO TIPO 'ACESSOCONTROLLER'
     AcessoController acessoController;
     
     public FrmCadastro() {
         initComponents();
+        //A VARIAVEL RECEBE UMA INSTANCIACAO DA CLASSE 'ACESSOCONTROLLER'
         acessoController = new AcessoController();
     }
 
@@ -155,26 +157,22 @@ public class FrmCadastro extends javax.swing.JFrame {
         String senha = this.txtSenha.getText();
         String cSenha = this.txtConfSenha.getText();
         
-        //VARIAVEL 'CONFIRMADO' RECEBE O RETORNO DO METODO 'VERIFICAEMAILSENHA'
-        boolean confirmado = acessoController.verificaEmailSenha(email, cEmail, senha, cSenha);
-        
-        //COMPARA O RETORNO DA VARIAVEL 'CONFIRMADO'
-        if (confirmado == true){
-            acessoController.adicionaArray(usuario, email, senha);        
-            JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");            
+        //VERIFICA SE OS CAMPOS ESTAO PREENCHIDOS
+        if(usuario.isEmpty() || email.isEmpty() || cEmail.isEmpty() || senha.isEmpty() || cSenha.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos meu consagrado!");
         } else {
-            JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!"); 
-        }
+            //VARIAVEL 'CONFIRMADO' RECEBE O RETORNO DO METODO 'VERIFICAEMAILSENHA'
+            boolean confirmado = acessoController.verificaEmailSenha(email, cEmail, senha, cSenha);
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            //COMPARA O RETORNO DA VARIAVEL 'CONFIRMADO'
+            if (confirmado == true){
+                acessoController.adicionaArray(usuario, email, senha);        
+                JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");            
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!"); 
+            }
+        }
+    
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

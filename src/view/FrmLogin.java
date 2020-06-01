@@ -83,14 +83,23 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
+        //RECEBE DOS CAMPOS TXT E ADICIONA NAS VARIAVEIS RESPECTIVAS
         String login = this.txtLogin.getText();
         String senha = this.txtSenha.getText();
         
-        if(login.equals("admin") && senha.equals("123")){
-            JOptionPane.showMessageDialog(null, "Acesso concedido!");
+        //VERIFICA SE OS CAMPOS ESTAO PREENCHIDOS
+        if(login.isEmpty() || senha.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos meu consagrado!");
         } else {
-            JOptionPane.showMessageDialog(null, "Acesso negado!");
+            //VERIFICA SE OS DADOS DIGITADOS ESTAO NO BANCO DE DADOS(ARRAY)
+            if(login.equals("admin") && senha.equals("123")){
+            JOptionPane.showMessageDialog(null, "Acesso concedido!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Acesso negado!");
+            }
         }
+        
+        
             
 
     }//GEN-LAST:event_btnEntrarActionPerformed
