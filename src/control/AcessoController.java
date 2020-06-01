@@ -47,21 +47,15 @@ public class AcessoController {
     //METODO QUE RECEBE COMO PARAMENTRO USUARIO E SENHA. E CONFERE SE ESTA NO ARRAY CRIADO 
     public boolean verificaAcesso(String usuario, String senha){
         boolean acesso = false;
-        
-        for (Usuario usu : bancoDadosArray) {
-            
-        }
-        
-        
-        /*for(Usuario j: bancoDadosArray){
+
+        for(Usuario j: bancoDadosArray){
             String u = j.getUsuario();
             String s = j.getSenha();
             
             if(u.equals(usuario) && s.equals(senha)){
                 acesso = true;                
             }
-        }*/     
+        }    
         return acesso;
     }
-
 }

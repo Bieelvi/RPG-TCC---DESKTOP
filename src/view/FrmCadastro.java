@@ -172,7 +172,8 @@ public class FrmCadastro extends javax.swing.JFrame {
             //COMPARA O RETORNO DA VARIAVEL 'CONFIRMADO'
             if (confirmado == true){
                 acessoController.adicionaArray(usuario, email, senha);        
-                JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");    
+                JOptionPane.showMessageDialog(null, "Adicionado com sucesso!"); 
+                setVisible(false);
                 new FrmLogin().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!"); 
