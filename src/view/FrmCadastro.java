@@ -185,10 +185,8 @@ public class FrmCadastro extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         
-        
-        
-        
-        
+        setVisible(false);
+        new FrmLogin().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     public static void main(String args[]) {

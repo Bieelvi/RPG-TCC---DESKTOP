@@ -25,8 +25,7 @@ public class AcessoController {
     }
     
     //METODO QUE RECEBE COMO PARAMETRO USUARIO, EMAIL E SENHA E ADICIONA NA ARRAY
-    public void adicionaArray(String usuario, String email, String senha){        
-        bancoDadosArray = new ArrayList();
+    public void adicionaArray(String usuario, String email, String senha){
         
         Usuario j = new Usuario(usuario, email, senha);        
         
@@ -46,15 +45,17 @@ public class AcessoController {
 
     //METODO QUE RECEBE COMO PARAMENTRO USUARIO E SENHA. E CONFERE SE ESTA NO ARRAY CRIADO 
     public boolean verificaAcesso(String usuario, String senha){
-        boolean acesso = false;
+        boolean acesso = true;
 
         for(Usuario j: bancoDadosArray){
             String u = j.getUsuario();
             String s = j.getSenha();
             
             if(u.equals(usuario) && s.equals(senha)){
-                acesso = true;                
-            }
+                acesso = true;
+            } else {
+                acesso = false;
+            }            
         }    
         return acesso;
     }
