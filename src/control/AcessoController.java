@@ -5,7 +5,7 @@ import model.Usuario;
 
 public class AcessoController {
     
-    private ArrayList<Usuario> bancoDadosArray;
+    private final ArrayList<Usuario> bancoDadosArray;
 
     //CONTRUTOR QUE INICIA COM ALGUNS USUARIOS NA ARRAY, PARA TESTES
     public AcessoController() {
