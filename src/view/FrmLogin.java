@@ -200,6 +200,13 @@ public class FrmLogin extends javax.swing.JFrame {
             //VERIFICA SE OS DADOS DIGITADOS ESTAO NO BANCO DE DADOS(ARRAY)
             if(acessoArray == true){
                 JOptionPane.showMessageDialog(null, "Acesso concedido!");
+                
+                this.txtLogin.setText("");
+                this.txtSenha.setText("");
+                
+                //ABRE A TELA E FECHA A DE CADASTRO/LOGIN
+                setVisible(false);
+                new Jogo().setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso negado!");
             }
@@ -228,6 +235,13 @@ public class FrmLogin extends javax.swing.JFrame {
             if (confirma == true){
                 acessoController.adicionaArray(usuario, confEmail, confSenha);
                 JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                
+                //LIMPA OS CAMPOS APOS O CADASTRO
+                this.txtUsuario.setText("");
+                this.txtEmail.setText("");
+                this.txtConfEmail.setText("");
+                this.txtCadastroSenha.setText("");
+                this.txtConfSenha.setText("");
             } else {
                 JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!");
             }
