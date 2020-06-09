@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jPanel1" max="32767" attributes="0"/>
+                                  <Component id="jPanel5" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel5" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel2">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtNomePersonagem" min="-2" pref="240" max="-2" attributes="0"/>
+                      <Component id="lblNomePersonagem" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtRacaPersonagem" min="-2" pref="158" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtTendenciaPersonagem" min="-2" pref="158" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtExpPersonagem" min="-2" pref="158" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtClassePersonagem" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="lblClassePersonagem" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRacaPersonagem" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtNivelPersonagem" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="lblNivelPersonagem" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTendenciaPersonagem" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblExpPersonagem" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeJogador" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomeJogador" min="-2" pref="158" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="56" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblNomePersonagem" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtNomePersonagem" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblClassePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNivelPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeJogador" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtClassePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNivelPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomeJogador" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblRacaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTendenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblExpPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtRacaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTendenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtExpPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblClassePersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CLASSE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtClassePersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblRacaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="RA&#xc7;A"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtRacaPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblNivelPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="N&#xcd;VEL"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNivelPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTendenciaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="TEND&#xca;NCIA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTendenciaPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblNomeJogador">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NOME DO JOGADOR"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNomeJogador">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblExpPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="PONTOS DE EXPERI&#xca;NCIA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtExpPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblNomePersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NOME DO PERSONAGEM"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNomePersonagem">
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel4">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtInspiracaoPersonagem" min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblInspiracaoPersonagem" min="-2" pref="72" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txtBonusProficienciaPersonagem" min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblBonusProficienciaPersonagem" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtInspiracaoPersonagem" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="lblInspiracaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtBonusProficienciaPersonagem" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="lblBonusProficienciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="txtInspiracaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblInspiracaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="INSPIRA&#xc7;&#xc3;O"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBonusProficienciaPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBonusProficienciaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="B&#xd4;NUS DE PROFICI&#xca;NCIA"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel3">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtConstituicaoModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtDestrezaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtDestrezaPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtForcaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblDestrezaPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtConstituicaoPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblConstituicaoPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtForcaPersonagem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblForcaPersonagem" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSabedoriaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSabedoriaPersonagem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtInteligenciaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblSabedoriaPersonaem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtInteligenciaPersonagem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblInteligenciaPersonagem" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="txtCarismaModificadorPersonagem" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblForcaPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="txtForcaPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtForcaModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblDestrezaPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="txtDestrezaPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtDestrezaModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblConstituicaoPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtConstituicaoPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtConstituicaoModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblInteligenciaPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtInteligenciaPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtInteligenciaModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblSabedoriaPersonaem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtSabedoriaPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtSabedoriaModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblCarismaPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtCarismaPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtCarismaModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblForcaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="FOR&#xc7;A"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtForcaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtForcaModificadorPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDestrezaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="DESTREZA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDestrezaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDestrezaModificadorPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblConstituicaoPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="CONTITUI&#xc7;&#xc3;O"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtConstituicaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtConstituicaoModificadorPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblInteligenciaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="INTELIG&#xca;NCIA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInteligenciaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInteligenciaModificadorPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSabedoriaPersonaem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="SABEDORIA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSabedoriaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSabedoriaModificadorPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCarismaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="CARISMA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCarismaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCarismaModificadorPersonagem">
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblTesteResistencia" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtTesteForcaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTesteDestrezaPersongem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTesteConstituicaoPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTesteInteligenciaPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTesteSabedoriaPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtTesteCarismaPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="radioConstituicaoPersonagem" max="32767" attributes="0"/>
+                              <Component id="radioDestrezaPersonagem" max="32767" attributes="0"/>
+                              <Component id="radioForcaPersonagem" max="32767" attributes="0"/>
+                              <Component id="radioInteligenciaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="radioSabedoriaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="radioCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Component id="lblTesteResistencia" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="6" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioForcaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTesteForcaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioDestrezaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTesteDestrezaPersongem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioConstituicaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTesteConstituicaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioInteligenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTesteInteligenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioSabedoriaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTesteSabedoriaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioCarismaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTesteCarismaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JRadioButton" name="radioForcaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="FOR&#xc7;A"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioDestrezaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="DESTREZA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioConstituicaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CONSTITUI&#xc7;&#xc3;O"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioSabedoriaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SABEDORIA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioSabedoriaPersonagemActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioInteligenciaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="INTELIG&#xca;NCIA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioInteligenciaPersonagemActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioCarismaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CARISMA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioCarismaPersonagemActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTesteForcaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTesteDestrezaPersongem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTesteConstituicaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTesteInteligenciaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTesteSabedoriaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTesteCarismaPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTesteResistencia">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="TESTE DE RESIST&#xca;NCIA"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel5">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblPericiasPersonagem" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtInuicaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioIntuicaoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtInvestigacaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioInvestigacaoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtLidarAnimaisPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioLidarAnimaisPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtMedicinaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioMedicina" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtNaturezaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioNaturezaPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtPercepcaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioPercepcaoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtPersuassaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioPercuassaoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtPrestidigitacaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txtReligaoPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="radioReligiaoPersonagem" min="-2" max="-2" attributes="0"/>
+                                      <Component id="radioPrestidigitacaoPersonagem" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtSobrevivenciaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioSobrevivenciaPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtPericiaAcrobaciaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioAcrobaciaPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtArcanismoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioArcanismoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtAtletismoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioAtletismoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtAtuacaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioAtuacaoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtBlefarPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioBlefarPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtFurtividadePersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioFurtividadePersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtHistoriaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioHistoriaPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtIntimidacaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="radioIntimidacaoPersonagem" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="lblPericiasPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtPericiaAcrobaciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioAcrobaciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtArcanismoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioArcanismoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtAtletismoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioAtletismoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtAtuacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioAtuacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtBlefarPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioBlefarPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtFurtividadePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioFurtividadePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtHistoriaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioHistoriaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtIntimidacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioIntimidacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtInuicaoPersonagem" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioIntuicaoPersonagem" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtInvestigacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioInvestigacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtLidarAnimaisPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioLidarAnimaisPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtMedicinaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioMedicina" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtNaturezaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioNaturezaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtPercepcaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioPercepcaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtPersuassaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioPercuassaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtPrestidigitacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioPrestidigitacaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioReligiaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtReligaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtSobrevivenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioSobrevivenciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="txtPericiaAcrobaciaPersonagem">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPericiasPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="PER&#xcd;CIAS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioAcrobaciaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Acrobacia"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioArcanismoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Arcanismo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtArcanismoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtAtuacaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtAtletismoPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioAtletismoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Atletismo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioAtuacaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Atua&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtHistoriaPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioHistoriaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hist&#xf3;ria"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtIntimidacaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioIntimidacaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Intimida&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBlefarPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtFurtividadePersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioFurtividadePersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Furtividade"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioBlefarPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Blefar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioPrestidigitacaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Prestidigita&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPrestidigitacaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPersuassaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioPercuassaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Persuass&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioPercepcaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Percep&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPercepcaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNaturezaPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioNaturezaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Natureza"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioMedicina">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Medicina"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtMedicinaPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtLidarAnimaisPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioLidarAnimaisPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lidar com Animais"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioInvestigacaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Investiga&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInvestigacaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInuicaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioIntuicaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Intui&#xe7;&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSobrevivenciaPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioSobrevivenciaPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sobreviv&#xea;ncia"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtReligaoPersonagem">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioReligiaoPersonagem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Religi&#xe3;o"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
