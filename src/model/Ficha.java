@@ -1,6 +1,179 @@
 package model;
 public class Ficha {
    
+    //METODOS
+    public int calculaModificador(int atributo){
+        int modificacao;
+
+        switch (atributo) {
+            case 0:case 1:
+                modificacao = -5;
+                break;
+            case 2:case 3:
+                modificacao = -4;
+                break;
+            case 4:case 5:
+                modificacao = -3;
+                break;
+            case 6:case 7:
+                modificacao = -2;
+                break;
+            case 8:case 9:
+                modificacao = -1;
+                break;
+            case 10:case 11:
+                modificacao = 0;
+                break;
+            case 12:case 13:
+                modificacao = 1;
+                break;
+            case 14:case 15:
+                modificacao = 2;
+                break;
+            case 16:case 17:
+                modificacao = 3;
+                break;
+            case 18:case 19:
+                modificacao = 4;
+                break;
+            case 20:
+                modificacao = 5;
+                    break;
+            default:
+                modificacao = -20;
+                break;
+        }
+            return modificacao;
+    }
+
+    public int calculaPericia(boolean pericia, int modificador){
+        int valorPerificias;
+        
+        if(pericia == true){
+            valorPerificias = getBonusProficiencia() + modificador;
+        } 
+        else {
+            valorPerificias = modificador;
+        }
+        
+        return valorPerificias;
+    }
+    
+    public void testeResistencia(){              
+        String classe = getClasse();
+        
+        switch(classe){
+            case "Barbaro":
+                setsForca(true);
+                setsDestreza(false);
+                setsConstituicao(true);
+                setsInteligencia(false);
+                setsSabedoria(false);
+                setsCarisma(false);
+                break;
+            case "Bardo":
+                setsForca(false);
+                setsDestreza(true);
+                setsConstituicao(false);
+                setsInteligencia(false);
+                setsSabedoria(false);
+                setsCarisma(true);
+                break; 
+            case "Bruxo":
+                setsForca(false);
+                setsDestreza(false);
+                setsConstituicao(false);
+                setsInteligencia(false);
+                setsSabedoria(true);
+                setsCarisma(true);
+                break; 
+            case "Clerigo":
+                setsForca(false);
+                setsDestreza(false);
+                setsConstituicao(false);
+                setsInteligencia(false);
+                setsSabedoria(true);
+                setsCarisma(true);
+                break;
+            case "Druida":
+                setsForca(false);
+                setsDestreza(false);
+                setsConstituicao(false);
+                setsInteligencia(true);
+                setsSabedoria(true);
+                setsCarisma(false);
+                break;    
+            case "Feiticeiro":
+                setsForca(false);
+                setsDestreza(false);
+                setsConstituicao(true);
+                setsInteligencia(false);
+                setsSabedoria(false);
+                setsCarisma(true);
+                break;  
+            case "Guerreiro":
+                setsForca(true);
+                setsDestreza(false);
+                setsConstituicao(true);
+                setsInteligencia(false);
+                setsSabedoria(false);
+                setsCarisma(false);
+                break;
+            case "Ladino":
+                setsForca(false);
+                setsDestreza(true);
+                setsConstituicao(false);
+                setsInteligencia(true);
+                setsSabedoria(false);
+                setsCarisma(false);
+                break;
+            case "Mago":
+                setsForca(false);
+                setsDestreza(false);
+                setsConstituicao(false);
+                setsInteligencia(true);
+                setsSabedoria(true);
+                setsCarisma(false);
+                break;   
+            case "Monge":
+                setsForca(true);
+                setsDestreza(true);
+                setsConstituicao(false);
+                setsInteligencia(false);
+                setsSabedoria(false);
+                setsCarisma(false);
+                break;
+            case "Paladino":
+                setsForca(false);
+                setsDestreza(false);
+                setsConstituicao(false);
+                setsInteligencia(false);
+                setsSabedoria(true);
+                setsCarisma(true);
+                break;
+            case "Patrulheiro":
+                setsForca(true);
+                setsDestreza(true);
+                setsConstituicao(false);
+                setsInteligencia(false);
+                setsSabedoria(false);
+                setsCarisma(false);
+                break;       
+        }
+    }
+    
+    public int calculaResistencia(boolean resistencia, int modificador){
+        int valorResistencia;
+        
+        if(resistencia == true){
+            valorResistencia = getBonusProficiencia() + modificador;
+        }
+        else {
+            valorResistencia = modificador;
+        }
+        
+        return valorResistencia;
+    }
     
     //ATRIBUTOS E GET SET
     private int vida;

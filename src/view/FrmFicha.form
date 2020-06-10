@@ -26,13 +26,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -41,7 +39,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="384" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
@@ -57,7 +55,7 @@
                   </Group>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="228" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,7 +80,6 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -100,6 +97,7 @@
                                   <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -317,29 +315,37 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="48" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtConstituicaoModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtDestrezaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtDestrezaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtForcaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblDestrezaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtConstituicaoPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblConstituicaoPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtForcaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblForcaPersonagem" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="txtCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtSabedoriaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtSabedoriaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtInteligenciaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblSabedoriaPersonaem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtInteligenciaPersonagem" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblInteligenciaPersonagem" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtCarismaModificadorPersonagem" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtConstituicaoModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtDestrezaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtDestrezaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtForcaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblDestrezaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtConstituicaoPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblConstituicaoPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtForcaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblForcaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblCarismaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtSabedoriaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtSabedoriaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtInteligenciaModificadorPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblSabedoriaPersonaem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtInteligenciaPersonagem" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblInteligenciaPersonagem" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtCarismaModificadorPersonagem" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btnCalculaModificador" min="-2" pref="101" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -382,6 +388,8 @@
                   <Component id="txtCarismaPersonagem" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="txtCarismaModificadorPersonagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnCalculaModificador" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -411,7 +419,7 @@
         <Component class="javax.swing.JLabel" name="lblConstituicaoPersonagem">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="CONTITUI&#xc7;&#xc3;O"/>
+            <Property name="text" type="java.lang.String" value="CONSTITUI&#xc7;&#xc3;O"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtConstituicaoPersonagem">
@@ -447,6 +455,14 @@
         <Component class="javax.swing.JTextField" name="txtCarismaPersonagem">
         </Component>
         <Component class="javax.swing.JTextField" name="txtCarismaModificadorPersonagem">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCalculaModificador">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificador"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalculaModificadorActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
