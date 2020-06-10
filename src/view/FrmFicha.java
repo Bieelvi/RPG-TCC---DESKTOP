@@ -273,20 +273,37 @@ public class FrmFicha extends javax.swing.JFrame {
         lblForcaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblForcaPersonagem.setText("FORÇA");
 
+        txtForcaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtForcaModificadorPersonagem.setEnabled(false);
+
         lblDestrezaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDestrezaPersonagem.setText("DESTREZA");
+
+        txtDestrezaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDestrezaModificadorPersonagem.setEnabled(false);
 
         lblConstituicaoPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblConstituicaoPersonagem.setText("CONSTITUIÇÃO");
 
+        txtConstituicaoModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtConstituicaoModificadorPersonagem.setEnabled(false);
+
         lblInteligenciaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInteligenciaPersonagem.setText("INTELIGÊNCIA");
+
+        txtInteligenciaModificadorPersonagem.setEnabled(false);
 
         lblSabedoriaPersonaem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSabedoriaPersonaem.setText("SABEDORIA");
 
+        txtSabedoriaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSabedoriaModificadorPersonagem.setEnabled(false);
+
         lblCarismaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCarismaPersonagem.setText("CARISMA");
+
+        txtCarismaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCarismaModificadorPersonagem.setEnabled(false);
 
         btnCalculaModificador.setText("Modificador");
         btnCalculaModificador.addActionListener(new java.awt.event.ActionListener() {
@@ -398,6 +415,18 @@ public class FrmFicha extends javax.swing.JFrame {
             }
         });
 
+        txtTesteForcaPersonagem.setEnabled(false);
+
+        txtTesteDestrezaPersongem.setEnabled(false);
+
+        txtTesteConstituicaoPersonagem.setEnabled(false);
+
+        txtTesteInteligenciaPersonagem.setEnabled(false);
+
+        txtTesteSabedoriaPersonagem.setEnabled(false);
+
+        txtTesteCarismaPersonagem.setEnabled(false);
+
         lblTesteResistencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTesteResistencia.setText("TESTE DE RESISTÊNCIA");
 
@@ -458,6 +487,8 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
+        txtPericiaAcrobaciaPersonagem.setEnabled(false);
+
         lblPericiasPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPericiasPersonagem.setText("PERÍCIAS");
 
@@ -465,13 +496,27 @@ public class FrmFicha extends javax.swing.JFrame {
 
         radioArcanismoPersonagem.setText("Arcanismo");
 
+        txtArcanismoPersonagem.setEnabled(false);
+
+        txtAtuacaoPersonagem.setEnabled(false);
+
+        txtAtletismoPersonagem.setEnabled(false);
+
         radioAtletismoPersonagem.setText("Atletismo");
 
         radioAtuacaoPersonagem.setText("Atuação");
 
+        txtHistoriaPersonagem.setEnabled(false);
+
         radioHistoriaPersonagem.setText("História");
 
+        txtIntimidacaoPersonagem.setEnabled(false);
+
         radioIntimidacaoPersonagem.setText("Intimidação");
+
+        txtBlefarPersonagem.setEnabled(false);
+
+        txtFurtividadePersonagem.setEnabled(false);
 
         radioFurtividadePersonagem.setText("Furtividade");
 
@@ -479,21 +524,41 @@ public class FrmFicha extends javax.swing.JFrame {
 
         radioPrestidigitacaoPersonagem.setText("Prestidigitação");
 
+        txtPrestidigitacaoPersonagem.setEnabled(false);
+
+        txtPersuassaoPersonagem.setEnabled(false);
+
         radioPercuassaoPersonagem.setText("Persuassão");
 
         radioPercepcaoPersonagem.setText("Percepção");
+
+        txtPercepcaoPersonagem.setEnabled(false);
+
+        txtNaturezaPersonagem.setEnabled(false);
 
         radioNaturezaPersonagem.setText("Natureza");
 
         radioMedicina.setText("Medicina");
 
+        txtMedicinaPersonagem.setEnabled(false);
+
+        txtLidarAnimaisPersonagem.setEnabled(false);
+
         radioLidarAnimaisPersonagem.setText("Lidar com Animais");
 
         radioInvestigacaoPersonagem.setText("Investigação");
 
+        txtInvestigacaoPersonagem.setEnabled(false);
+
+        txtInuicaoPersonagem.setEnabled(false);
+
         radioIntuicaoPersonagem.setText("Intuição");
 
+        txtSobrevivenciaPersonagem.setEnabled(false);
+
         radioSobrevivenciaPersonagem.setText("Sobrevivência");
+
+        txtReligaoPersonagem.setEnabled(false);
 
         radioReligiaoPersonagem.setText("Religião");
 
@@ -927,7 +992,7 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(45, 45, 45)
+                                .addGap(63, 63, 63)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
