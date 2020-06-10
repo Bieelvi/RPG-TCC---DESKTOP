@@ -3,7 +3,7 @@ public class Ficha {
    
     //METODOS
     public int calculaModificador(int atributo){
-        int modificacao;
+        int modificacao=0;
 
         switch (atributo) {
             case 0:case 1:
@@ -40,7 +40,9 @@ public class Ficha {
                 modificacao = 5;
                     break;
             default:
-                modificacao = -20;
+                if (atributo > 20 || atributo < 0){
+                    throw new RuntimeException("Numero invalido, menor que 0 ou maior que 20");
+                };
                 break;
         }
             return modificacao;

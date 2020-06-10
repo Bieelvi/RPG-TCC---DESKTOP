@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.JOptionPane;
 import model.Ficha;
 
 public class FrmFicha extends javax.swing.JFrame {
@@ -1014,20 +1015,57 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_radioFracassoTresPersonagemActionPerformed
 
     private void btnCalculaModificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaModificadorActionPerformed
+        try{
+            int forca = Integer.parseInt(this.txtForcaPersonagem.getText());            
+            this.txtForcaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(forca)));
+        } catch (RuntimeException exe){
+            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+        }
         
-        int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
-        int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
-        int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
-        int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
-        int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
-        int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
+        try{
+            int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());            
+            this.txtDestrezaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(destreza)));
+        } catch (RuntimeException exe){
+            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+        }
         
-        this.txtForcaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(forca)));
-        this.txtDestrezaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(destreza)));
-        this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(constituicao)));
-        this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(inteligencia)));
-        this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(sabedoria)));
+        try{
+            int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());            
+            this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(constituicao)));
+        } catch (RuntimeException exe){
+            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+        
+        try{
+            int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());         
+            this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(inteligencia)));
+        } catch (RuntimeException exe){
+            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+        
+        try{
+            int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());       
+            this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(sabedoria)));
+        } catch (RuntimeException exe){
+            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+        
+        try{
+            int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());        
         this.txtCarismaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(carisma)));
+        } catch (RuntimeException exe){
+            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_btnCalculaModificadorActionPerformed
 
     
