@@ -1021,6 +1021,7 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+            this.txtForcaPersonagem.setText("");
         }
         
         try{
@@ -1029,6 +1030,7 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+            this.txtDestrezaPersonagem.setText("");
         }
         
         try{
@@ -1037,6 +1039,7 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+            this.txtConstituicaoPersonagem.setText("");
         }
         
         try{
@@ -1045,6 +1048,7 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+            this.txtInteligenciaPersonagem.setText("");
         }
         
         try{
@@ -1053,6 +1057,7 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+            this.txtSabedoriaPersonagem.setText("");
         }
         
         try{
@@ -1061,6 +1066,7 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
+            this.txtCarismaPersonagem.setText("");
         }
         
         
