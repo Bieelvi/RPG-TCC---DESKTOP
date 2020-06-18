@@ -11,17 +11,13 @@ public class AcessoController {
     public AcessoController() {
         bancoDadosArray = new ArrayList();
         
-        Usuario j1 = new Usuario("admin", "admin@admin", "123");
-        Usuario j2 = new Usuario("adm", "adm@adm", "1234");
-        Usuario j3 = new Usuario("gabriel", "gabriel@gabriel", "12345");
-        Usuario j4 = new Usuario("marcella", "marcella@marcella", "123456");
-        Usuario j5 = new Usuario("bieelvi", "bieelvi@bieelvi", "1234567");
+        Usuario j1 = new Usuario("Edilson", "edilsonlinefilho@gmail.com", "123456");
+        Usuario j2 = new Usuario("Gab Well", "gubirosin@gmail.com", "123456");
+        Usuario j3 = new Usuario("Bieelvi", "bieelvi@gmail.com", "123456");
         
         bancoDadosArray.add(j1);
         bancoDadosArray.add(j2);
         bancoDadosArray.add(j3);
-        bancoDadosArray.add(j4);
-        bancoDadosArray.add(j5);
     }
     
     //METODO QUE RECEBE COMO PARAMETRO USUARIO, EMAIL E SENHA E ADICIONA NA ARRAY
@@ -41,16 +37,30 @@ public class AcessoController {
         
         return confirmado;
     }
+    
+    public boolean verificaUsuarioPeloEmail(String email){
+        boolean existe = true;
+        
+        for(Usuario j: bancoDadosArray){
+            String e = j.getEmail();
+            
+            if(e.equals(email)){
+                existe = false;
+            }       
+        } 
+        
+        return existe;
+    }
 
     //METODO QUE RECEBE COMO PARAMENTRO USUARIO E SENHA. E CONFERE SE ESTA NO ARRAY CRIADO 
-    public boolean verificaAcesso(String usuario, String senha){
+    public boolean verificaAcesso(String email, String senha){
         boolean acesso = false;
 
         for(Usuario j: bancoDadosArray){
-            String u = j.getUsuario();
+            String e = j.getEmail();
             String s = j.getSenha();
             
-            if(u.equals(usuario) && s.equals(senha)){
+            if(e.equals(email) && s.equals(senha)){
                 acesso = true;
             }       
         }    

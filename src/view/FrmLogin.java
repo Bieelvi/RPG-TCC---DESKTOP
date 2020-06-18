@@ -38,7 +38,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Login");
+        jLabel1.setText("E-mail");
 
         jLabel2.setText("Senha");
 
@@ -147,8 +147,7 @@ public class FrmLogin extends javax.swing.JFrame {
                                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(btnEntrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnEntrar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -187,15 +186,15 @@ public class FrmLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
         //RECEBE DOS CAMPOS TXT E ADICIONA NAS VARIAVEIS RESPECTIVAS
-        String login = this.txtLogin.getText();
+        String email = this.txtEmail.getText();
         String senha = this.txtSenha.getText();
         
         //VERIFICA SE OS CAMPOS ESTAO PREENCHIDOS
-        if(login.isEmpty() || senha.isEmpty()){
+        if(email.isEmpty() || senha.isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para acesar meu consagrado!");
         } else {
             //VARIAVEL 'ACESSOARRAY' RECEBE O RETORNO DO METODO 'BUSCAUSUARIO'
-            boolean acessoArray = acessoController.verificaAcesso(login, senha);
+            boolean acessoArray = acessoController.verificaAcesso(email, senha);
             
             //VERIFICA SE OS DADOS DIGITADOS ESTAO NO BANCO DE DADOS(ARRAY)
             if(acessoArray == true){
@@ -204,9 +203,25 @@ public class FrmLogin extends javax.swing.JFrame {
                 this.txtLogin.setText("");
                 this.txtSenha.setText("");
                 
-                //ABRE A TELA E FECHA A DE CADASTRO/LOGIN
+                switch(email){
+                    case "edilsonlinefilho@gmail.com":
+                        setVisible(false);
+                        new FrmAdmin(email).setVisible(true);
+                    break;
+                    case "gubirosin@gmail.com":
+                        setVisible(false);
+                        new FrmAdmin(email).setVisible(true);
+                    break;
+                    case "bieelvi@gmail.com":
+                        setVisible(false);
+                        new FrmAdmin(email).setVisible(true);
+                    break;
+                }
+                     
+                
                 setVisible(false);
-                new Jogo().setVisible(true);
+                new FrmFicha().setVisible(true);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso negado!");
             }
@@ -231,17 +246,24 @@ public class FrmLogin extends javax.swing.JFrame {
             //RECEBE UM BOOLEAN DE RETORNO DO METODO 'VERIFICAEMAILSENHA' E CONFIRMA SE OS CAMPOS SAO IGUAIS
             boolean confirma = acessoController.verificaEmailSenha(cadastroEmail, confEmail, cadastroSenha, confSenha);
             
+            boolean existente = acessoController.verificaUsuarioPeloEmail(cadastroEmail);
+            
             //CONFIRMA SE O METODO RETORNOU TRUE
             if (confirma == true){
-                acessoController.adicionaArray(usuario, confEmail, confSenha);
-                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-                
-                //LIMPA OS CAMPOS APOS O CADASTRO
-                this.txtUsuario.setText("");
-                this.txtEmail.setText("");
-                this.txtConfEmail.setText("");
-                this.txtCadastroSenha.setText("");
-                this.txtConfSenha.setText("");
+                if(existente == false){
+                    acessoController.adicionaArray(usuario, confEmail, confSenha);
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
+                    //LIMPA OS CAMPOS APOS O CADASTRO
+                    this.txtUsuario.setText("");
+                    this.txtEmail.setText("");
+                    this.txtConfEmail.setText("");
+                    this.txtCadastroSenha.setText("");
+                    this.txtConfSenha.setText("");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Este E-mail já foi cadastrado meu consagrado!!!");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!");
             }
