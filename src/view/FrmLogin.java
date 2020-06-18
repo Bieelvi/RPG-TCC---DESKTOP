@@ -22,7 +22,7 @@ public class FrmLogin extends javax.swing.JFrame {
         txtSenha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
-        txtLogin = new javax.swing.JTextField();
+        txtEMail = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -140,7 +140,7 @@ public class FrmLogin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
@@ -158,7 +158,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -186,12 +186,12 @@ public class FrmLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
         //RECEBE DOS CAMPOS TXT E ADICIONA NAS VARIAVEIS RESPECTIVAS
-        String email = this.txtEmail.getText();
+        String email = this.txtEMail.getText();
         String senha = this.txtSenha.getText();
         
         //VERIFICA SE OS CAMPOS ESTAO PREENCHIDOS
-        if(email.isEmpty() || senha.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos para acesar meu consagrado!");
+        if(email.equals("") || senha.equals("")){
+            //JOptionPane.showMessageDialog(null, "Preencha os campos ");
         } else {
             //VARIAVEL 'ACESSOARRAY' RECEBE O RETORNO DO METODO 'BUSCAUSUARIO'
             boolean acessoArray = acessoController.verificaAcesso(email, senha);
@@ -200,7 +200,7 @@ public class FrmLogin extends javax.swing.JFrame {
             if(acessoArray == true){
                 JOptionPane.showMessageDialog(null, "Acesso concedido!");
                 
-                this.txtLogin.setText("");
+                this.txtEMail.setText("");
                 this.txtSenha.setText("");
                 
                 switch(email){
@@ -216,12 +216,10 @@ public class FrmLogin extends javax.swing.JFrame {
                         setVisible(false);
                         new FrmAdmin(email).setVisible(true);
                     break;
+                    default:
+                        setVisible(false);
+                        new FrmFicha().setVisible(true);
                 }
-                     
-                
-                setVisible(false);
-                new FrmFicha().setVisible(true);
-                
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso negado!");
             }
@@ -265,7 +263,7 @@ public class FrmLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Este E-mail já foi cadastrado meu consagrado!!!");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!");
+                JOptionPane.showMessageDialog(null, "Verifique se seu e-mail ou senha estão corretamente!");
             }
         }
     }//GEN-LAST:event_btnCadastroActionPerformed
@@ -317,8 +315,8 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtCadastroSenha;
     private javax.swing.JTextField txtConfEmail;
     private javax.swing.JTextField txtConfSenha;
+    private javax.swing.JTextField txtEMail;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

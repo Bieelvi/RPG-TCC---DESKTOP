@@ -39,13 +39,12 @@ public class AcessoController {
     }
     
     public boolean verificaUsuarioPeloEmail(String email){
-        boolean existe = true;
+        boolean existe = false;
         
         for(Usuario j: bancoDadosArray){
-            String e = j.getEmail();
             
-            if(e.equals(email)){
-                existe = false;
+            if(j.getEmail().equals(email)){
+                existe = true;
             }       
         } 
         
