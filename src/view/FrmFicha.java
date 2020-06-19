@@ -39,6 +39,7 @@ public class FrmFicha extends javax.swing.JFrame {
         for (Classe c: cla){
             classeBox.addElement(c.getNome());
         }
+        classeBox.addElement("Criar nova Classe");
         cmbClasse.setModel(classeBox);
     }
     
@@ -49,6 +50,7 @@ public class FrmFicha extends javax.swing.JFrame {
         for (Raca c: rac){
             classeBox.addElement(c.getNome());
         }
+        classeBox.addElement("Criar nova Raça");
         cmbRaca.setModel(classeBox);
     }
 
@@ -197,6 +199,34 @@ public class FrmFicha extends javax.swing.JFrame {
 
         lblNomePersonagem.setText("NOME DO PERSONAGEM");
 
+        txtNomePersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomePersonagemActionPerformed(evt);
+            }
+        });
+
+        cmbClasse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbClasseItemStateChanged(evt);
+            }
+        });
+        cmbClasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClasseActionPerformed(evt);
+            }
+        });
+
+        cmbRaca.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbRacaItemStateChanged(evt);
+            }
+        });
+        cmbRaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRacaActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("DESLOC.");
 
         jLabel1.setText("CLASSE ARMAD.");
@@ -337,6 +367,12 @@ public class FrmFicha extends javax.swing.JFrame {
         lblSabedoriaPersonaem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSabedoriaPersonaem.setText("SABEDORIA");
 
+        txtSabedoriaPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSabedoriaPersonagemActionPerformed(evt);
+            }
+        });
+
         txtSabedoriaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSabedoriaModificadorPersonagem.setEnabled(false);
 
@@ -436,6 +472,11 @@ public class FrmFicha extends javax.swing.JFrame {
         );
 
         radioForcaPersonagem.setText("FORÇA");
+        radioForcaPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioForcaPersonagemActionPerformed(evt);
+            }
+        });
 
         radioDestrezaPersonagem.setText("DESTREZA");
 
@@ -800,9 +841,9 @@ public class FrmFicha extends javax.swing.JFrame {
                     .addComponent(txtPlatinaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPlatinaPersonagem))
                 .addGap(18, 24, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDinheiroEquipamentosPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblDinheiroEquipamentosPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -824,7 +865,7 @@ public class FrmFicha extends javax.swing.JFrame {
                         .addComponent(lblPlatinaPersonagem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPlatinaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -842,7 +883,7 @@ public class FrmFicha extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCaracteristicasPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -851,8 +892,8 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblCaracteristicasPersonagem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblFracassosPersonagem.setText("FRACASSOS");
@@ -1145,13 +1186,40 @@ public class FrmFicha extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCalculaModificadorActionPerformed
 
+    private void txtSabedoriaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSabedoriaPersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSabedoriaPersonagemActionPerformed
+
+    private void txtNomePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomePersonagemActionPerformed
+        
+    }//GEN-LAST:event_txtNomePersonagemActionPerformed
+
+    private void cmbClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasseActionPerformed
+        //JOptionPane.showMessageDialog(null, cmbClasseActionPerformed);
+    }//GEN-LAST:event_cmbClasseActionPerformed
+
+    private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
+        if(cmbClasse.getSelectedItem().equals("Criar nova Classe")){
+            new AddClasse().setVisible(true);
+        }   
+    }//GEN-LAST:event_cmbClasseItemStateChanged
+
+    private void radioForcaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioForcaPersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioForcaPersonagemActionPerformed
+
+    private void cmbRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRacaActionPerformed
+
+    private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
+        if(cmbRaca.getSelectedItem().equals("Criar nova Raça")){
+            new AddRaca().setVisible(true);
+        }
+    }//GEN-LAST:event_cmbRacaItemStateChanged
+
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1164,9 +1232,6 @@ public class FrmFicha extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

@@ -61,7 +61,7 @@ public class Ficha {
         return valorPerificias;
     }
     
-    public void testeResistencia(){              
+    /*public void testeResistencia(){              
         String classe = getClasse();
         
         switch(classe){
@@ -162,7 +162,7 @@ public class Ficha {
                 setsCarisma(false);
                 break;       
         }
-    }
+    }*/
     
     public int calculaResistencia(boolean resistencia, int modificador){
         int valorResistencia;
