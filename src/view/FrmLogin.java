@@ -6,12 +6,12 @@ import javax.swing.JOptionPane;
 public class FrmLogin extends javax.swing.JFrame {
     
     //CRIA UMA VARIAVEL DO TIPO 'ACESSOCONTROLLER'
-    AcessoController acessoController;
+    AcessoController acessoControllerLogin;
 
     public FrmLogin() {
         initComponents();
         //A VARIAVEL RECEBE UMA INSTANCIACAO DA CLASSE 'ACESSOCONTROLLER'
-        acessoController = new AcessoController();
+        acessoControllerLogin = new AcessoController();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -86,8 +86,10 @@ public class FrmLogin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(12, 12, 12)))
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(txtEmail))))
@@ -100,17 +102,14 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtConfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,7 +124,7 @@ public class FrmLogin extends javax.swing.JFrame {
                     .addComponent(txtConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(btnCadastro)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(100, 100, 100))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -155,18 +154,20 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnEntrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEntrar))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,7 +195,7 @@ public class FrmLogin extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(null, "Preencha os campos ");
         } else {
             //VARIAVEL 'ACESSOARRAY' RECEBE O RETORNO DO METODO 'BUSCAUSUARIO'
-            boolean acessoArray = acessoController.verificaAcesso(email, senha);
+            boolean acessoArray = acessoControllerLogin.verificaAcesso(email, senha);
             
             //VERIFICA SE OS DADOS DIGITADOS ESTAO NO BANCO DE DADOS(ARRAY)
             if(acessoArray == true){
@@ -203,22 +204,24 @@ public class FrmLogin extends javax.swing.JFrame {
                 this.txtEMail.setText("");
                 this.txtSenha.setText("");
                 
+                String nome = acessoControllerLogin.procura(email);
+                
                 switch(email){
                     case "edilsonlinefilho@gmail.com":
                         setVisible(false);
-                        new FrmAdmin(email).setVisible(true);
+                        new FrmAdmin(nome, email, acessoControllerLogin).setVisible(true);
                     break;
                     case "gubirosin@gmail.com":
                         setVisible(false);
-                        new FrmAdmin(email).setVisible(true);
+                        new FrmAdmin(nome, email, acessoControllerLogin).setVisible(true);
                     break;
                     case "bieelvi@gmail.com":
                         setVisible(false);
-                        new FrmAdmin(email).setVisible(true);
+                        new FrmAdmin(nome, email, acessoControllerLogin).setVisible(true);
                     break;
                     default:
                         setVisible(false);
-                        new FrmFicha().setVisible(true);
+                        new BemVindo(email, acessoControllerLogin).setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso negado!");
@@ -242,14 +245,14 @@ public class FrmLogin extends javax.swing.JFrame {
         } else {
             
             //RECEBE UM BOOLEAN DE RETORNO DO METODO 'VERIFICAEMAILSENHA' E CONFIRMA SE OS CAMPOS SAO IGUAIS
-            boolean confirma = acessoController.verificaEmailSenha(cadastroEmail, confEmail, cadastroSenha, confSenha);
+            boolean confirma = acessoControllerLogin.verificaEmailSenha(cadastroEmail, confEmail, cadastroSenha, confSenha);
             
-            boolean existente = acessoController.verificaUsuarioPeloEmail(cadastroEmail);
+            boolean existente = acessoControllerLogin.verificaUsuarioPeloEmail(cadastroEmail);
             
             //CONFIRMA SE O METODO RETORNOU TRUE
             if (confirma == true){
                 if(existente == false){
-                    acessoController.adicionaArray(usuario, confEmail, confSenha);
+                    acessoControllerLogin.adicionaArray(usuario, confEmail, confSenha);
                     JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 
                     //LIMPA OS CAMPOS APOS O CADASTRO
@@ -261,9 +264,14 @@ public class FrmLogin extends javax.swing.JFrame {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Este E-mail já foi cadastrado meu consagrado!!!");
+                    this.txtEmail.setText("");
+                    this.txtConfEmail.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Verifique se seu e-mail ou senha estão corretamente!");
+                
+                this.txtCadastroSenha.setText("");
+                this.txtConfSenha.setText("");
             }
         }
     }//GEN-LAST:event_btnCadastroActionPerformed

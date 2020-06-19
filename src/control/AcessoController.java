@@ -12,12 +12,31 @@ public class AcessoController {
         bancoDadosArray = new ArrayList();
         
         Usuario j1 = new Usuario("Edilson", "edilsonlinefilho@gmail.com", "123456");
-        Usuario j2 = new Usuario("Gab Well", "gubirosin@gmail.com", "123456");
+        Usuario j2 = new Usuario("Gub Well", "gubirosin@gmail.com", "123456");
         Usuario j3 = new Usuario("Bieelvi", "bieelvi@gmail.com", "123456");
+        Usuario j4 = new Usuario("uu", "uu", "uu");
         
         bancoDadosArray.add(j1);
         bancoDadosArray.add(j2);
         bancoDadosArray.add(j3);
+        bancoDadosArray.add(j4);
+    }
+    
+    public ArrayList banco(){
+        return bancoDadosArray;
+    }
+    
+    public String procura(String nome){
+        String result = "";
+        
+        for(Usuario j: bancoDadosArray){
+            
+            if(j.getEmail().equals(nome)){
+                result = j.getUsuario();
+            }       
+        } 
+        
+        return result;
     }
     
     //METODO QUE RECEBE COMO PARAMETRO USUARIO, EMAIL E SENHA E ADICIONA NA ARRAY
