@@ -70,7 +70,6 @@ public class FrmFicha extends javax.swing.JFrame {
         lblExpPersonagem = new javax.swing.JLabel();
         txtExpPersonagem = new javax.swing.JTextField();
         lblNomePersonagem = new javax.swing.JLabel();
-        txtNomePersonagem = new javax.swing.JTextField();
         cmbClasse = new javax.swing.JComboBox<>();
         cmbRaca = new javax.swing.JComboBox<>();
         jTextField3 = new javax.swing.JTextField();
@@ -79,6 +78,7 @@ public class FrmFicha extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        cmbNomePersonagem = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         lblForcaPersonagem = new javax.swing.JLabel();
         txtForcaPersonagem = new javax.swing.JTextField();
@@ -182,6 +182,7 @@ public class FrmFicha extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtHistoriaDoPersonagem = new javax.swing.JTextArea();
         lblHistoriaPersonagem = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,12 +199,6 @@ public class FrmFicha extends javax.swing.JFrame {
         lblExpPersonagem.setText("PONTOS DE EXPERIÊNCIA");
 
         lblNomePersonagem.setText("NOME DO PERSONAGEM");
-
-        txtNomePersonagem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomePersonagemActionPerformed(evt);
-            }
-        });
 
         cmbClasse.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -234,6 +229,12 @@ public class FrmFicha extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VIDA");
 
+        cmbNomePersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNomePersonagemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -241,7 +242,6 @@ public class FrmFicha extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomePersonagem)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -258,8 +258,9 @@ public class FrmFicha extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cmbNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(cmbRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +287,7 @@ public class FrmFicha extends javax.swing.JFrame {
                             .addComponent(lblExpPersonagem)
                             .addComponent(lblNomeJogador)
                             .addComponent(txtNomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(241, 241, 241))
+                .addGap(205, 205, 205))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +327,7 @@ public class FrmFicha extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblNomePersonagem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -969,6 +970,13 @@ public class FrmFicha extends javax.swing.JFrame {
         lblHistoriaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHistoriaPersonagem.setText("HISTORIA");
 
+        jButton1.setText("SALVAR FICHA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1028,7 +1036,9 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addGap(22, 22, 22))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1039,7 +1049,11 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1050,17 +1064,17 @@ public class FrmFicha extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblTestesContraMortePersonagem)
                                         .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblSucessosPersonagem)
-                                            .addComponent(radioSucessoUmPersonagem)
-                                            .addComponent(radioSucessoDoisPersonagem)
-                                            .addComponent(radioSucessoTresPersonagem))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(radioSucessoUmPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(radioSucessoDoisPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(radioSucessoTresPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblSucessosPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(radioFracassoUmPersonagem)
-                                            .addComponent(radioFracassoDoisPersonagem)
-                                            .addComponent(radioFracassoTresPersonagem)
-                                            .addComponent(lblFracassosPersonagem))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(radioFracassoUmPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(radioFracassoDoisPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(radioFracassoTresPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblFracassosPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(txtInspiracaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1190,10 +1204,6 @@ public class FrmFicha extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSabedoriaPersonagemActionPerformed
 
-    private void txtNomePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomePersonagemActionPerformed
-        
-    }//GEN-LAST:event_txtNomePersonagemActionPerformed
-
     private void cmbClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasseActionPerformed
         //JOptionPane.showMessageDialog(null, cmbClasseActionPerformed);
     }//GEN-LAST:event_cmbClasseActionPerformed
@@ -1209,7 +1219,7 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_radioForcaPersonagemActionPerformed
 
     private void cmbRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRacaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbRacaActionPerformed
 
     private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
@@ -1217,6 +1227,14 @@ public class FrmFicha extends javax.swing.JFrame {
             new AddRaca().setVisible(true);
         }
     }//GEN-LAST:event_cmbRacaItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbNomePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNomePersonagemActionPerformed
+        //if(cmbNamePersonagem.getSelectedItem().equals("Criar nova Raça")){}
+    }//GEN-LAST:event_cmbNomePersonagemActionPerformed
 
 
     public static void main(String args[]) {
@@ -1242,7 +1260,9 @@ public class FrmFicha extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculaModificador;
     private javax.swing.JComboBox<String> cmbClasse;
+    private javax.swing.JComboBox<String> cmbNomePersonagem;
     private javax.swing.JComboBox<String> cmbRaca;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1345,7 +1365,6 @@ public class FrmFicha extends javax.swing.JFrame {
     private javax.swing.JTextField txtNaturezaPersonagem;
     private javax.swing.JTextField txtNivelPersonagem;
     private javax.swing.JTextField txtNomeJogador;
-    private javax.swing.JTextField txtNomePersonagem;
     private javax.swing.JTextField txtOuroPersonagem;
     private javax.swing.JTextField txtPercepcaoPersonagem;
     private javax.swing.JTextField txtPericiaAcrobaciaPersonagem;

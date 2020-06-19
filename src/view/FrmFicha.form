@@ -96,7 +96,9 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
@@ -112,8 +114,14 @@
               <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -123,18 +131,18 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lblTestesContraMortePersonagem" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblSucessosPersonagem" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioSucessoUmPersonagem" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioSucessoDoisPersonagem" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioSucessoTresPersonagem" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="radioSucessoUmPersonagem" max="32767" attributes="0"/>
+                                          <Component id="radioSucessoDoisPersonagem" max="32767" attributes="0"/>
+                                          <Component id="radioSucessoTresPersonagem" max="32767" attributes="0"/>
+                                          <Component id="lblSucessosPersonagem" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="radioFracassoUmPersonagem" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioFracassoDoisPersonagem" min="-2" max="-2" attributes="0"/>
-                                          <Component id="radioFracassoTresPersonagem" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFracassosPersonagem" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="radioFracassoUmPersonagem" max="32767" attributes="0"/>
+                                          <Component id="radioFracassoDoisPersonagem" max="32767" attributes="0"/>
+                                          <Component id="radioFracassoTresPersonagem" max="32767" attributes="0"/>
+                                          <Component id="lblFracassosPersonagem" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -179,7 +187,6 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtNomePersonagem" min="-2" pref="240" max="-2" attributes="0"/>
                       <Component id="lblNomePersonagem" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -203,8 +210,9 @@
                               <Component id="jTextField3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="cmbNomePersonagem" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="cmbRaca" min="-2" pref="158" max="-2" attributes="0"/>
@@ -240,7 +248,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -294,7 +302,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="lblNomePersonagem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNomePersonagem" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbNomePersonagem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -359,11 +367,6 @@
             <Property name="text" type="java.lang.String" value="NOME DO PERSONAGEM"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNomePersonagem">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomePersonagemActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JComboBox" name="cmbClasse">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -413,6 +416,19 @@
         <Component class="javax.swing.JTextField" name="jTextField1">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbNomePersonagem">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbNomePersonagemActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -1415,6 +1431,14 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="HISTORIA"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="SALVAR FICHA"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
