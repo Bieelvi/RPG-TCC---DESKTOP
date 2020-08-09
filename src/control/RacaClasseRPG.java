@@ -10,7 +10,7 @@ public class RacaClasseRPG {
     private ArrayList <Classe> bancoDadosClasse;
     private ArrayList <Raca> bancoDadosRaca;
     
-    //INICIA COM ALGUMAS CLASSES NO ARRAY, COMO DEFAULT
+    //INSTANCIA O BANCO DE CLASSES COM ALGUMAS CLASSES COMO DEFAULT
     public ArrayList <Classe> classe() {
         bancoDadosClasse = new ArrayList();
         
@@ -43,6 +43,7 @@ public class RacaClasseRPG {
         return bancoDadosClasse;
     }
     
+    //INSTANCIA O BANCO DE RAÇA COM ALGUMAS RAÇA COMO DEFAULT
     public ArrayList raca() {
         bancoDadosRaca = new ArrayList();
         
@@ -67,5 +68,39 @@ public class RacaClasseRPG {
         bancoDadosRaca.add(c9);
         
         return bancoDadosRaca;
+    }
+    
+    //INSTANCIA NOVAS CLASSES NO BANCO
+    public boolean novaClasse(String nome){
+        boolean veri = true;
+        
+        for(Classe c: bancoDadosClasse){
+            if(c.getNome().equals(nome)){
+                veri = false;
+            }       
+        }
+        
+        if(veri == true){
+            Classe c = new Classe(nome);
+        }
+        
+        return veri;
+    }
+    
+    //INSTANCIA NOVAS RAÇAS NO BANCO
+    public boolean novaRaca(String nome, int desloc){
+        boolean veri = true;
+        
+        for(Raca c: bancoDadosRaca){
+            if(c.getNome().equals(nome)){
+                veri = false;
+            }       
+        }
+        
+        if(veri == true){
+            Raca c = new Raca(nome, desloc);
+        }
+        
+        return veri;
     }
 }

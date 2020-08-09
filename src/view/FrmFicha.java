@@ -21,13 +21,13 @@ public class FrmFicha extends javax.swing.JFrame {
         emailUsua = email;
         ficha = new Ficha();
         racaClasseRPG = new RacaClasseRPG();
+        acessoControllerFicha = acessoControllerLogin;
         classeRPG();
         racaRPG();
-        acessoControllerFicha = acessoControllerLogin;
-        txtHistoriaDoPersonagem.setLineWrap(true);
-        txtHistoriaDoPersonagem.setWrapStyleWord(true);
         txtEquipamentos.setLineWrap(true);
         txtEquipamentos.setWrapStyleWord(true);
+        txtHistoriaDoPersonagem.setLineWrap(true);
+        txtHistoriaDoPersonagem.setWrapStyleWord(true);
         txtCaracteristicasPersonagem.setLineWrap(true);
         txtCaracteristicasPersonagem.setWrapStyleWord(true);
     }
@@ -315,8 +315,8 @@ public class FrmFicha extends javax.swing.JFrame {
                                     .addComponent(lblRacaPersonagem)
                                     .addComponent(lblTendenciaPersonagem))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(cmbRaca)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1099,9 +1099,6 @@ public class FrmFicha extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
-    
     
     private void radioSabedoriaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSabedoriaPersonagemActionPerformed
         // TODO add your handling code here:
@@ -1209,8 +1206,13 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbClasseActionPerformed
 
     private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
+        
         if(cmbClasse.getSelectedItem().equals("Criar nova Classe")){
-            new AddClasse().setVisible(true);
+            //new AddClasse().setVisible(true);
+            //AddClasse teste = AddClasse.getInstance();
+            //if (teste != null){
+                new AddClasse(racaClasseRPG).setVisible(true);
+            //}
         }   
     }//GEN-LAST:event_cmbClasseItemStateChanged
 
