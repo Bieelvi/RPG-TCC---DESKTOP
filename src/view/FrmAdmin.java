@@ -110,18 +110,18 @@ public class FrmAdmin extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-       ArrayList <Usuario> listaUsers = acessoControllerAdmin.banco();
-       DefaultTableModel users = new DefaultTableModel();
-       users.setNumRows(0);
-       users.addColumn("Nome");
-       users.addColumn("E-mail");
-       users.addColumn("Senha");
-       for (Usuario u: listaUsers)
-       {
-           users.addRow(new Object[]{u.getUsuario(), u.getEmail(), u.getSenha()});
-       }
-       jTable1.setModel(users);
+        /*
+        ArrayList <Usuario> listaUsers = acessoControllerAdmin.banco();
+        DefaultTableModel users = new DefaultTableModel();
+        users.setNumRows(0);
+        users.addColumn("Nome");
+        users.addColumn("E-mail");
+        users.addColumn("Senha");
+        for (Usuario u: listaUsers)
+        {
+            users.addRow(new Object[]{u.getUsuario(), u.getEmail(), u.getSenha()});
+        }
+        jTable1.setModel(users);*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -1,6 +1,9 @@
 package view;
 
 import control.AcessoController;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrmLogin extends javax.swing.JFrame {
@@ -8,7 +11,7 @@ public class FrmLogin extends javax.swing.JFrame {
     //CRIA UMA VARIAVEL DO TIPO 'ACESSOCONTROLLER'
     AcessoController acessoControllerLogin;
 
-    public FrmLogin() {
+    public FrmLogin() throws NoSuchAlgorithmException {
         initComponents();
         //A VARIAVEL RECEBE UMA INSTANCIACAO DA CLASSE 'ACESSOCONTROLLER'
         acessoControllerLogin = new AcessoController();
@@ -252,9 +255,19 @@ public class FrmLogin extends javax.swing.JFrame {
             //CONFIRMA SE O METODO RETORNOU TRUE
             if (confirma == true){
                 if(existente == false){
-                    acessoControllerLogin.adicionaArray(usuario, confEmail, confSenha);
-                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-
+                    
+                    try{
+                        boolean add = acessoControllerLogin.adicionaArray(usuario, confEmail, confSenha);
+                    }
+                    catch(NullPointerException n){
+                        System.out.println(n);
+                        n.printStackTrace();
+                    }
+                    catch(Exception ex){
+                        System.out.println("ka - gay");
+                        System.out.println(ex);
+                    }
+                    
                     //LIMPA OS CAMPOS APOS O CADASTRO
                     this.txtUsuario.setText("");
                     this.txtEmail.setText("");
@@ -303,7 +316,11 @@ public class FrmLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmLogin().setVisible(true);
+                try {
+                    new FrmLogin().setVisible(true);
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

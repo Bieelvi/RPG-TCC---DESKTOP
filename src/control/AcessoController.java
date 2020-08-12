@@ -1,14 +1,18 @@
 package control;
 
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import model.DAO.CadastraUsuario;
 import model.Usuario;
 
 public class AcessoController {
     
     private final ArrayList<Usuario> bancoDadosArray;
+    CadastraUsuario cadastraUsuario;
 
     //CONTRUTOR QUE INICIA COM ALGUNS USUARIOS NA ARRAY, PARA TESTES
-    public AcessoController() {
+    public AcessoController() throws NoSuchAlgorithmException {
         bancoDadosArray = new ArrayList();
         
         Usuario j1 = new Usuario("Edilson", "edilsonlinefilho@gmail.com", "123456");
@@ -20,10 +24,8 @@ public class AcessoController {
         bancoDadosArray.add(j2);
         bancoDadosArray.add(j3);
         bancoDadosArray.add(j4);
-    }
-    
-    public ArrayList banco(){
-        return bancoDadosArray;
+        
+        cadastraUsuario = new CadastraUsuario();
     }
     
     public String procura(String nome){
@@ -39,11 +41,10 @@ public class AcessoController {
         return result;
     }
     
-    //METODO QUE RECEBE COMO PARAMETRO USUARIO, EMAIL E SENHA E ADICIONA NA ARRAY
-    public void adicionaArray(String usuario, String email, String senha){        
-        Usuario j = new Usuario(usuario, email, senha);        
-        
-        bancoDadosArray.add(j);
+    //METODO QUE RECEBE COMO PARAMETRO USUARIO, EMAIL E SENHA E ADICIONA NO BANCO
+    public boolean adicionaArray(String usuario, String email, String senha) throws SQLException{ 
+        boolean add = cadastraUsuario.passaUsuario(usuario, email, senha);
+        return add;
     }
     
     //METODO QUE RECEBE COMO PARAMETRO EMAIL(CONF EMAIL) E SENHA(CONF) E CONFERE PARA VER SE ESTA CORRETO
