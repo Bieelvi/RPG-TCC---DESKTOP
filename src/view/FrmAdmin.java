@@ -110,7 +110,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*
+        /* 
         ArrayList <Usuario> listaUsers = acessoControllerAdmin.banco();
         DefaultTableModel users = new DefaultTableModel();
         users.setNumRows(0);
