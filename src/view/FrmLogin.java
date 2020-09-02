@@ -1,20 +1,19 @@
 package view;
 
-import control.AcessoController;
+import control.UsuarioController;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrmLogin extends javax.swing.JFrame {
     
-    //CRIA UMA VARIAVEL DO TIPO 'ACESSOCONTROLLER'
-    AcessoController acessoControllerLogin;
+    UsuarioController usuarioController;
 
     public FrmLogin() throws NoSuchAlgorithmException {
         initComponents();
-        //A VARIAVEL RECEBE UMA INSTANCIACAO DA CLASSE 'ACESSOCONTROLLER'
-        acessoControllerLogin = new AcessoController();
+        usuarioController = new UsuarioController();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,46 +188,50 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
-        //RECEBE DOS CAMPOS TXT E ADICIONA NAS VARIAVEIS RESPECTIVAS
         String email = this.txtEMail.getText();
         String senha = this.txtSenha.getText();
         
-        //VERIFICA SE OS CAMPOS ESTAO PREENCHIDOS
-        if(email.equals("") || senha.equals("")){
-            //JOptionPane.showMessageDialog(null, "Preencha os campos ");
-        } else {
-            //VARIAVEL 'ACESSOARRAY' RECEBE O RETORNO DO METODO 'BUSCAUSUARIO'
-            boolean acessoArray = acessoControllerLogin.verificaAcesso(email, senha);
+        if(email.equals("") || senha.equals(""))
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos !!!");
+        else {
             
-            //VERIFICA SE OS DADOS DIGITADOS ESTAO NO BANCO DE DADOS(ARRAY)
-            if(acessoArray == true){
-                JOptionPane.showMessageDialog(null, "Acesso concedido!");
+            boolean buscaUsuario = false;
+            String nome = null;
+            boolean hierarquia = false;
+            
+            try {
+                buscaUsuario = usuarioController.verificaAcesso(email, senha);
+                nome = usuarioController.procura(email);
+                hierarquia = usuarioController.hierarquia(email);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro de Conexão, Verifique sua internet e caso o problema persista, contacte um dos nossos desenvolvedores");
+                System.out.println(ex);
+            }
+            
+            if(buscaUsuario == true){
                 
+                JOptionPane.showMessageDialog(null, "Acesso concedido!");
                 this.txtEMail.setText("");
                 this.txtSenha.setText("");
                 
-                String nome = acessoControllerLogin.procura(email);
-                
-                switch(email){
-                    case "edilsonlinefilho@gmail.com":
-                        setVisible(false);
-                        new FrmAdmin(nome, email, acessoControllerLogin).setVisible(true);
-                    break;
-                    case "gubirosin@gmail.com":
-                        setVisible(false);
-                        new FrmAdmin(nome, email, acessoControllerLogin).setVisible(true);
-                    break;
-                    case "bieelvi@gmail.com":
-                        setVisible(false);
-                        new FrmAdmin(nome, email, acessoControllerLogin).setVisible(true);
-                    break;
-                    default:
-                        setVisible(false);
-                        new BemVindo(email, acessoControllerLogin).setVisible(true);
+                setVisible(false);
+                if(hierarquia){
+                    try {
+                        new FrmAdmin(email).setVisible(true);
+                    } catch (NoSuchAlgorithmException ex) {
+                        System.out.println(ex);
+                    }
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Acesso negado!");
-            }
+                else{
+                    try {
+                        new BemVindo(email).setVisible(true);
+                    } catch (NoSuchAlgorithmException ex) {
+                        System.out.println(ex);
+                    }
+                }
+                
+            } else 
+                JOptionPane.showMessageDialog(null, "Acesso negado!!!");
         }
   
     }//GEN-LAST:event_btnEntrarActionPerformed
@@ -243,32 +246,33 @@ public class FrmLogin extends javax.swing.JFrame {
         String confSenha = this.txtConfSenha.getText();
         
         //VERIFICA SE OS CAMPOS ESTAO PREENCHIDOS
-        if (usuario.isEmpty() || cadastroEmail.isEmpty() || confEmail.isEmpty() || cadastroSenha.isEmpty() || confSenha.isEmpty()){
+        if (usuario.isEmpty() || cadastroEmail.isEmpty() || confEmail.isEmpty() || cadastroSenha.isEmpty() || confSenha.isEmpty())
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para cadastrar meu consagrado!");
-        } else {
+        else {
             
-            //RECEBE UM BOOLEAN DE RETORNO DO METODO 'VERIFICAEMAILSENHA' E CONFIRMA SE OS CAMPOS SAO IGUAIS
-            boolean confirma = acessoControllerLogin.verificaEmailSenha(cadastroEmail, confEmail, cadastroSenha, confSenha);
+            boolean confirma = usuarioController.verificaEmailSenha(cadastroEmail, confEmail, cadastroSenha, confSenha);
+            boolean existente = false;
             
-            boolean existente = acessoControllerLogin.verificaUsuarioPeloEmail(cadastroEmail);
+            try {
+                existente = usuarioController.verificaUsuarioPeloEmail(cadastroEmail);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
             
-            //CONFIRMA SE O METODO RETORNOU TRUE
             if (confirma == true){
                 if(existente == false){
                     
                     try{
-                        boolean add = acessoControllerLogin.adicionaArray(usuario, confEmail, confSenha);
-                    }
-                    catch(NullPointerException n){
-                        System.out.println(n);
-                        n.printStackTrace();
+                        boolean add = usuarioController.adicionaBanco(usuario, confEmail, confSenha);
+                        if(add)
+                            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                        else
+                            JOptionPane.showMessageDialog(null, "Cadastrado não sucedido!");
                     }
                     catch(Exception ex){
-                        System.out.println("ka - gay");
                         System.out.println(ex);
                     }
                     
-                    //LIMPA OS CAMPOS APOS O CADASTRO
                     this.txtUsuario.setText("");
                     this.txtEmail.setText("");
                     this.txtConfEmail.setText("");
@@ -280,9 +284,9 @@ public class FrmLogin extends javax.swing.JFrame {
                     this.txtEmail.setText("");
                     this.txtConfEmail.setText("");
                 }
-            } else {
+            } 
+            else {
                 JOptionPane.showMessageDialog(null, "Verifique se seu e-mail ou senha estão corretamente!");
-                
                 this.txtCadastroSenha.setText("");
                 this.txtConfSenha.setText("");
             }
@@ -290,11 +294,6 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastroActionPerformed
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -313,7 +312,6 @@ public class FrmLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

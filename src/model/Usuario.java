@@ -1,66 +1,48 @@
 package model;
 public class Usuario {
+
+    public Usuario(String nomeUsuario, String emailUsuario, String senhaUsuario, int hierarquiaUsuario) {
+        this.nomeUsuario = nomeUsuario;
+        this.emailUsuario = emailUsuario;
+        this.senhaUsuario = senhaUsuario;
+        this.hierarquiaUsuario = hierarquiaUsuario;
+    }
+
+    private String nomeUsuario;
+    private String emailUsuario;
+    private String senhaUsuario;
+    private int hierarquiaUsuario;
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
+    }
+
+    public String getSenhaUsuario() {
+        return senhaUsuario;
+    }
+
+    public void setSenhaUsuario(String senhaUsuario) {
+        this.senhaUsuario = senhaUsuario;
+    }
+
+    public int getHierarquiaUsuario() {
+        return hierarquiaUsuario;
+    }
+
+    public void setHierarquiaUsuario(int hierarquiaUsuario) {
+        this.hierarquiaUsuario = hierarquiaUsuario;
+    }
     
-    
-    //PARA ACESSAR
-    public Usuario(String usuario, String email, String senha) {
-        this.usuario = usuario;
-        this.email = email;
-        this.senha = senha;
-    }
-
-    public Usuario(String usuario, String email, String cEmail, String senha, String cSenha) {
-        this.usuario = usuario;
-        this.email = email;
-        this.cEmail = cEmail;
-        this.senha = senha;
-        this.cSenha = cSenha;
-    }
-
-    //GET SET ATRIBUTOS
-    private String usuario;
-    private String email;
-    private String cEmail;
-    private String senha;
-    private String cSenha;
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getcEmail() {
-        return cEmail;
-    }
-
-    public void setcEmail(String cEmail) {
-        this.cEmail = cEmail;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getcSenha() {
-        return cSenha;
-    }
-
-    public void setcSenha(String cSenha) {
-        this.cSenha = cSenha;
-    }
 }

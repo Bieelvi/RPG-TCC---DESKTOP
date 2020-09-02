@@ -1,17 +1,28 @@
 package view;
 
-import control.AcessoController;
+import control.UsuarioController;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BemVindo extends javax.swing.JFrame {
     
-    AcessoController acessoControllerBemVindo;
-    String user;
+    UsuarioController acessoControllerBemVindo;
+    String email;
     
-    public BemVindo(String email, AcessoController acessoControllerLogin) {
+    public BemVindo(String email) throws NoSuchAlgorithmException {
+        acessoControllerBemVindo = new UsuarioController();
+        this.email = email;
         initComponents();
-        acessoControllerBemVindo = acessoControllerLogin;
-        user = email;
     }
+
+    public BemVindo() throws NoSuchAlgorithmException {
+        this.acessoControllerBemVindo = new UsuarioController();
+        email = "uu";
+        initComponents();
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -99,7 +110,7 @@ public class BemVindo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
-        new FrmFicha(user, acessoControllerBemVindo).setVisible(true);
+        new FrmFicha(email, acessoControllerBemVindo).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -127,6 +138,11 @@ public class BemVindo extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try {
+                    new BemVindo().setVisible(true);
+                } catch (NoSuchAlgorithmException ex) {
+                    System.out.println(ex);
+                }
             }
         });
     }

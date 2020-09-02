@@ -1,22 +1,22 @@
 package view;
 
-import control.AcessoController;
+import control.UsuarioController;
 import control.RacaClasseRPG;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
 import model.Ficha;
-import model.Raca;
+import model.Raca; // https://discord.gg/eWJ4ya8 --> https://discord.gg/Mck6z9
 
 public class FrmFicha extends javax.swing.JFrame {
     
     Ficha ficha;
     RacaClasseRPG racaClasseRPG;
     String emailUsua;
-    AcessoController acessoControllerFicha;
+    UsuarioController acessoControllerFicha;
     
-    public FrmFicha(String email, AcessoController acessoControllerLogin) {
+    public FrmFicha(String email, UsuarioController acessoControllerLogin) {
         initComponents();
         emailUsua = email;
         ficha = new Ficha();
