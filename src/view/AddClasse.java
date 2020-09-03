@@ -1,14 +1,17 @@
 package view;
 
-import control.RacaClasseRPG;
+import control.RacaClasseController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class AddClasse extends javax.swing.JFrame {
 
-    RacaClasseRPG racaClasse;
+    RacaClasseController racaClasse;
     //private static AddClasse classe = null;
     
-    public AddClasse(RacaClasseRPG racaClasseFicha) {
+    public AddClasse(RacaClasseController racaClasseFicha) {
         initComponents();
         racaClasse = racaClasseFicha;
         jTextField1.setText("Digite aqui...");
@@ -105,7 +108,14 @@ public class AddClasse extends javax.swing.JFrame {
         }
         else{
             String nome = this.jTextField1.getText();
-            boolean veri = racaClasse.novaClasse(nome);
+            boolean veri = false;
+            
+            try {
+                veri = racaClasse.novaClasse(nome);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            
             if(veri == false){
                 JOptionPane.showMessageDialog(null, "Esta Classe já existe");
                 this.jTextField1.setText("");

@@ -2,22 +2,23 @@ package view;
 
 import control.UsuarioController;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BemVindo extends javax.swing.JFrame {
+public class FrmBemVindo extends javax.swing.JFrame {
     
-    UsuarioController acessoControllerBemVindo;
+    UsuarioController usuarioController;
     String email;
     
-    public BemVindo(String email) throws NoSuchAlgorithmException {
-        acessoControllerBemVindo = new UsuarioController();
+    public FrmBemVindo(String email){
+        usuarioController = new UsuarioController();
         this.email = email;
         initComponents();
     }
 
-    public BemVindo() throws NoSuchAlgorithmException {
-        this.acessoControllerBemVindo = new UsuarioController();
+    public FrmBemVindo(){
+        this.usuarioController = new UsuarioController();
         email = "uu";
         initComponents();
     }
@@ -110,7 +111,11 @@ public class BemVindo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
-        new FrmFicha(email, acessoControllerBemVindo).setVisible(true);
+        try {
+            new FrmFicha(email).setVisible(true);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -126,23 +131,20 @@ public class BemVindo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new BemVindo().setVisible(true);
-                } catch (NoSuchAlgorithmException ex) {
-                    System.out.println(ex);
-                }
+                new FrmBemVindo().setVisible(true);
             }
         });
     }

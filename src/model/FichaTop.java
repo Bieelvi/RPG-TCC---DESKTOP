@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class FichaTop {
 
-    public FichaTop(ArrayList nome, ArrayList classe, ArrayList raca, String classeArm, String vida, String desloc, String forca, String inteligencia, String destreza, String sabedoria, String constituicao, String carisma, String nivel, String tendencia, String nomeJoga, String pontosXP, String inspiracao, String bonusProficiencia, String ouro, String prata, String platina, String historia, String dindin, String caracteristicas, boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3) {
+    public FichaTop(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3, boolean intuicao, boolean medicina) {
         this.nome = nome;
         this.classe = classe;
         this.raca = raca;
@@ -26,7 +26,7 @@ public class FichaTop {
         this.prata = prata;
         this.platina = platina;
         this.historia = historia;
-        this.dindin = dindin;
+        this.equipamentos = equipamentos;
         this.caracteristicas = caracteristicas;
         this.acrobacia = acrobacia;
         this.arcanismo = arcanismo;
@@ -45,7 +45,7 @@ public class FichaTop {
         this.sobreviencia = sobreviencia;
         this.forcaPrest = forcaPrest;
         this.destrezaPrest = destrezaPrest;
-        this.acrobaciaPrest = acrobaciaPrest;
+        this.lidarAnimais = acrobaciaPrest;
         this.constituicaoPrest = constituicaoPrest;
         this.inteligenciaPrest = inteligenciaPrest;
         this.sabedoriaPrest = sabedoriaPrest;
@@ -56,31 +56,33 @@ public class FichaTop {
         this.morte1 = morte1;
         this.morte2 = morte2;
         this.morte3 = morte3;
+        this.intuicao = intuicao;
+        this.medicina = medicina;
     }
     
-    private ArrayList nome;
-    private ArrayList classe;
-    private ArrayList raca;
-    private String classeArm;
-    private String vida;
-    private String desloc;
-    private String forca;
-    private String inteligencia;
-    private String destreza;
-    private String sabedoria;
-    private String constituicao;
-    private String carisma;
-    private String nivel;
+    private String nome;
+    private String classe;
+    private String raca;
+    private float classeArm;
+    private float vida;
+    private float desloc;
+    private float forca;
+    private float inteligencia;
+    private float destreza;
+    private float sabedoria;
+    private float constituicao;
+    private float carisma;
+    private float nivel;
     private String tendencia;
     private String nomeJoga;
-    private String pontosXP;
-    private String inspiracao;
-    private String bonusProficiencia;
-    private String ouro;
-    private String prata;
-    private String platina;
+    private float pontosXP;
+    private float inspiracao;
+    private float bonusProficiencia;
+    private float ouro;
+    private float prata;
+    private float platina;
     private String historia;
-    private String dindin;
+    private String equipamentos;
     private String caracteristicas;
     private boolean acrobacia;
     private boolean arcanismo;
@@ -99,7 +101,7 @@ public class FichaTop {
     private boolean sobreviencia;
     private boolean forcaPrest;
     private boolean destrezaPrest;
-    private boolean acrobaciaPrest;
+    private boolean lidarAnimais;
     private boolean constituicaoPrest;
     private boolean inteligenciaPrest;
     private boolean sabedoriaPrest;
@@ -110,108 +112,111 @@ public class FichaTop {
     private boolean morte1;
     private boolean morte2;
     private boolean morte3;
+    private boolean intuicao;
+    private boolean medicina;
+    
 
-    public ArrayList getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(ArrayList nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public ArrayList getClasse() {
+    public String getClasse() {
         return classe;
     }
 
-    public void setClasse(ArrayList classe) {
+    public void setClasse(String classe) {
         this.classe = classe;
     }
 
-    public ArrayList getRaca() {
+    public String getRaca() {
         return raca;
     }
 
-    public void setRaca(ArrayList raca) {
+    public void setRaca(String raca) {
         this.raca = raca;
     }
 
-    public String getClasseArm() {
+    public float getClasseArm() {
         return classeArm;
     }
 
-    public void setClasseArm(String classeArm) {
+    public void setClasseArm(float classeArm) {
         this.classeArm = classeArm;
     }
 
-    public String getVida() {
+    public float getVida() {
         return vida;
     }
 
-    public void setVida(String vida) {
+    public void setVida(float vida) {
         this.vida = vida;
     }
 
-    public String getDesloc() {
+    public float getDesloc() {
         return desloc;
     }
 
-    public void setDesloc(String desloc) {
+    public void setDesloc(float desloc) {
         this.desloc = desloc;
     }
 
-    public String getForca() {
+    public float getForca() {
         return forca;
     }
 
-    public void setForca(String forca) {
+    public void setForca(float forca) {
         this.forca = forca;
     }
 
-    public String getInteligencia() {
+    public float getInteligencia() {
         return inteligencia;
     }
 
-    public void setInteligencia(String inteligencia) {
+    public void setInteligencia(float inteligencia) {
         this.inteligencia = inteligencia;
     }
 
-    public String getDestreza() {
+    public float getDestreza() {
         return destreza;
     }
 
-    public void setDestreza(String destreza) {
+    public void setDestreza(float destreza) {
         this.destreza = destreza;
     }
 
-    public String getSabedoria() {
+    public float getSabedoria() {
         return sabedoria;
     }
 
-    public void setSabedoria(String sabedoria) {
+    public void setSabedoria(float sabedoria) {
         this.sabedoria = sabedoria;
     }
 
-    public String getConstituicao() {
+    public float getConstituicao() {
         return constituicao;
     }
 
-    public void setConstituicao(String constituicao) {
+    public void setConstituicao(float constituicao) {
         this.constituicao = constituicao;
     }
 
-    public String getCarisma() {
+    public float getCarisma() {
         return carisma;
     }
 
-    public void setCarisma(String carisma) {
+    public void setCarisma(float carisma) {
         this.carisma = carisma;
     }
 
-    public String getNivel() {
+    public float getNivel() {
         return nivel;
     }
 
-    public void setNivel(String nivel) {
+    public void setNivel(float nivel) {
         this.nivel = nivel;
     }
 
@@ -231,51 +236,51 @@ public class FichaTop {
         this.nomeJoga = nomeJoga;
     }
 
-    public String getPontosXP() {
+    public float getPontosXP() {
         return pontosXP;
     }
 
-    public void setPontosXP(String pontosXP) {
+    public void setPontosXP(float pontosXP) {
         this.pontosXP = pontosXP;
     }
 
-    public String getInspiracao() {
+    public float getInspiracao() {
         return inspiracao;
     }
 
-    public void setInspiracao(String inspiracao) {
+    public void setInspiracao(float inspiracao) {
         this.inspiracao = inspiracao;
     }
 
-    public String getBonusProficiencia() {
+    public float getBonusProficiencia() {
         return bonusProficiencia;
     }
 
-    public void setBonusProficiencia(String bonusProficiencia) {
+    public void setBonusProficiencia(float bonusProficiencia) {
         this.bonusProficiencia = bonusProficiencia;
     }
 
-    public String getOuro() {
+    public float getOuro() {
         return ouro;
     }
 
-    public void setOuro(String ouro) {
+    public void setOuro(float ouro) {
         this.ouro = ouro;
     }
 
-    public String getPrata() {
+    public float getPrata() {
         return prata;
     }
 
-    public void setPrata(String prata) {
+    public void setPrata(float prata) {
         this.prata = prata;
     }
 
-    public String getPlatina() {
+    public float getPlatina() {
         return platina;
     }
 
-    public void setPlatina(String platina) {
+    public void setPlatina(float platina) {
         this.platina = platina;
     }
 
@@ -287,12 +292,12 @@ public class FichaTop {
         this.historia = historia;
     }
 
-    public String getDindin() {
-        return dindin;
+    public String getEquipamentos() {
+        return equipamentos;
     }
 
-    public void setDindin(String dindin) {
-        this.dindin = dindin;
+    public void setEquipamentos(String equipamentos) {
+        this.equipamentos = equipamentos;
     }
 
     public String getCaracteristicas() {
@@ -439,12 +444,12 @@ public class FichaTop {
         this.destrezaPrest = destrezaPrest;
     }
 
-    public boolean isAcrobaciaPrest() {
-        return acrobaciaPrest;
+    public boolean isLidarAnimais() {
+        return lidarAnimais;
     }
 
-    public void setAcrobaciaPrest(boolean acrobaciaPrest) {
-        this.acrobaciaPrest = acrobaciaPrest;
+    public void setLidarAnimais(boolean lidarAnimais) {
+        this.lidarAnimais = lidarAnimais;
     }
 
     public boolean isConstituicaoPrest() {
@@ -526,7 +531,21 @@ public class FichaTop {
     public void setMorte3(boolean morte3) {
         this.morte3 = morte3;
     }
-    
-    
+
+    public boolean isIntuicao() {
+        return intuicao;
+    }
+
+    public void setIntuicao(boolean intuicao) {
+        this.intuicao = intuicao;
+    }
+
+    public boolean isMedicina() {
+        return medicina;
+    }
+
+    public void setMedicina(boolean medicina) {
+        this.medicina = medicina;
+    }
     
 }

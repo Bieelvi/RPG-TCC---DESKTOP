@@ -1,6 +1,5 @@
 package control;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.DAO.UsuarioDAO;
@@ -10,7 +9,7 @@ public class UsuarioController {
     
     UsuarioDAO usuarioDAO;
 
-    public UsuarioController() throws NoSuchAlgorithmException {
+    public UsuarioController(){
         usuarioDAO = new UsuarioDAO();
     }
     
@@ -56,7 +55,7 @@ public class UsuarioController {
         return confirmado;
     }
     
-    public boolean verificaUsuarioPeloEmail(String email) throws SQLException{
+    public boolean procuraNomeUsuario(String email) throws SQLException{
         ArrayList<Usuario> banco = usuarioDAO.banco();
         boolean existe = false;
         

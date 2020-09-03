@@ -4,9 +4,6 @@ import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Usuario;
@@ -14,22 +11,11 @@ import model.Usuario;
 public class UsuarioDAO {
     
     Connection con;
-    MessageDigest m;
-    BigInteger password1;
-
-    public UsuarioDAO() throws NoSuchAlgorithmException{
-        con = null;
-        m = MessageDigest.getInstance("MD5");
-        password1 = new BigInteger(1, m.digest());
-    }
             
     public boolean passaUsuario(String usuario, String email, String password) throws SQLException{
-        
         boolean passou = false;
         
         try{
-            //m.update(password.getBytes(), 0, password.length());
-            //password = String.format("%1$032X", password1);
             
             con = new Conexao().getConnection();
             String sql = "INSERT INTO usuario (nomeUsuario, senhaUsuario, emailUsuario, hierarquiaUsuario) values (?, ?, ?, 0);";

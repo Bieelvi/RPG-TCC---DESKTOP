@@ -1,11 +1,8 @@
 package view;
 
 import control.UsuarioController;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import model.Usuario;
 
@@ -14,13 +11,13 @@ public class FrmAdmin extends javax.swing.JFrame {
     UsuarioController acessoController;
     String email;
     
-    public FrmAdmin(String email) throws NoSuchAlgorithmException{
+    public FrmAdmin(String email){
         acessoController = new UsuarioController();
         this.email = email;
         initComponents();
     }
 
-    public FrmAdmin() throws NoSuchAlgorithmException{
+    public FrmAdmin(){
         acessoController = new UsuarioController();
         this.email = "uu";
         initComponents();
@@ -127,20 +124,16 @@ public class FrmAdmin extends javax.swing.JFrame {
         users.addColumn("Nome");
         users.addColumn("E-mail");
         users.addColumn("Senha");
+        
         for (Usuario u: listaUsers)
-        {
             users.addRow(new Object[]{u.getNomeUsuario(), u.getEmailUsuario(), u.getSenhaUsuario()});
-        }
+        
         jTable1.setModel(users);
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogarActionPerformed
         setVisible(false);
-        try {
-            new BemVindo(email).setVisible(true);
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println(ex);
-        }
+            new FrmBemVindo(email).setVisible(true);
     }//GEN-LAST:event_btnJogarActionPerformed
 
     
@@ -167,11 +160,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
                     new FrmAdmin().setVisible(true);
-                } catch (NoSuchAlgorithmException ex) {
-                    System.out.println(ex);
-                }
             }
         });
     }

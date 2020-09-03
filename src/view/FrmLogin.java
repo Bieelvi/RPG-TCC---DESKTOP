@@ -1,20 +1,18 @@
 package view;
 
 import control.UsuarioController;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrmLogin extends javax.swing.JFrame {
     
     UsuarioController usuarioController;
 
-    public FrmLogin() throws NoSuchAlgorithmException {
+    public FrmLogin(){
         initComponents();
         usuarioController = new UsuarioController();
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -214,21 +212,14 @@ public class FrmLogin extends javax.swing.JFrame {
                 this.txtEMail.setText("");
                 this.txtSenha.setText("");
                 
-                setVisible(false);
                 if(hierarquia){
-                    try {
-                        new FrmAdmin(email).setVisible(true);
-                    } catch (NoSuchAlgorithmException ex) {
-                        System.out.println(ex);
-                    }
+                    new FrmAdmin(email).setVisible(true);
                 }
                 else{
-                    try {
-                        new BemVindo(email).setVisible(true);
-                    } catch (NoSuchAlgorithmException ex) {
-                        System.out.println(ex);
-                    }
+                    new FrmBemVindo(email).setVisible(true);
                 }
+                
+                setVisible(false);
                 
             } else 
                 JOptionPane.showMessageDialog(null, "Acesso negado!!!");
@@ -254,7 +245,7 @@ public class FrmLogin extends javax.swing.JFrame {
             boolean existente = false;
             
             try {
-                existente = usuarioController.verificaUsuarioPeloEmail(cadastroEmail);
+                existente = usuarioController.procuraNomeUsuario(cadastroEmail);
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
@@ -314,11 +305,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new FrmLogin().setVisible(true);
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new FrmLogin().setVisible(true);
             }
         });
     }
