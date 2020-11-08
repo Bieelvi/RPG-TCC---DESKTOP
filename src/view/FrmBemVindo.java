@@ -1,25 +1,23 @@
 package view;
 
 import control.UsuarioController;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FrmBemVindo extends javax.swing.JFrame {
     
     UsuarioController usuarioController;
+    int codUsuario;
     String email;
     
-    public FrmBemVindo(String email){
+    public FrmBemVindo(int codigoUsuario){
         usuarioController = new UsuarioController();
-        this.email = email;
+        this.codUsuario = codigoUsuario;
         initComponents();
     }
 
     public FrmBemVindo(){
         this.usuarioController = new UsuarioController();
-        email = "uu";
+        this.codUsuario = 123;
         initComponents();
     }
     
@@ -112,14 +110,20 @@ public class FrmBemVindo extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
         try {
-            new FrmFicha(email).setVisible(true);
-        } catch (SQLException ex) {
+            new FrmPersonagem(codUsuario).setVisible(true);
+        } catch (Exception ex) {
             System.out.println(ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        setVisible(false);
+        try{
+            new FrmMestre(codUsuario).setVisible(true);
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
