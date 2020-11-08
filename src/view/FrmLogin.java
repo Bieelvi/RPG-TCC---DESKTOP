@@ -212,11 +212,14 @@ public class FrmLogin extends javax.swing.JFrame {
                 this.txtEMail.setText("");
                 this.txtSenha.setText("");
                 
-                if(hierarquia){
-                    new FrmAdmin(email).setVisible(true);
-                }
-                else{
-                    new FrmBemVindo(email).setVisible(true);
+                try{
+                    if(hierarquia)
+                        new FrmAdmin(usuarioController.codUsuarioViaEmail(email)).setVisible(true);
+                    else
+                        new FrmBemVindo(usuarioController.codUsuarioViaEmail(email)).setVisible(true);
+                    
+                } catch (SQLException ex) {
+                    System.out.println(ex);
                 }
                 
                 setVisible(false);

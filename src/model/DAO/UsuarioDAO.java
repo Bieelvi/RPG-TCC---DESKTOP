@@ -18,7 +18,7 @@ public class UsuarioDAO {
         try{
             
             con = new Conexao().getConnection();
-            String sql = "INSERT INTO usuario (nomeUsuario, senhaUsuario, emailUsuario, hierarquiaUsuario) values (?, ?, ?, 0);";
+            String sql = "INSERT INTO usuario (nome_usuario, senha_usuario, email_usuario, hierarquia) values (?, ?, ?, 0);";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, usuario);
             stmt.setString(2, password);
@@ -49,15 +49,43 @@ public class UsuarioDAO {
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                
-                String nome = rs.getString("nomeUsuario");
-                String email = rs.getString("emailUsuario");
-                String senha = rs.getString("senhaUsuario");
-                int hierarquia = rs.getInt("hierarquiaUsuario");
+                String nome = rs.getString("nome_usuario");
+                String email = rs.getString("email_usuario");
+                String senha = rs.getString("senha_usuario");
+                int hierarquia = rs.getInt("hierarquia");
                 
                 Usuario u = new Usuario(nome, email, senha, hierarquia);
                 banco.add(u);
-                
+            }
+            stmt.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally {
+            con.close();
+        }
+        
+        return banco;
+    }
+    
+    public int procuraCodUsuario(String email) throws SQLException{
+        
+        ResultSet rs;
+        int codigo = -1;
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "SELECT * FROM usuario";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                String emailUsuario = rs.getString("email_usuario");
+                int codigoUsuario = rs.getInt("codigo_usuario");
+                if(emailUsuario.equals(email)){
+                    codigo = codigoUsuario;
+                }
             }
             
             stmt.close();
@@ -69,6 +97,38 @@ public class UsuarioDAO {
             con.close();
         }
         
-        return banco;
+        return codigo;
+    }
+    
+    public String procuraEmail(int codigo) throws SQLException{
+        
+        ResultSet rs;
+        String email = "";
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "SELECT * FROM usuario";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                String emailUsuario = rs.getString("email_usuario");
+                int codigoUsuario = rs.getInt("codigo_usuario");
+                
+                if(codigoUsuario == codigo){
+                    email = emailUsuario;
+                }
+            }
+            
+            stmt.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally {
+            con.close();
+        }
+        
+        return email;
     }
 }

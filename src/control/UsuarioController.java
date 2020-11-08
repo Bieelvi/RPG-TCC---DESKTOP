@@ -71,10 +71,30 @@ public class UsuarioController {
 
         ArrayList<Usuario> banco = usuarioDAO.banco();
         
+        
+            if(banco == null){
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa");
+            }
+        
         for(Usuario j: banco)
             if(j.getEmailUsuario().equals(email) && j.getSenhaUsuario().equals(senha))
                 acesso = true;
         
+                
+            if(banco == null){
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaa");
+            }
+        
         return acesso;
+    }
+    
+    public int codUsuarioViaEmail(String email) throws SQLException{
+        int codigo = usuarioDAO.procuraCodUsuario(email);
+        return codigo;
+    }
+    
+    public String emailViaCodUsuario(int codUsuario) throws SQLException{
+        String email = usuarioDAO.procuraEmail(codUsuario);
+        return email;
     }
 }
