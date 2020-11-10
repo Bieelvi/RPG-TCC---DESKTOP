@@ -15,18 +15,47 @@ public class FrmJogador extends javax.swing.JFrame {
     ArrayList<Jogador> jogadores;
     
     public FrmJogador(int codUsuario) throws SQLException, ClassNotFoundException {
-        //this.codUsuario = codUsuario;
-        //this.jogadorController = new JogadorController();
-        //jogadores = jogadorController.jogadoresBanco(codUsuario);
-        jogadores();
+        this.codUsuario = codUsuario;
+        this.jogadorController = new JogadorController();
+        
+        try {
+            jogadores = jogadorController.jogadoresBanco(codUsuario);
+        } 
+        catch(SQLException ex){
+            System.out.println("Mano deu erro relacionado ao SQL. ERROR: " + ex);
+        } 
+        catch(ClassNotFoundException ex){
+            System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
+        }
+        
+        initComponents();
+    }
+
+    public FrmJogador(){
+        this.codUsuario = 3;
+        this.jogadorController = new JogadorController();
+        
+        try {
+            jogadores = jogadorController.jogadoresBanco(codUsuario);
+        } 
+        catch(SQLException ex){
+            System.out.println("Mano deu erro relacionado ao SQL. ERROR: " + ex);
+        } 
+        catch(ClassNotFoundException ex){
+            System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
+        }
+        
         initComponents();
     }
     
     public void jogadores(){
         DefaultComboBoxModel personagemCBM = new DefaultComboBoxModel();
         personagemCBM.addElement("<Selecione>");
-        personagemCBM.addElement("<teste>");
-        personagemCBM.addElement("<criar>");
+        
+        for(Jogador j: jogadores)
+            personagemCBM.addElement(j.getNomeJogador());
+            
+        personagemCBM.addElement("<Criar Novo Personagem>");
         cmbPerso.setModel(personagemCBM);
     }
 
@@ -41,6 +70,7 @@ public class FrmJogador extends javax.swing.JFrame {
         btnFicha = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         cmbPerso = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +100,13 @@ public class FrmJogador extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\STI\\Desktop\\lupinha.png")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -80,33 +117,37 @@ public class FrmJogador extends javax.swing.JFrame {
                 .addGap(123, 123, 123))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cmbPerso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnFicha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                         .addGap(120, 120, 120)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(57, 57, 57))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(jLabel3)))
+                    .addComponent(cmbPerso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, Short.MAX_VALUE)
+                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
-                .addComponent(cmbPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbPerso, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnFicha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
         );
 
@@ -131,27 +172,30 @@ public class FrmJogador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaActionPerformed
-        /*String nomeJogador = (String) this.cmbPersonagens.getSelectedItem();
-        
+        String nomeJogador = (String) this.cmbPerso.getSelectedItem();
         for(Jogador j: jogadores){
-            if(nomeJogador == j.getNomeJogador()){
-                if(jogador.getCodigoFicha() == 0)
+            if(j.getNomeJogador().equals(nomeJogador)){
+                if(j.getCodigoFicha() == 0)
                     JOptionPane.showMessageDialog(null, "Este personagem Não possui ficha cadastrada!");
-
-                try {
-                    new FrmFicha(codUsuario, jogador.getCodigoFicha()).setVisible(true);
+                
+                try{
+                    new FrmFicha(codUsuario, j.getCodigoFicha()).setVisible(true);
                     setVisible(false);
-                } 
-                catch (SQLException ex) {
+                }
+                catch(Exception ex){
                     System.out.println(ex);
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_btnFichaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jogadores();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -173,6 +217,7 @@ public class FrmJogador extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new FrmJogador().setVisible(true);
             }
         });
     }
@@ -181,6 +226,7 @@ public class FrmJogador extends javax.swing.JFrame {
     private javax.swing.JButton btnFicha;
     private javax.swing.JComboBox<String> cmbPerso;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -12,22 +12,23 @@ public class JogadorDAO {
     
     Connection con;
             
-    public boolean addPersonagem(String nome, int fkIdUsuario, int fkIdFicha) throws SQLException{
+    public boolean addPersonagem(String nomePerso, int codUsuario) throws SQLException{
         boolean passou = false;
         
         try{
             con = new Conexao().getConnection();
-            String sql = "INSERT INTO usuario (nomePersonagem, fk_idUsuario, fk_idFicha) values (?, ?, ?);";
+            String sql = "INSERT INTO jogador (codigo_usuario, codigo_ficha, nome_jogador) values (?, ?, ?);";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.setInt(2, fkIdUsuario);
-            stmt.setInt(3, fkIdFicha);
+            stmt.setInt(1, codUsuario);
+            stmt.setInt(2, 0);
+            stmt.setString(3, nomePerso);
             stmt.execute();
             stmt.close();
             passou = true;
         }
         catch(Exception ex){
             System.out.println(ex);
+            passou = false;
         }
         finally {
             con.close();
@@ -39,22 +40,14 @@ public class JogadorDAO {
         
         ArrayList<Jogador> banco = new ArrayList();
         ResultSet rs;
-        int i=0;
         
         try{
-            
             con = new Conexao().getConnection();
-
             String sql = "SELECT * FROM jogador";
-
             PreparedStatement stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
-
-            System.out.println(i);
-        
         
             while(rs.next()){
-                i++;
             
                 String nome = rs.getString("nome_jogador");
                 int codJogador = rs.getInt("codigo_jogador");
@@ -69,14 +62,16 @@ public class JogadorDAO {
                 if(!nome.equals("") && codJogador > 0 && codUsuario > 0){
                     Jogador j = new Jogador(nome, codJogador, codFicha, codUsuario);
                     banco.add(j);
-                    System.out.println(i + nome);
                 }
             }
             
             stmt.close();
         }
-        catch(NullPointerException ex){
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>É aqui fi");
+        catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex);
+        }
+        catch(Exception ex){
+            System.out.println(ex);
         }
         finally{
             con.close();

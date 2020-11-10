@@ -16,7 +16,7 @@ public class FrmBemVindo extends javax.swing.JFrame {
 
     public FrmBemVindo(){
         this.usuarioController = new UsuarioController();
-        this.codUsuario = 123;
+        this.codUsuario = 13;
         initComponents();
     }
     

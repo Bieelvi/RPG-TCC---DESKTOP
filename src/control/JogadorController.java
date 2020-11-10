@@ -9,22 +9,19 @@ public class JogadorController {
     
     JogadorDAO jogadorDAO = new JogadorDAO();
     
+    public boolean addJogador(String nomePerso, int codUsuario) throws SQLException{
+        boolean passou = jogadorDAO.addPersonagem(nomePerso, codUsuario);
+        return passou;
+    }
+    
     public ArrayList jogadoresBanco(int codUsuario) throws SQLException, ClassNotFoundException{
         ArrayList<Jogador> banco = jogadorDAO.puxandoPersonagens();
         ArrayList<Jogador> filtro = new ArrayList();
-        int i = 1;
-        int k = 1;
-        System.out.println("-0-0-0-0-0-0-0-0-0-");
-        for(Jogador j: banco){
-            System.out.println(i);
-            if(codUsuario == j.getCodigoUsuario()){
-                System.out.println(i + " -0-0-> " + k);
+        
+        for(Jogador j: banco)
+            if(codUsuario == j.getCodigoUsuario())
                 filtro.add(j);
-                k++;
-            }
-            i++;
-        }
+        
         return filtro;
     }
-    
 }
