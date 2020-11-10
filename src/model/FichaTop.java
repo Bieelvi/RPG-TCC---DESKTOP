@@ -1,5 +1,4 @@
 package model;
-import java.util.ArrayList;
 
 public class FichaTop {
 
@@ -114,7 +113,7 @@ public class FichaTop {
     private boolean morte3;
     private boolean intuicao;
     private boolean medicina;
-    
+    private int codigoUsuario;
 
     public String getNome() {
         return nome;

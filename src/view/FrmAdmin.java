@@ -8,12 +8,12 @@ import model.Usuario;
 
 public class FrmAdmin extends javax.swing.JFrame {
 
-    UsuarioController acessoController;
+    UsuarioController acessoController = new UsuarioController();
+    int codUsuario;
     String email;
     
-    public FrmAdmin(String email){
-        acessoController = new UsuarioController();
-        this.email = email;
+    public FrmAdmin(int codigo){
+        codUsuario = codigo;
         initComponents();
     }
 
@@ -110,7 +110,6 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         ArrayList <Usuario> listaUsers = null;
@@ -133,7 +132,7 @@ public class FrmAdmin extends javax.swing.JFrame {
 
     private void btnJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogarActionPerformed
         setVisible(false);
-            new FrmBemVindo(email).setVisible(true);
+        new FrmBemVindo(codUsuario).setVisible(true);
     }//GEN-LAST:event_btnJogarActionPerformed
 
     

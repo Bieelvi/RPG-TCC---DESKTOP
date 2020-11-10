@@ -2,7 +2,6 @@ package view;
 
 import control.UsuarioController;
 import java.sql.SQLException;
-
 public class FrmBemVindo extends javax.swing.JFrame {
     
     UsuarioController usuarioController;
@@ -108,12 +107,15 @@ public class FrmBemVindo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        setVisible(false);
+        
         try {
-            new FrmPersonagem(codUsuario).setVisible(true);
-        } catch (Exception ex) {
+            new FrmJogador(codUsuario).setVisible(true);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
             System.out.println(ex);
         }
+        setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

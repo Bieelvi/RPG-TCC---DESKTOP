@@ -2,27 +2,18 @@ package view;
 
 import control.RacaClasseController;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class AddClasse extends javax.swing.JFrame {
 
+    String email;
     RacaClasseController racaClasse;
-    //private static AddClasse classe = null;
     
-    public AddClasse(RacaClasseController racaClasseFicha) {
+    public AddClasse(String email) {
+        this.email = email;
+        racaClasse = new RacaClasseController();
         initComponents();
-        racaClasse = racaClasseFicha;
-        jTextField1.setText("Digite aqui...");
     }
-    
-    /*public static AddClasse getInstance(){
-        if(classe == null){
-            classe = new AddClasse();
-        }
-        return classe;
-    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -103,9 +94,8 @@ public class AddClasse extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(this.jTextField1.equals("")){
+        if(this.jTextField1.equals(""))
             JOptionPane.showMessageDialog(null, "Preencha o Campo Nome");
-        }
         else{
             String nome = this.jTextField1.getText();
             boolean veri = false;

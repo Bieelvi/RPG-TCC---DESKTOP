@@ -5,8 +5,6 @@ import control.RacaClasseController;
 import control.UsuarioController;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
@@ -16,19 +14,21 @@ import model.Raca;
 public class FrmFicha extends javax.swing.JFrame {
     
     Ficha ficha;
+    int codUsuario;
     RacaClasseController racaClasseRPG;
     String emailUsua;
-    UsuarioController acessoControllerFicha;
+    UsuarioController usuarioController;
     FichaController fichaController;
     String raca;
     String classe;
     
-    public FrmFicha(String email) throws SQLException {
+    public FrmFicha(int codigoUsuario, int codigoFicha) throws SQLException {
         initComponents();
-        emailUsua = email;
         ficha = new Ficha();
         racaClasseRPG = new RacaClasseController();
-        acessoControllerFicha = new UsuarioController();
+        codUsuario = codigoUsuario;
+        usuarioController = new UsuarioController();
+        emailUsua = usuarioController.emailViaCodUsuario(codUsuario);
         classeRPG();
         racaRPG();
         fichaController = new FichaController();
@@ -41,6 +41,8 @@ public class FrmFicha extends javax.swing.JFrame {
         raca = "Não definida";
         classe = "Não definida";
     }
+    
+    
     
     public final void classeRPG() throws SQLException{
         DefaultComboBoxModel classeBox = new DefaultComboBoxModel();
@@ -88,7 +90,6 @@ public class FrmFicha extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtClasseArmad = new javax.swing.JTextField();
         txtVida = new javax.swing.JTextField();
-        cmbNomePersonagem = new javax.swing.JComboBox<>();
         txtNombre = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         lblForcaPersonagem = new javax.swing.JLabel();
@@ -252,12 +253,6 @@ public class FrmFicha extends javax.swing.JFrame {
             }
         });
 
-        cmbNomePersonagem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbNomePersonagemActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -266,7 +261,6 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNomePersonagem)
-                    .addComponent(cmbNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -286,7 +280,7 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtDeslocamento, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(cmbRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,9 +346,7 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblNomePersonagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
+                        .addGap(11, 11, 11)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1229,46 +1221,16 @@ public class FrmFicha extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSabedoriaPersonagemActionPerformed
 
-    private void cmbClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasseActionPerformed
-        //JOptionPane.showMessageDialog(null, cmbClasseActionPerformed);
-    }//GEN-LAST:event_cmbClasseActionPerformed
-
-    private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
-        
-        classe = (String) cmbClasse.getSelectedItem();
-        
-        if(cmbClasse.getSelectedItem().equals("Criar nova Classe")){
-            //new AddClasse().setVisible(true);
-            //AddClasse teste = AddClasse.getInstance();
-            //if (teste != null){
-                new AddClasse(racaClasseRPG).setVisible(true);
-            //}
-        }   
-    }//GEN-LAST:event_cmbClasseItemStateChanged
-
     private void radioForcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioForcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioForcaActionPerformed
-
-    private void cmbRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRacaActionPerformed
-        
-    }//GEN-LAST:event_cmbRacaActionPerformed
-
-    private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
-        
-        raca = (String) cmbRaca.getSelectedItem();
-        
-        if(cmbRaca.getSelectedItem().equals("Criar nova Raça")){
-            new AddRaca().setVisible(true);
-        }
-    }//GEN-LAST:event_cmbRacaItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         ArrayList radios = fichaController.convertRadio(radioAcrobacia.isSelected(), radioArcanismo.isSelected(), radioAtletismo.isSelected(), radioAtuacao.isSelected(), radioBlefar.isSelected(), radioFurtividade.isSelected(), radioHistoria.isSelected(), radioIntimidacao.isSelected(), radioInvestigacao.isSelected(), radioNatureza.isSelected(), radioPercepcao.isSelected(), radioPersuasao.isSelected(), radioPrestidigitacao.isSelected(), radioReligiao.isSelected(), radioSobrevivencia.isSelected(), radioForca.isSelected(), radioDestreza.isSelected(), radioLidarAnimais.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected(), radioVida1.isSelected(), radioVida2.isSelected(), radioVida3.isSelected(), radioMorte1.isSelected(), radioMorte2.isSelected(), radioMorte3.isSelected(), radioIntuicao.isSelected(), radioMedicina.isSelected());
         boolean cadastrando = false;
         try {
-            cadastrando = fichaController.cadastraFicha(this.txtNombre.getText(), this.classe, this.raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
+            cadastrando = fichaController.cadastraFicha(this.txtNombre.getText(), this.classe, this.raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);   
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -1279,17 +1241,39 @@ public class FrmFicha extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cuidado!!! Ficha não cadastrada!!!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cmbNomePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNomePersonagemActionPerformed
-        //if(cmbNamePersonagem.getSelectedItem().equals("Criar nova Raça")){}
-    }//GEN-LAST:event_cmbNomePersonagemActionPerformed
+    private void txtVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVidaActionPerformed
 
     private void txtClasseArmadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClasseArmadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClasseArmadActionPerformed
 
-    private void txtVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVidaActionPerformed
+    private void cmbRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRacaActionPerformed
+
+    }//GEN-LAST:event_cmbRacaActionPerformed
+
+    private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
+
+        raca = (String) cmbRaca.getSelectedItem();
+
+        if(cmbRaca.getSelectedItem().equals("Criar nova Raça")){
+            new AddRaca().setVisible(true);
+        }
+    }//GEN-LAST:event_cmbRacaItemStateChanged
+
+    private void cmbClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasseActionPerformed
+        //JOptionPane.showMessageDialog(null, cmbClasseActionPerformed);
+    }//GEN-LAST:event_cmbClasseActionPerformed
+
+    private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
+
+        classe = (String) cmbClasse.getSelectedItem();
+
+        if(cmbClasse.getSelectedItem().equals("Criar nova Classe")){
+            new AddClasse(emailUsua).setVisible(true);
+        }
+    }//GEN-LAST:event_cmbClasseItemStateChanged
 
 
     public static void main(String args[]) {
@@ -1315,7 +1299,6 @@ public class FrmFicha extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculaModificador;
     private javax.swing.JComboBox<String> cmbClasse;
-    private javax.swing.JComboBox<String> cmbNomePersonagem;
     private javax.swing.JComboBox<String> cmbRaca;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
