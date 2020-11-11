@@ -30,7 +30,7 @@ public class AddPersonagem extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         textNomePerso.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         textNomePerso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -99,13 +99,18 @@ public class AddPersonagem extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         boolean passando = false;
-        if(this.btnSalvar.getText().isEmpty())
+        
+        if(this.textNomePerso.getText().isEmpty())
             JOptionPane.showMessageDialog(null, "PREENCHA O NOME DO PERSONAGEM!!!");
         else{
             try {
-                passando = jogadorController.addJogador(this.btnSalvar.getText(), codUsuario);
+                passando = jogadorController.addJogador(this.textNomePerso.getText(), codUsuario);
                 if(passando = true){
                     JOptionPane.showMessageDialog(null, "Personagem adicionado com sucesso!!!");
+                    setVisible(false);
+                    setVisible(false);
+                    setVisible(false);
+                    setVisible(false);
                     setVisible(false);
                 }
                 else

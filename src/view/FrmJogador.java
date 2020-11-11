@@ -14,7 +14,7 @@ public class FrmJogador extends javax.swing.JFrame {
     Jogador jogador;
     ArrayList<Jogador> jogadores;
     
-    public FrmJogador(int codUsuario) throws SQLException, ClassNotFoundException {
+    public FrmJogador(int codUsuario){
         this.codUsuario = codUsuario;
         this.jogadorController = new JogadorController();
         
@@ -27,7 +27,6 @@ public class FrmJogador extends javax.swing.JFrame {
         catch(ClassNotFoundException ex){
             System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
         }
-        
         initComponents();
     }
 
@@ -44,11 +43,21 @@ public class FrmJogador extends javax.swing.JFrame {
         catch(ClassNotFoundException ex){
             System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
         }
-        
         initComponents();
     }
     
-    public void jogadores(){
+    public final void jogadores(){
+        
+        try {
+            jogadores = jogadorController.jogadoresBanco(codUsuario);
+        } 
+        catch(SQLException ex){
+            System.out.println("Mano deu erro relacionado ao SQL. ERROR: " + ex);
+        } 
+        catch(ClassNotFoundException ex){
+            System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
+        }
+        
         DefaultComboBoxModel personagemCBM = new DefaultComboBoxModel();
         personagemCBM.addElement("<Selecione>");
         
@@ -100,6 +109,17 @@ public class FrmJogador extends javax.swing.JFrame {
             }
         });
 
+        cmbPerso.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbPersoItemStateChanged(evt);
+            }
+        });
+        cmbPerso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPersoActionPerformed(evt);
+            }
+        });
+
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\STI\\Desktop\\lupinha.png")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,9 +157,9 @@ public class FrmJogador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addGap(55, 55, 55)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPerso, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(cmbPerso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -196,6 +216,17 @@ public class FrmJogador extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jogadores();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cmbPersoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPersoItemStateChanged
+        String itemCmbPerso = (String) this.cmbPerso.getSelectedItem();
+        if(itemCmbPerso.equals("<Criar Novo Personagem>")){
+            new AddPersonagem(this.codUsuario).setVisible(true);
+        }
+    }//GEN-LAST:event_cmbPersoItemStateChanged
+
+    private void cmbPersoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPersoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPersoActionPerformed
 
     public static void main(String args[]) {
         try {

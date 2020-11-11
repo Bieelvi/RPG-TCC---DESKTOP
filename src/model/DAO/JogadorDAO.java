@@ -36,14 +36,14 @@ public class JogadorDAO {
         return passou;
     }
     
-    public ArrayList<Jogador> puxandoPersonagens() throws SQLException, ClassNotFoundException{
+    public ArrayList<Jogador> puxandoPersonagens(int codUsuario) throws SQLException, ClassNotFoundException{
         
         ArrayList<Jogador> banco = new ArrayList();
         ResultSet rs;
         
         try{
             con = new Conexao().getConnection();
-            String sql = "SELECT * FROM jogador";
+            String sql = "SELECT * FROM jogador where codigo_usuario like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
         
@@ -51,15 +51,13 @@ public class JogadorDAO {
             
                 String nome = rs.getString("nome_jogador");
                 int codJogador = rs.getInt("codigo_jogador");
-                int codUsuario = rs.getInt("codigo_usuario");
                 int codFicha;
-                
                 if(rs.getInt("codigo_ficha") > 0)
                     codFicha = rs.getInt("codigo_ficha");
                 else
                     codFicha = 0;
 
-                if(!nome.equals("") && codJogador > 0 && codUsuario > 0){
+                if(!nome.equals("") && codJogador > 0){
                     Jogador j = new Jogador(nome, codJogador, codFicha, codUsuario);
                     banco.add(j);
                 }

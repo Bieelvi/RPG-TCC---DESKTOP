@@ -9,8 +9,57 @@ public class FichaController {
     
     FichaDAO fichaDAO = new FichaDAO();
         
-    public boolean cadastraFicha(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, ArrayList radios) throws SQLException{
+    public boolean cadastraFicha(FichaTop f, int codUsuario) throws SQLException{
         boolean cadastro;
+        cadastro = fichaDAO.passaFicha(f, codUsuario);
+        
+        return cadastro;
+    }
+    
+    public ArrayList convertRadio(boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3, boolean intuicao, boolean medicina){
+        
+        ArrayList conjunto = new ArrayList();
+        
+        conjunto.add(acrobacia);
+        conjunto.add(arcanismo);
+        conjunto.add(atletismo);
+        conjunto.add(atuacao);
+        conjunto.add(blefar);
+        conjunto.add(furtividade);
+        conjunto.add(historiaPerici);
+        conjunto.add(intimidacao);
+        conjunto.add(investigacao);
+        conjunto.add(natureza);
+        conjunto.add(percepcao);
+        conjunto.add(persuacao);
+        conjunto.add(prestidigitacao);
+        conjunto.add(religiao);
+        conjunto.add(sobreviencia);
+        conjunto.add(forcaPrest);
+        conjunto.add(destrezaPrest);
+        conjunto.add(acrobaciaPrest);
+        conjunto.add(constituicaoPrest);
+        conjunto.add(inteligenciaPrest);
+        conjunto.add(sabedoriaPrest);
+        conjunto.add(carismaPrest);
+        conjunto.add(vida1);
+        conjunto.add(vida2);
+        conjunto.add(vida3);
+        conjunto.add(morte1);
+        conjunto.add(morte2);
+        conjunto.add(morte3);
+        conjunto.add(intuicao);
+        conjunto.add(medicina);
+        
+        return conjunto;
+    }
+    
+    public boolean atualizacao(FichaTop f, int codFicha) throws SQLException{
+        boolean atualizando = fichaDAO.atualicao(f, codFicha);
+        return atualizando;
+    }
+    
+    public FichaTop compactando(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, ArrayList radios){
         int i = 0;
         
         boolean acrobacia = false; 
@@ -141,48 +190,8 @@ public class FichaController {
         }
         
         FichaTop f = new FichaTop(nome, classe, raca, classeArm, vida, desloc, forca, inteligencia, destreza, sabedoria, constituicao, carisma, nivel, tendencia, nomeJoga, pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, historia, equipamentos, caracteristicas, acrobacia, arcanismo, atletismo, atuacao, blefar, furtividade, historiaPerici, intimidacao, investigacao, natureza, percepcao, persuacao, prestidigitacao, religiao, sobreviencia, forcaPrest, destrezaPrest, acrobaciaPrest, constituicaoPrest, inteligenciaPrest, sabedoriaPrest, carismaPrest, vida1, vida2, vida3, morte1, morte2, morte3, intuicao, medicina);
-        cadastro = fichaDAO.passaFicha(f);
         
-        return cadastro;
+        return f;
     }
-    
-    public ArrayList convertRadio(boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3, boolean intuicao, boolean medicina){
-        
-        ArrayList conjunto = new ArrayList();
-        
-        conjunto.add(acrobacia);
-        conjunto.add(arcanismo);
-        conjunto.add(atletismo);
-        conjunto.add(atuacao);
-        conjunto.add(blefar);
-        conjunto.add(furtividade);
-        conjunto.add(historiaPerici);
-        conjunto.add(intimidacao);
-        conjunto.add(investigacao);
-        conjunto.add(natureza);
-        conjunto.add(percepcao);
-        conjunto.add(persuacao);
-        conjunto.add(prestidigitacao);
-        conjunto.add(religiao);
-        conjunto.add(sobreviencia);
-        conjunto.add(forcaPrest);
-        conjunto.add(destrezaPrest);
-        conjunto.add(acrobaciaPrest);
-        conjunto.add(constituicaoPrest);
-        conjunto.add(inteligenciaPrest);
-        conjunto.add(sabedoriaPrest);
-        conjunto.add(carismaPrest);
-        conjunto.add(vida1);
-        conjunto.add(vida2);
-        conjunto.add(vida3);
-        conjunto.add(morte1);
-        conjunto.add(morte2);
-        conjunto.add(morte3);
-        conjunto.add(intuicao);
-        conjunto.add(medicina);
-        
-        return conjunto;
-    }
-    
 }
 

@@ -15,13 +15,7 @@ public class JogadorController {
     }
     
     public ArrayList jogadoresBanco(int codUsuario) throws SQLException, ClassNotFoundException{
-        ArrayList<Jogador> banco = jogadorDAO.puxandoPersonagens();
-        ArrayList<Jogador> filtro = new ArrayList();
-        
-        for(Jogador j: banco)
-            if(codUsuario == j.getCodigoUsuario())
-                filtro.add(j);
-        
-        return filtro;
+        ArrayList<Jogador> banco = jogadorDAO.puxandoPersonagens(codUsuario);
+        return banco;
     }
 }

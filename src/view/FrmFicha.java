@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
 import model.Ficha;
+import model.FichaTop;
 import model.Raca; 
 
 public class FrmFicha extends javax.swing.JFrame {
@@ -21,12 +22,14 @@ public class FrmFicha extends javax.swing.JFrame {
     FichaController fichaController;
     String raca;
     String classe;
+    int codFicha;
     
     public FrmFicha(int codigoUsuario, int codigoFicha) throws SQLException {
         initComponents();
         ficha = new Ficha();
         racaClasseRPG = new RacaClasseController();
         codUsuario = codigoUsuario;
+        codFicha = codigoFicha;
         usuarioController = new UsuarioController();
         emailUsua = usuarioController.emailViaCodUsuario(codUsuario);
         classeRPG();
@@ -42,7 +45,11 @@ public class FrmFicha extends javax.swing.JFrame {
         classe = "Não definida";
     }
     
-    
+    /*public void reconhecimentoFicha(int codigoFicha){
+        if(codigoFicha > 0){
+            FichaTop ficha = fichaController.puxaDados();
+        }
+    }*/
     
     public final void classeRPG() throws SQLException{
         DefaultComboBoxModel classeBox = new DefaultComboBoxModel();
@@ -1228,17 +1235,34 @@ public class FrmFicha extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         ArrayList radios = fichaController.convertRadio(radioAcrobacia.isSelected(), radioArcanismo.isSelected(), radioAtletismo.isSelected(), radioAtuacao.isSelected(), radioBlefar.isSelected(), radioFurtividade.isSelected(), radioHistoria.isSelected(), radioIntimidacao.isSelected(), radioInvestigacao.isSelected(), radioNatureza.isSelected(), radioPercepcao.isSelected(), radioPersuasao.isSelected(), radioPrestidigitacao.isSelected(), radioReligiao.isSelected(), radioSobrevivencia.isSelected(), radioForca.isSelected(), radioDestreza.isSelected(), radioLidarAnimais.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected(), radioVida1.isSelected(), radioVida2.isSelected(), radioVida3.isSelected(), radioMorte1.isSelected(), radioMorte2.isSelected(), radioMorte3.isSelected(), radioIntuicao.isSelected(), radioMedicina.isSelected());
-        boolean cadastrando = false;
-        try {
-            cadastrando = fichaController.cadastraFicha(this.txtNombre.getText(), this.classe, this.raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);   
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+        FichaTop f = fichaController.compactando(this.txtNombre.getText(), this.classe, this.raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
         
-        if(cadastrando)
-            JOptionPane.showMessageDialog(null, "Ficha Cadastrada com sucesso!!!");
-        else
-            JOptionPane.showMessageDialog(null, "Cuidado!!! Ficha não cadastrada!!!");
+        if(codFicha == 0){
+            boolean cadastrando = false;
+            try {
+                cadastrando = fichaController.cadastraFicha(f, codUsuario);   
+            } 
+            catch(SQLException ex){
+                System.out.println(ex);
+            }
+            if(cadastrando)
+                JOptionPane.showMessageDialog(null, "Ficha Cadastrada com sucesso!!!");
+            else
+                JOptionPane.showMessageDialog(null, "Cuidado!!! Ficha não cadastrada!!!");
+        }
+        else{
+            boolean atualizando = false;
+            try {
+                atualizando = fichaController.atualizacao(f, codFicha);
+            }
+            catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            if(atualizando)
+                JOptionPane.showMessageDialog(null, "Ficha Atualizada com sucesso!!!");
+            else
+                JOptionPane.showMessageDialog(null, "Cuidado!!! Ficha não Atualizada!!!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVidaActionPerformed
