@@ -1,5 +1,5 @@
 package model.DAO;
-
+//Ficha
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,7 +43,7 @@ public class FichaDAO {
             stmt.setFloat(19, f.getOuro());
             stmt.setFloat(20, f.getPrata());
             stmt.setFloat(21, f.getPlatina());
-            stmt.setString(22, f.getHistoria());
+            stmt.setString(22, f.getHistoriaPersonagem());
             stmt.setString(23, f.getEquipamentos());
             stmt.setString(24, f.getCaracteristicas());
             stmt.setBoolean(25, f.isAcrobacia());
@@ -52,18 +52,18 @@ public class FichaDAO {
             stmt.setBoolean(28, f.isAtuacao());
             stmt.setBoolean(29, f.isBlefar());
             stmt.setBoolean(30, f.isFurtividade());
-            stmt.setBoolean(31, f.isHistoriaPerici());
+            stmt.setBoolean(31, f.isHistoria());
             stmt.setBoolean(32, f.isIntimidacao());
             stmt.setBoolean(33, f.isIntuicao());
             stmt.setBoolean(34, f.isInvestigacao());
-            stmt.setBoolean(35, f.isLidarAnimais());
+            stmt.setBoolean(35, f.isLidarComAnimais());
             stmt.setBoolean(36, f.isMedicina());
             stmt.setBoolean(37, f.isNatureza());
             stmt.setBoolean(38, f.isPercepcao());
             stmt.setBoolean(39, f.isPersuasao());
             stmt.setBoolean(40, f.isPrestidigitacao());
             stmt.setBoolean(41, f.isReligiao());
-            stmt.setBoolean(42, f.isSobreviencia());
+            stmt.setBoolean(42, f.isSobrevivencia());
             stmt.setBoolean(43, f.isForcaPrest());
             stmt.setBoolean(44, f.isDestrezaPrest());
             stmt.setBoolean(45, f.isConstituicaoPrest());
@@ -132,7 +132,7 @@ public class FichaDAO {
             stmt.setFloat(19, f.getOuro());
             stmt.setFloat(20, f.getPrata());
             stmt.setFloat(21, f.getPlatina());
-            stmt.setString(22, f.getHistoria());
+            stmt.setString(22, f.getHistoriaPersonagem());
             stmt.setString(23, f.getEquipamentos());
             stmt.setString(24, f.getCaracteristicas());
             stmt.setBoolean(25, f.isAcrobacia());
@@ -141,18 +141,18 @@ public class FichaDAO {
             stmt.setBoolean(28, f.isAtuacao());
             stmt.setBoolean(29, f.isBlefar());
             stmt.setBoolean(30, f.isFurtividade());
-            stmt.setBoolean(31, f.isHistoriaPerici());
+            stmt.setBoolean(31, f.isHistoria());
             stmt.setBoolean(32, f.isIntimidacao());
             stmt.setBoolean(33, f.isIntuicao());
             stmt.setBoolean(34, f.isInvestigacao());
-            stmt.setBoolean(35, f.isLidarAnimais());
+            stmt.setBoolean(35, f.isLidarComAnimais());
             stmt.setBoolean(36, f.isMedicina());
             stmt.setBoolean(37, f.isNatureza());
             stmt.setBoolean(38, f.isPercepcao());
             stmt.setBoolean(39, f.isPersuasao());
             stmt.setBoolean(40, f.isPrestidigitacao());
             stmt.setBoolean(41, f.isReligiao());
-            stmt.setBoolean(42, f.isSobreviencia());
+            stmt.setBoolean(42, f.isSobrevivencia());
             stmt.setBoolean(43, f.isForcaPrest());
             stmt.setBoolean(44, f.isDestrezaPrest());
             stmt.setBoolean(45, f.isConstituicaoPrest());
@@ -177,5 +177,89 @@ public class FichaDAO {
             con.close();
         }
         return passou;
+    }
+    
+    public Ficha puxaFicha(int codFicha) throws SQLException{
+        jogadorDAO = new JogadorDAO();
+        Ficha banco = null;
+        ResultSet rs;
+        int i = 0;
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "Select * from ficha where codigo_ficha = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codFicha);
+            rs = stmt.executeQuery();
+            
+            while(rs.next() && i == 0){
+                i++;
+                String nome = rs.getString("nome"); 
+                String classe = rs.getString("classe");
+                String raca = rs.getString("raca");
+                float classeArm = rs.getFloat("classeArm");
+                float vida = rs.getFloat("vida");
+                float desloc = rs.getFloat("desloc");
+                float forca = rs.getFloat("forca");
+                float destreza = rs.getFloat("destreza");
+                float constituicao = rs.getFloat("constituicao");
+                float inteligencia = rs.getFloat("inteligencia");
+                float sabedoria = rs.getFloat("sabedoria");
+                float carisma = rs.getFloat("carisma");
+                float nivel = rs.getFloat("nivel");
+                String tendencia = rs.getString("tendencia");
+                String nomeJoga = rs.getString("nomeJoga");
+                float pontosXP = rs.getFloat("pontosXP");
+                float inspiracao = rs.getFloat("inspiracao");
+                float bonusProficiencia = rs.getFloat("bonusProficiencia");
+                float ouro = rs.getFloat("ouro");
+                float prata = rs.getFloat("prata");
+                float platina = rs.getFloat("platina");
+                String historiaPersonagem = rs.getString("historiaPersonagem");
+                String equipamentos = rs.getString("equipamentos");
+                String caracteristicas = rs.getString("caracteristicas");
+                boolean acrobacia = rs.getBoolean("acrobacia");
+                boolean arcanismo = rs.getBoolean("arcanismo");
+                boolean atletismo = rs.getBoolean("atletismo");
+                boolean atuacao = rs.getBoolean("atuacao");
+                boolean enganacao = rs.getBoolean("enganacao");
+                boolean furtividade = rs.getBoolean("furtividade");
+                boolean historia = rs.getBoolean("historia");
+                boolean intimidacao = rs.getBoolean("intimidacao");
+                boolean intuicao = rs.getBoolean("intuicao");
+                boolean investigacao = rs.getBoolean("investigacao");
+                boolean lidarComAnimais = rs.getBoolean("lidarComAnimais");
+                boolean medicina = rs.getBoolean("medicina");
+                boolean natureza = rs.getBoolean("natureza");
+                boolean percepcao = rs.getBoolean("percepcao");
+                boolean persuasao = rs.getBoolean("persuasao");
+                boolean prestidigitacao = rs.getBoolean("prestidigitacao");
+                boolean religiao = rs.getBoolean("religiao");
+                boolean sobrevivencia = rs.getBoolean("sobrevivencia");
+                boolean forcaPrest = rs.getBoolean("forcaPrest");
+                boolean destrezaPrest = rs.getBoolean("destrezaPrest");
+                boolean constituicaoPrest = rs.getBoolean("constituicaoPrest");
+                boolean inteligenciaPrest = rs.getBoolean("inteligenciaPrest");
+                boolean sabedoriaPrest = rs.getBoolean("sabedoriaPrest");
+                boolean carismaPrest = rs.getBoolean("carismaPrest");
+                boolean vida1 = rs.getBoolean("vida1");
+                boolean vida2 = rs.getBoolean("vida2");
+                boolean vida3 = rs.getBoolean("vida3");
+                boolean morte1 = rs.getBoolean("morte1");
+                boolean morte2 = rs.getBoolean("morte2");
+                boolean morte3 = rs.getBoolean("morte3");
+                
+                banco = new Ficha(nome, classe, raca, classeArm, vida, desloc, forca, inteligencia, destreza, sabedoria, constituicao, carisma, nivel, tendencia, nomeJoga, pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, historiaPersonagem, equipamentos, caracteristicas, acrobacia, arcanismo, atletismo, atuacao, enganacao, furtividade, historia, intimidacao, investigacao, natureza, percepcao, persuasao, prestidigitacao, religiao, sobrevivencia, forcaPrest, destrezaPrest, lidarComAnimais, constituicaoPrest, inteligenciaPrest, sabedoriaPrest, carismaPrest, vida1, vida2, vida3, morte1, morte2, morte3, intuicao, medicina);
+            }
+            
+            stmt.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally {
+            con.close();
+        }
+        return banco;
     }
 }

@@ -1,7 +1,7 @@
 package model;
 
 public class Ficha {
-
+//historiap
     public Ficha(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3, boolean intuicao, boolean medicina) {
         this.nome = nome;
         this.classe = classe;
@@ -24,7 +24,7 @@ public class Ficha {
         this.ouro = ouro;
         this.prata = prata;
         this.platina = platina;
-        this.historia = historia;
+        this.historiaPersonagem = historia;
         this.equipamentos = equipamentos;
         this.caracteristicas = caracteristicas;
         this.acrobacia = acrobacia;
@@ -33,7 +33,7 @@ public class Ficha {
         this.atuacao = atuacao;
         this.blefar = blefar;
         this.furtividade = furtividade;
-        this.historiaPerici = historiaPerici;
+        this.historia = historiaPerici;
         this.intimidacao = intimidacao;
         this.investigacao = investigacao;
         this.natureza = natureza;
@@ -41,10 +41,10 @@ public class Ficha {
         this.persuasao = persuacao;
         this.prestidigitacao = prestidigitacao;
         this.religiao = religiao;
-        this.sobreviencia = sobreviencia;
+        this.sobrevivencia = sobreviencia;
         this.forcaPrest = forcaPrest;
         this.destrezaPrest = destrezaPrest;
-        this.lidarAnimais = acrobaciaPrest;
+        this.lidarComAnimais = acrobaciaPrest;
         this.constituicaoPrest = constituicaoPrest;
         this.inteligenciaPrest = inteligenciaPrest;
         this.sabedoriaPrest = sabedoriaPrest;
@@ -80,7 +80,7 @@ public class Ficha {
     private float ouro;
     private float prata;
     private float platina;
-    private String historia;
+    private String historiaPersonagem;
     private String equipamentos;
     private String caracteristicas;
     private boolean acrobacia;
@@ -89,7 +89,7 @@ public class Ficha {
     private boolean atuacao;
     private boolean blefar;
     private boolean furtividade;
-    private boolean historiaPerici;
+    private boolean historia;
     private boolean intimidacao;
     private boolean investigacao;
     private boolean natureza;
@@ -97,10 +97,10 @@ public class Ficha {
     private boolean persuasao;
     private boolean prestidigitacao;
     private boolean religiao;
-    private boolean sobreviencia;
+    private boolean sobrevivencia;
     private boolean forcaPrest;
     private boolean destrezaPrest;
-    private boolean lidarAnimais;
+    private boolean lidarComAnimais;
     private boolean constituicaoPrest;
     private boolean inteligenciaPrest;
     private boolean sabedoriaPrest;
@@ -113,7 +113,6 @@ public class Ficha {
     private boolean morte3;
     private boolean intuicao;
     private boolean medicina;
-    private int codigoUsuario;
 
     public String getNome() {
         return nome;
@@ -283,12 +282,12 @@ public class Ficha {
         this.platina = platina;
     }
 
-    public String getHistoria() {
-        return historia;
+    public String getHistoriaPersonagem() {
+        return historiaPersonagem;
     }
 
-    public void setHistoria(String historia) {
-        this.historia = historia;
+    public void setHistoriaPersonagem(String historiaPersonagem) {
+        this.historiaPersonagem = historiaPersonagem;
     }
 
     public String getEquipamentos() {
@@ -355,12 +354,12 @@ public class Ficha {
         this.furtividade = furtividade;
     }
 
-    public boolean isHistoriaPerici() {
-        return historiaPerici;
+    public boolean isHistoria() {
+        return historia;
     }
 
-    public void setHistoriaPerici(boolean historiaPerici) {
-        this.historiaPerici = historiaPerici;
+    public void setHistoria(boolean historia) {
+        this.historia = historia;
     }
 
     public boolean isIntimidacao() {
@@ -419,12 +418,12 @@ public class Ficha {
         this.religiao = religiao;
     }
 
-    public boolean isSobreviencia() {
-        return sobreviencia;
+    public boolean isSobrevivencia() {
+        return sobrevivencia;
     }
 
-    public void setSobreviencia(boolean sobreviencia) {
-        this.sobreviencia = sobreviencia;
+    public void setSobrevivencia(boolean sobrevivencia) {
+        this.sobrevivencia = sobrevivencia;
     }
 
     public boolean isForcaPrest() {
@@ -443,12 +442,12 @@ public class Ficha {
         this.destrezaPrest = destrezaPrest;
     }
 
-    public boolean isLidarAnimais() {
-        return lidarAnimais;
+    public boolean isLidarComAnimais() {
+        return lidarComAnimais;
     }
 
-    public void setLidarAnimais(boolean lidarAnimais) {
-        this.lidarAnimais = lidarAnimais;
+    public void setLidarComAnimais(boolean lidarComAnimais) {
+        this.lidarComAnimais = lidarComAnimais;
     }
 
     public boolean isConstituicaoPrest() {

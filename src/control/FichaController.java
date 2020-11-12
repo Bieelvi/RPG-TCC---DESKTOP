@@ -361,4 +361,9 @@ public class FichaController {
         
         return valorResistencia;
     }
+    
+    public Ficha puxaDados(int codigoFicha) throws SQLException{
+        Ficha fichaBanco = fichaDAO.puxaFicha(codigoFicha);
+        return fichaBanco;
+    }
 }

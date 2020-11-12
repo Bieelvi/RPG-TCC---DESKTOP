@@ -37,11 +37,12 @@ public class FrmFicha extends javax.swing.JFrame {
         this.txtNomeJogador.setText(nomeJogador);
         classeRPG();
         racaRPG();
+        reconhecimentoFicha(codigoFicha);
     }
 
     public FrmFicha() throws SQLException {
         initComponents();
-        codFicha = 0;
+        codFicha = 83;
         codUsuario = 1;
         txtHistoria.setLineWrap(true);
         txtHistoria.setWrapStyleWord(true);
@@ -52,18 +53,127 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        this.txtNomeJogador.setText("Teste");
+        this.txtNomeJogador.setText("Ghannor");
         classeRPG();
         racaRPG();
+        reconhecimentoFicha(codFicha);
     }
     
     
     
-    /*public void reconhecimentoFicha(int codigoFicha){
+    public final void reconhecimentoFicha(int codigoFicha){
         if(codigoFicha > 0){
-            Ficha fichaControl = fichaController.puxaDados(codigoFicha);
+            try {
+                Ficha f = fichaController.puxaDados(codigoFicha);
+                
+                this.txtNombre.setText(f.getNome());
+                cmbClasse.setSelectedItem(f.getClasse());
+                cmbRaca.setSelectedItem(f.getRaca());
+                this.txtClasseArmad.setText(Float.toString(f.getClasseArm()));
+                this.txtVida.setText(Float.toString(f.getVida()));
+                this.txtDeslocamento.setText(Float.toString(f.getDesloc()));
+                this.txtForcaPersonagem.setText(Float.toString(f.getForca()));
+                this.txtInteligenciaPersonagem.setText(Float.toString(f.getInteligencia()));
+                this.txtDestrezaPersonagem.setText(Float.toString(f.getDestreza()));
+                this.txtSabedoriaPersonagem.setText(Float.toString(f.getSabedoria()));
+                this.txtConstituicaoPersonagem.setText(Float.toString(f.getConstituicao()));
+                this.txtCarismaPersonagem.setText(Float.toString(f.getCarisma()));
+                this.txtNivel.setText(Float.toString(f.getNivel()));
+                this.txtTendencia.setText(f.getTendencia()); 
+                this.txtNomeJogador.setText(f.getNomeJoga());
+                this.txtPontosXP.setText(Float.toString(f.getPontosXP()));
+                this.txtInspiracao.setText(Float.toString(f.getInspiracao()));
+                this.txtBonusProficiencia.setText(Float.toString(f.getBonusProficiencia()));
+                this.txtOuro.setText(Float.toString(f.getOuro()));
+                this.txtPrata.setText(Float.toString(f.getPrata()));
+                this.txtPlatina.setText(Float.toString(f.getPlatina()));
+                this.txtHistoria.setText(f.getHistoriaPersonagem()); 
+                this.txtEquipamentos.setText(f.getEquipamentos()); 
+                this.txtCaracteristicas.setText(f.getCaracteristicas()); 
+                this.radioAcrobacia.setSelected(f.isAcrobacia());
+                this.radioArcanismo.setSelected(f.isArcanismo()); 
+                this.radioAtletismo.setSelected(f.isAtletismo()); 
+                this.radioAtuacao.setSelected(f.isAtuacao());
+                this.radioBlefar.setSelected(f.isBlefar()); 
+                this.radioFurtividade.setSelected(f.isFurtividade()); 
+                this.radioHistoria.setSelected(f.isHistoria());
+                this.radioIntimidacao.setSelected(f.isIntimidacao()); 
+                this.radioInvestigacao.setSelected(f.isInvestigacao()); 
+                this.radioNatureza.setSelected(f.isNatureza());
+                this.radioPercepcao.setSelected(f.isPercepcao()); 
+                this.radioPersuasao.setSelected(f.isPersuasao()); 
+                this.radioPrestidigitacao.setSelected(f.isPrestidigitacao()); 
+                this.radioReligiao.setSelected(f.isReligiao());
+                this.radioSobrevivencia.setSelected(f.isSobrevivencia()); 
+                this.radioForca.setSelected(f.isForcaPrest());
+                this.radioDestreza.setSelected(f.isDestrezaPrest()); 
+                this.radioLidarAnimais.setSelected(f.isLidarComAnimais()); 
+                this.radioConstituicao.setSelected(f.isConstituicaoPrest()); 
+                this.radioInteligencia.setSelected(f.isInteligenciaPrest()); 
+                this.radioSabedoria.setSelected(f.isSabedoriaPrest());
+                this.radioCarisma.setSelected(f.isCarismaPrest());
+                this.radioVida1.setSelected(f.isVida1());
+                this.radioVida2.setSelected(f.isVida2()); 
+                this.radioVida3.setSelected(f.isVida3()); 
+                this.radioMorte1.setSelected(f.isMorte1()); 
+                this.radioMorte2.setSelected(f.isMorte2()); 
+                this.radioMorte3.setSelected(f.isMorte3()); 
+                this.radioIntuicao.setSelected(f.isIntuicao()); 
+                this.radioMedicina.setSelected(f.isMedicina());
+            } 
+            catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            
+            try{
+                int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
+                this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
+            } catch (RuntimeException exe){
+                this.txtForcaPersonagem.setText("");
+                JOptionPane.showMessageDialog(null, "Força: Não pode usar números acima de 20 ou abaixo de 0!");
+            }
+                
+            try{
+                int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
+                this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
+            } catch (RuntimeException exe){
+                this.txtDestrezaPersonagem.setText("");
+                JOptionPane.showMessageDialog(null, "Destreza: Não pode usar números acima de 20 ou abaixo de 0!");
+            }
+
+            try{
+                int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
+                this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
+            } catch (RuntimeException exe){
+                this.txtConstituicaoPersonagem.setText("");
+                JOptionPane.showMessageDialog(null, "Constituição: Não pode usar números acima de 20 ou abaixo de 0!");
+            }
+
+            try{
+                int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
+                this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
+            } catch (RuntimeException exe){
+                this.txtInteligenciaPersonagem.setText("");
+                JOptionPane.showMessageDialog(null, "Inteligencia: Não pode usar números acima de 20 ou abaixo de 0!");
+            }
+
+            try{
+                int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
+                this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
+            } catch (RuntimeException exe){
+                this.txtSabedoriaPersonagem.setText("");
+                JOptionPane.showMessageDialog(null, "Sabedoria: Não pode usar números acima de 20 ou abaixo de 0!");
+            }
+
+            try{
+                int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
+                this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
+            } catch (RuntimeException exe){
+                this.txtCarismaPersonagem.setText("");
+                JOptionPane.showMessageDialog(null, "Carisma: Não pode usar números acima de 20 ou abaixo de 0!");
+            }
         }
-    }*/
+    }
     
     public final void classeRPG() throws SQLException{
         DefaultComboBoxModel classeBox = new DefaultComboBoxModel();
@@ -88,11 +198,13 @@ public class FrmFicha extends javax.swing.JFrame {
     }
 
     public void atualizarResistencia(){
-        int bonusProficiencia;
+        double bonusProficienciaDouble;
             if(txtBonusProficiencia.getText().equals(""))
-                bonusProficiencia = 0;
+                bonusProficienciaDouble = 0;
             else
-                bonusProficiencia = Integer.parseInt(this.txtBonusProficiencia.getText());
+                bonusProficienciaDouble = Integer.parseInt(this.txtBonusProficiencia.getText());
+        
+        int bonusProficiencia = (int)bonusProficienciaDouble;
             
         try{
             this.txtTesteForcaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioForca.isSelected(), Integer.parseInt(this.txtForcaModificadorPersonagem.getText()), bonusProficiencia)));
@@ -1287,52 +1399,50 @@ public class FrmFicha extends javax.swing.JFrame {
 
     private void btnCalculaModificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaModificadorActionPerformed
         try{
-            int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
-            this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
-        } catch (RuntimeException exe){
-            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            this.txtForcaPersonagem.setText("");
-        }
+            try{
+                int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
+                this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
+            } catch (RuntimeException exe){
+                this.txtForcaPersonagem.setText("");
+            }
 
-        try{
-            int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
-            this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
-        } catch (RuntimeException exe){
-            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            this.txtDestrezaPersonagem.setText("");
-        }
+            try{
+                int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
+                this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
+            } catch (RuntimeException exe){
+                this.txtDestrezaPersonagem.setText("");
+            }
 
-        try{
-            int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
-            this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
-        } catch (RuntimeException exe){
-            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            this.txtConstituicaoPersonagem.setText("");
-        }
+            try{
+                int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
+                this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
+            } catch (RuntimeException exe){
+                this.txtConstituicaoPersonagem.setText("");
+            }
 
-        try{
-            int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
-            this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
-        } catch (RuntimeException exe){
-            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
-            this.txtInteligenciaPersonagem.setText("");
-        }
+            try{
+                int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
+                this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
+            } catch (RuntimeException exe){
+                this.txtInteligenciaPersonagem.setText("");
+            }
 
-        try{
-            int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
-            this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
-        } catch (RuntimeException exe){
-            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            this.txtSabedoriaPersonagem.setText("");
-        }
+            try{
+                int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
+                this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
+            } catch (RuntimeException exe){
+                this.txtSabedoriaPersonagem.setText("");
+            }
 
-        try{
-            int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
-            this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
-        } catch (RuntimeException exe){
+            try{
+                int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
+                this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
+            } catch (RuntimeException exe){
+                this.txtCarismaPersonagem.setText("");
+            }
+        }
+        catch(RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            this.txtCarismaPersonagem.setText("");
         }
         
         atualizarResistencia();
@@ -1485,10 +1595,7 @@ public class FrmFicha extends javax.swing.JFrame {
                         else
                             JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
                     } 
-                    catch (SQLException ex) {
-                        System.out.println(ex);
-                    } 
-                    catch (ClassNotFoundException ex) {
+                    catch (SQLException | ClassNotFoundException ex) {
                         System.out.println(ex);
                     }
                 break;
@@ -1504,10 +1611,11 @@ public class FrmFicha extends javax.swing.JFrame {
     private void inputTextChangedNomeJogador(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_inputTextChangedNomeJogador
         int i;
         boolean alterando;
-        
+        System.out.println(this.txtNomeJogador.getSelectedText());
         if(!this.txtNomeJogador.getText().equals(nomeJogador)){
+            System.out.println("aLOOOO");
             i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
-
+            System.out.println(this.txtNomeJogador.getSelectedText());
             switch (i) {
                 case JOptionPane.YES_OPTION:
                     try {
@@ -1544,14 +1652,11 @@ public class FrmFicha extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new FrmFicha().setVisible(true);
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Baguiu deu erro mermão");
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new FrmFicha().setVisible(true);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Baguiu deu erro mermão");
             }
         });
     }
