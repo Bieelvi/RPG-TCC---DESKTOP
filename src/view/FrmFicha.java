@@ -34,7 +34,7 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        this.txtNomeJogador.setText(nomeJogador);
+        this.txtNomeUsuario.setText(nomeJogador);
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codigoFicha);
@@ -53,7 +53,7 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        this.txtNomeJogador.setText("Ghannor");
+        this.txtNomeUsuario.setText("Ghannor");
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codFicha);
@@ -72,15 +72,15 @@ public class FrmFicha extends javax.swing.JFrame {
                 this.txtClasseArmad.setText(Float.toString(f.getClasseArm()));
                 this.txtVida.setText(Float.toString(f.getVida()));
                 this.txtDeslocamento.setText(Float.toString(f.getDesloc()));
-                this.txtForcaPersonagem.setText(Float.toString(f.getForca()));
-                this.txtInteligenciaPersonagem.setText(Float.toString(f.getInteligencia()));
-                this.txtDestrezaPersonagem.setText(Float.toString(f.getDestreza()));
-                this.txtSabedoriaPersonagem.setText(Float.toString(f.getSabedoria()));
-                this.txtConstituicaoPersonagem.setText(Float.toString(f.getConstituicao()));
-                this.txtCarismaPersonagem.setText(Float.toString(f.getCarisma()));
+                this.txtForcaPersonagem.setText(Integer.toString((int) f.getForca()));
+                this.txtInteligenciaPersonagem.setText(Integer.toString((int) f.getInteligencia()));
+                this.txtDestrezaPersonagem.setText(Integer.toString((int) f.getDestreza()));
+                this.txtSabedoriaPersonagem.setText(Integer.toString((int) f.getSabedoria()));
+                this.txtConstituicaoPersonagem.setText(Integer.toString((int) f.getConstituicao()));
+                this.txtCarismaPersonagem.setText(Integer.toString((int) f.getCarisma()));
                 this.txtNivel.setText(Float.toString(f.getNivel()));
                 this.txtTendencia.setText(f.getTendencia()); 
-                this.txtNomeJogador.setText(f.getNomeJoga());
+                this.txtNomeUsuario.setText(f.getNomeJoga());
                 this.txtPontosXP.setText(Float.toString(f.getPontosXP()));
                 this.txtInspiracao.setText(Float.toString(f.getInspiracao()));
                 this.txtBonusProficiencia.setText(Float.toString(f.getBonusProficiencia()));
@@ -120,58 +120,62 @@ public class FrmFicha extends javax.swing.JFrame {
                 this.radioMorte3.setSelected(f.isMorte3()); 
                 this.radioIntuicao.setSelected(f.isIntuicao()); 
                 this.radioMedicina.setSelected(f.isMedicina());
+                
+                try{
+                    int forca = (int) f.getForca();
+                    this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
+                } catch (RuntimeException exe){
+                    this.txtForcaPersonagem.setText("");
+                    JOptionPane.showMessageDialog(null, "Força: Não pode usar números acima de 20 ou abaixo de 0!");
+                }
+
+                try{
+                    int destreza = (int) f.getDestreza();
+                    this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
+                } catch (RuntimeException exe){
+                    this.txtDestrezaPersonagem.setText("");
+                    JOptionPane.showMessageDialog(null, "Destreza: Não pode usar números acima de 20 ou abaixo de 0!");
+                }
+
+                try{
+                    int constituicao = (int) f.getConstituicao();
+                    this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
+                } catch (RuntimeException exe){
+                    this.txtConstituicaoPersonagem.setText("");
+                    JOptionPane.showMessageDialog(null, "Constituição: Não pode usar números acima de 20 ou abaixo de 0!");
+                }
+
+                try{
+                    int inteligencia = (int) f.getInteligencia();
+                    this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
+                } catch (RuntimeException exe){
+                    this.txtInteligenciaPersonagem.setText("");
+                    JOptionPane.showMessageDialog(null, "Inteligencia: Não pode usar números acima de 20 ou abaixo de 0!");
+                }
+
+                try{
+                    int sabedoria = (int) f.getSabedoria();
+                    this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
+                } catch (RuntimeException exe){
+                    this.txtSabedoriaPersonagem.setText("");
+                    JOptionPane.showMessageDialog(null, "Sabedoria: Não pode usar números acima de 20 ou abaixo de 0!");
+                }
+
+                try{
+                    int carisma = (int) f.getCarisma();
+                    this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
+                } catch (RuntimeException exe){
+                    this.txtCarismaPersonagem.setText("");
+                    JOptionPane.showMessageDialog(null, "Carisma: Não pode usar números acima de 20 ou abaixo de 0!");
+                }
             } 
             catch (SQLException ex) {
                 System.out.println(ex);
             }
             
-            try{
-                int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
-                this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
-            } catch (RuntimeException exe){
-                this.txtForcaPersonagem.setText("");
-                JOptionPane.showMessageDialog(null, "Força: Não pode usar números acima de 20 ou abaixo de 0!");
-            }
-                
-            try{
-                int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
-                this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
-            } catch (RuntimeException exe){
-                this.txtDestrezaPersonagem.setText("");
-                JOptionPane.showMessageDialog(null, "Destreza: Não pode usar números acima de 20 ou abaixo de 0!");
-            }
-
-            try{
-                int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
-                this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
-            } catch (RuntimeException exe){
-                this.txtConstituicaoPersonagem.setText("");
-                JOptionPane.showMessageDialog(null, "Constituição: Não pode usar números acima de 20 ou abaixo de 0!");
-            }
-
-            try{
-                int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
-                this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
-            } catch (RuntimeException exe){
-                this.txtInteligenciaPersonagem.setText("");
-                JOptionPane.showMessageDialog(null, "Inteligencia: Não pode usar números acima de 20 ou abaixo de 0!");
-            }
-
-            try{
-                int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
-                this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
-            } catch (RuntimeException exe){
-                this.txtSabedoriaPersonagem.setText("");
-                JOptionPane.showMessageDialog(null, "Sabedoria: Não pode usar números acima de 20 ou abaixo de 0!");
-            }
-
-            try{
-                int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
-                this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
-            } catch (RuntimeException exe){
-                this.txtCarismaPersonagem.setText("");
-                JOptionPane.showMessageDialog(null, "Carisma: Não pode usar números acima de 20 ou abaixo de 0!");
-            }
+            
+            atualizarResistencia();
+            atualizarPericias();
         }
     }
     
@@ -202,7 +206,7 @@ public class FrmFicha extends javax.swing.JFrame {
             if(txtBonusProficiencia.getText().equals(""))
                 bonusProficienciaDouble = 0;
             else
-                bonusProficienciaDouble = Integer.parseInt(this.txtBonusProficiencia.getText());
+                bonusProficienciaDouble = Double.parseDouble(this.txtBonusProficiencia.getText());
         
         int bonusProficiencia = (int)bonusProficienciaDouble;
             
@@ -249,6 +253,142 @@ public class FrmFicha extends javax.swing.JFrame {
         }
     }
     
+    public void atualizarPericias(){
+        double bonusProficienciaDouble;
+            if(txtBonusProficiencia.getText().equals(""))
+                bonusProficienciaDouble = 0;
+            else
+                bonusProficienciaDouble = Double.parseDouble(this.txtBonusProficiencia.getText());
+        
+        int bonusProficiencia = (int)bonusProficienciaDouble;
+            
+        try{
+            this.txtAcrobaciaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioAcrobacia.isSelected(), Integer.parseInt(this.txtDestrezaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtAcrobaciaPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtArcanismoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioArcanismo.isSelected(), Integer.parseInt(this.txtInteligenciaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtArcanismoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtAtletismoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioAtletismo.isSelected(), Integer.parseInt(this.txtForcaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtAtletismoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtAtuacaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioAtuacao.isSelected(), Integer.parseInt(this.txtCarismaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtAtuacaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtBlefarPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioBlefar.isSelected(), Integer.parseInt(this.txtCarismaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtBlefarPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtFurtividadePersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioFurtividade.isSelected(), Integer.parseInt(this.txtDestrezaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtFurtividadePersonagem.setText(Integer.toString(0));
+        }
+            
+        try{
+            this.txtHistoriaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioHistoria.isSelected(), Integer.parseInt(this.txtInteligenciaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtHistoriaPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtIntimidacaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioIntimidacao.isSelected(), Integer.parseInt(this.txtCarismaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtIntimidacaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtIntuicaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioIntuicao.isSelected(), Integer.parseInt(this.txtSabedoriaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtIntuicaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtInvestigacaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioInvestigacao.isSelected(), Integer.parseInt(this.txtInteligenciaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtInvestigacaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtLidarAnimaisPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioLidarAnimais.isSelected(), Integer.parseInt(this.txtSabedoriaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtLidarAnimaisPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtMedicinaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioMedicina.isSelected(), Integer.parseInt(this.txtSabedoriaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtMedicinaPersonagem.setText(Integer.toString(0));
+        }
+            
+        try{
+            this.txtNaturezaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioNatureza.isSelected(), Integer.parseInt(this.txtInteligenciaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtNaturezaPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtPercepcaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioPercepcao.isSelected(), Integer.parseInt(this.txtSabedoriaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtPercepcaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtPersuasaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioPersuasao.isSelected(), Integer.parseInt(this.txtCarismaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtPersuasaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtPrestidigitacaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioPrestidigitacao.isSelected(), Integer.parseInt(this.txtDestrezaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtPrestidigitacaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtReligiaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioReligiao.isSelected(), Integer.parseInt(this.txtInteligenciaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtReligiaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtSobrevivenciaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioSobrevivencia.isSelected(), Integer.parseInt(this.txtSabedoriaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtSobrevivenciaPersonagem.setText(Integer.toString(0));
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -261,7 +401,7 @@ public class FrmFicha extends javax.swing.JFrame {
         lblTendenciaPersonagem = new javax.swing.JLabel();
         txtTendencia = new javax.swing.JTextField();
         lblNomeJogador = new javax.swing.JLabel();
-        txtNomeJogador = new javax.swing.JTextField();
+        txtNomeUsuario = new javax.swing.JTextField();
         lblExpPersonagem = new javax.swing.JLabel();
         txtPontosXP = new javax.swing.JTextField();
         lblNomePersonagem = new javax.swing.JLabel();
@@ -309,7 +449,7 @@ public class FrmFicha extends javax.swing.JFrame {
         txtTesteCarismaPersonagem = new javax.swing.JTextField();
         lblTesteResistencia = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        txtPericiaAcrobaciaPersonagem = new javax.swing.JTextField();
+        txtAcrobaciaPersonagem = new javax.swing.JTextField();
         lblPericiasPersonagem = new javax.swing.JLabel();
         radioAcrobacia = new javax.swing.JRadioButton();
         radioArcanismo = new javax.swing.JRadioButton();
@@ -328,7 +468,7 @@ public class FrmFicha extends javax.swing.JFrame {
         radioBlefar = new javax.swing.JRadioButton();
         radioPrestidigitacao = new javax.swing.JRadioButton();
         txtPrestidigitacaoPersonagem = new javax.swing.JTextField();
-        txtPersuassaoPersonagem = new javax.swing.JTextField();
+        txtPersuasaoPersonagem = new javax.swing.JTextField();
         radioPersuasao = new javax.swing.JRadioButton();
         radioPercepcao = new javax.swing.JRadioButton();
         txtPercepcaoPersonagem = new javax.swing.JTextField();
@@ -340,11 +480,11 @@ public class FrmFicha extends javax.swing.JFrame {
         radioLidarAnimais = new javax.swing.JRadioButton();
         radioInvestigacao = new javax.swing.JRadioButton();
         txtInvestigacaoPersonagem = new javax.swing.JTextField();
-        txtInuicaoPersonagem = new javax.swing.JTextField();
+        txtIntuicaoPersonagem = new javax.swing.JTextField();
         radioIntuicao = new javax.swing.JRadioButton();
         txtSobrevivenciaPersonagem = new javax.swing.JTextField();
         radioSobrevivencia = new javax.swing.JRadioButton();
-        txtReligaoPersonagem = new javax.swing.JTextField();
+        txtReligiaoPersonagem = new javax.swing.JTextField();
         radioReligiao = new javax.swing.JRadioButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -391,23 +531,7 @@ public class FrmFicha extends javax.swing.JFrame {
 
         lblNomeJogador.setText("NOME DO USUARIO");
 
-        txtNomeJogador.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                focusLostNomeJogador(evt);
-            }
-        });
-        txtNomeJogador.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                inputTextChangedNomeJogador(evt);
-            }
-        });
-        txtNomeJogador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeJogadorActionPerformed(evt);
-            }
-        });
+        txtNomeUsuario.setEnabled(false);
 
         lblExpPersonagem.setText("PONTOS DE EXPERIÊNCIA");
 
@@ -418,22 +542,14 @@ public class FrmFicha extends javax.swing.JFrame {
                 cmbClasseItemStateChanged(evt);
             }
         });
-        cmbClasse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbClasseActionPerformed(evt);
-            }
-        });
 
         cmbRaca.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbRacaItemStateChanged(evt);
             }
         });
-        cmbRaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbRacaActionPerformed(evt);
-            }
-        });
+
+        txtDeslocamento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel3.setText("DESLOC.");
 
@@ -442,15 +558,13 @@ public class FrmFicha extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VIDA");
 
-        txtClasseArmad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClasseArmadActionPerformed(evt);
-            }
-        });
+        txtClasseArmad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        txtVida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVidaActionPerformed(evt);
+        txtVida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                focusLostTxtNombre(evt);
             }
         });
 
@@ -470,14 +584,11 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtClasseArmad))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(txtVida, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(25, 25, 25)
+                                .addGap(13, 13, 13)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtVida)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtDeslocamento, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -507,7 +618,7 @@ public class FrmFicha extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblExpPersonagem)
                             .addComponent(lblNomeJogador)
-                            .addComponent(txtNomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(205, 205, 205))
         );
         jPanel2Layout.setVerticalGroup(
@@ -525,7 +636,7 @@ public class FrmFicha extends javax.swing.JFrame {
                             .addComponent(cmbClasse)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -566,11 +677,15 @@ public class FrmFicha extends javax.swing.JFrame {
         lblForcaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblForcaPersonagem.setText("FORÇA");
 
+        txtForcaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         txtForcaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtForcaModificadorPersonagem.setEnabled(false);
 
         lblDestrezaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDestrezaPersonagem.setText("DESTREZA");
+
+        txtDestrezaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtDestrezaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDestrezaModificadorPersonagem.setEnabled(false);
@@ -578,28 +693,31 @@ public class FrmFicha extends javax.swing.JFrame {
         lblConstituicaoPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblConstituicaoPersonagem.setText("CONSTITUIÇÃO");
 
+        txtConstituicaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         txtConstituicaoModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtConstituicaoModificadorPersonagem.setEnabled(false);
 
         lblInteligenciaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInteligenciaPersonagem.setText("INTELIGÊNCIA");
 
+        txtInteligenciaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtInteligenciaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtInteligenciaModificadorPersonagem.setEnabled(false);
 
         lblSabedoriaPersonaem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSabedoriaPersonaem.setText("SABEDORIA");
 
-        txtSabedoriaPersonagem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSabedoriaPersonagemActionPerformed(evt);
-            }
-        });
+        txtSabedoriaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtSabedoriaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSabedoriaModificadorPersonagem.setEnabled(false);
 
         lblCarismaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCarismaPersonagem.setText("CARISMA");
+
+        txtCarismaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtCarismaModificadorPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCarismaModificadorPersonagem.setEnabled(false);
@@ -699,11 +817,6 @@ public class FrmFicha extends javax.swing.JFrame {
                 onClickedRadioForca(evt);
             }
         });
-        radioForca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioForcaActionPerformed(evt);
-            }
-        });
 
         radioDestreza.setText("DESTREZA");
         radioDestreza.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -725,21 +838,11 @@ public class FrmFicha extends javax.swing.JFrame {
                 onClickedRadioSabedoria(evt);
             }
         });
-        radioSabedoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioSabedoriaActionPerformed(evt);
-            }
-        });
 
         radioInteligencia.setText("INTELIGÊNCIA");
         radioInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 onClickedRadioInteligencia(evt);
-            }
-        });
-        radioInteligencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioInteligenciaActionPerformed(evt);
             }
         });
 
@@ -749,22 +852,23 @@ public class FrmFicha extends javax.swing.JFrame {
                 onClickedRadioCarisma(evt);
             }
         });
-        radioCarisma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioCarismaActionPerformed(evt);
-            }
-        });
 
+        txtTesteForcaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTesteForcaPersonagem.setEnabled(false);
 
+        txtTesteDestrezaPersongem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTesteDestrezaPersongem.setEnabled(false);
 
+        txtTesteConstituicaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTesteConstituicaoPersonagem.setEnabled(false);
 
+        txtTesteInteligenciaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTesteInteligenciaPersonagem.setEnabled(false);
 
+        txtTesteSabedoriaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTesteSabedoriaPersonagem.setEnabled(false);
 
+        txtTesteCarismaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTesteCarismaPersonagem.setEnabled(false);
 
         lblTesteResistencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -827,80 +931,188 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        txtPericiaAcrobaciaPersonagem.setEnabled(false);
+        txtAcrobaciaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAcrobaciaPersonagem.setEnabled(false);
 
         lblPericiasPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPericiasPersonagem.setText("PERÍCIAS");
 
         radioAcrobacia.setText("Acrobacia");
+        radioAcrobacia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioAcrobacia(evt);
+            }
+        });
 
         radioArcanismo.setText("Arcanismo");
+        radioArcanismo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioArcanismo(evt);
+            }
+        });
 
+        txtArcanismoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtArcanismoPersonagem.setEnabled(false);
 
+        txtAtuacaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAtuacaoPersonagem.setEnabled(false);
 
+        txtAtletismoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAtletismoPersonagem.setEnabled(false);
 
         radioAtletismo.setText("Atletismo");
+        radioAtletismo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioAtletismo(evt);
+            }
+        });
 
         radioAtuacao.setText("Atuação");
+        radioAtuacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioAtuacao(evt);
+            }
+        });
 
+        txtHistoriaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHistoriaPersonagem.setEnabled(false);
 
         radioHistoria.setText("História");
+        radioHistoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioHistoria(evt);
+            }
+        });
 
+        txtIntimidacaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIntimidacaoPersonagem.setEnabled(false);
 
         radioIntimidacao.setText("Intimidação");
+        radioIntimidacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioIntimidacao(evt);
+            }
+        });
 
+        txtBlefarPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBlefarPersonagem.setEnabled(false);
 
+        txtFurtividadePersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFurtividadePersonagem.setEnabled(false);
 
         radioFurtividade.setText("Furtividade");
+        radioFurtividade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioFurtividade(evt);
+            }
+        });
 
         radioBlefar.setText("Blefar");
+        radioBlefar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioBlefar(evt);
+            }
+        });
 
         radioPrestidigitacao.setText("Prestidigitação");
+        radioPrestidigitacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioPrestidigitacao(evt);
+            }
+        });
 
+        txtPrestidigitacaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPrestidigitacaoPersonagem.setEnabled(false);
 
-        txtPersuassaoPersonagem.setEnabled(false);
+        txtPersuasaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPersuasaoPersonagem.setEnabled(false);
 
-        radioPersuasao.setText("Persuassão");
+        radioPersuasao.setText("Persuasão");
+        radioPersuasao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioPersuacao(evt);
+            }
+        });
 
         radioPercepcao.setText("Percepção");
+        radioPercepcao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioPercepcao(evt);
+            }
+        });
 
+        txtPercepcaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPercepcaoPersonagem.setEnabled(false);
 
+        txtNaturezaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNaturezaPersonagem.setEnabled(false);
 
         radioNatureza.setText("Natureza");
+        radioNatureza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioNatureza(evt);
+            }
+        });
 
         radioMedicina.setText("Medicina");
+        radioMedicina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioMedicina(evt);
+            }
+        });
 
+        txtMedicinaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMedicinaPersonagem.setEnabled(false);
 
+        txtLidarAnimaisPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtLidarAnimaisPersonagem.setEnabled(false);
 
         radioLidarAnimais.setText("Lidar com Animais");
+        radioLidarAnimais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioLidarComAnimais(evt);
+            }
+        });
 
         radioInvestigacao.setText("Investigação");
+        radioInvestigacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioInvestigacao(evt);
+            }
+        });
 
+        txtInvestigacaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtInvestigacaoPersonagem.setEnabled(false);
 
-        txtInuicaoPersonagem.setEnabled(false);
+        txtIntuicaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtIntuicaoPersonagem.setEnabled(false);
 
         radioIntuicao.setText("Intuição");
+        radioIntuicao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioIntuicao(evt);
+            }
+        });
 
+        txtSobrevivenciaPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSobrevivenciaPersonagem.setEnabled(false);
 
         radioSobrevivencia.setText("Sobrevivência");
+        radioSobrevivencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioSobrevivencia(evt);
+            }
+        });
 
-        txtReligaoPersonagem.setEnabled(false);
+        txtReligiaoPersonagem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtReligiaoPersonagem.setEnabled(false);
 
         radioReligiao.setText("Religião");
+        radioReligiao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioReligiao(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -913,7 +1125,7 @@ public class FrmFicha extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtInuicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIntuicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(radioIntuicao))
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -937,13 +1149,13 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(radioPercepcao))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtPersuassaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPersuasaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(radioPersuasao))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtPrestidigitacaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtReligaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtReligiaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioReligiao)
@@ -953,7 +1165,7 @@ public class FrmFicha extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(radioSobrevivencia))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtPericiaAcrobaciaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtAcrobaciaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(radioAcrobacia))
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -993,7 +1205,7 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addComponent(lblPericiasPersonagem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPericiaAcrobaciaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAcrobaciaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(radioAcrobacia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1025,7 +1237,7 @@ public class FrmFicha extends javax.swing.JFrame {
                     .addComponent(radioIntimidacao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtInuicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIntuicaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(radioIntuicao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1049,7 +1261,7 @@ public class FrmFicha extends javax.swing.JFrame {
                     .addComponent(radioPercepcao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPersuassaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPersuasaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(radioPersuasao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1058,7 +1270,7 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioReligiao)
-                    .addComponent(txtReligaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtReligiaoPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSobrevivenciaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1075,7 +1287,13 @@ public class FrmFicha extends javax.swing.JFrame {
 
         lblPrataPersonagem.setText("Prata");
 
+        txtPrata.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtOuro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         lblOuroPersonagem.setText("Ouro");
+
+        txtPlatina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lblPlatinaPersonagem.setText("Platina");
 
@@ -1153,56 +1371,17 @@ public class FrmFicha extends javax.swing.JFrame {
         lblTestesContraMortePersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTestesContraMortePersonagem.setText("TESTES CONTRA A MORTE");
 
-        radioVida1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioVida1ActionPerformed(evt);
-            }
-        });
-
-        radioVida2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioVida2ActionPerformed(evt);
-            }
-        });
-
-        radioVida3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioVida3ActionPerformed(evt);
-            }
-        });
-
-        radioMorte1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioMorte1ActionPerformed(evt);
-            }
-        });
-
-        radioMorte2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioMorte2ActionPerformed(evt);
-            }
-        });
-
-        radioMorte3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioMorte3ActionPerformed(evt);
-            }
-        });
-
         lblSucessosPersonagem.setText("SUCESSOS");
         lblSucessosPersonagem.setName(""); // NOI18N
 
+        txtBonusProficiencia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBonusProficiencia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 focusLostBonusProficiente(evt);
             }
         });
 
-        txtInspiracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInspiracaoActionPerformed(evt);
-            }
-        });
+        txtInspiracao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lblInspiracaoPersonagem.setText("INSPIRAÇÃO");
 
@@ -1357,111 +1536,65 @@ public class FrmFicha extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void radioSabedoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSabedoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioSabedoriaActionPerformed
-
-    private void radioInteligenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioInteligenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioInteligenciaActionPerformed
-
-    private void radioCarismaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCarismaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioCarismaActionPerformed
-
-    private void radioVida1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioVida1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioVida1ActionPerformed
-
-    private void radioVida2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioVida2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioVida2ActionPerformed
-
-    private void radioVida3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioVida3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioVida3ActionPerformed
-
-    private void radioMorte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMorte1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioMorte1ActionPerformed
-
-    private void radioMorte2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMorte2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioMorte2ActionPerformed
-
-    private void radioMorte3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMorte3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioMorte3ActionPerformed
-
-    private void txtInspiracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInspiracaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInspiracaoActionPerformed
-
     private void btnCalculaModificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaModificadorActionPerformed
         try{
-            try{
-                int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
-                this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
-            } catch (RuntimeException exe){
-                this.txtForcaPersonagem.setText("");
-            }
-
-            try{
-                int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
-                this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
-            } catch (RuntimeException exe){
-                this.txtDestrezaPersonagem.setText("");
-            }
-
-            try{
-                int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
-                this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
-            } catch (RuntimeException exe){
-                this.txtConstituicaoPersonagem.setText("");
-            }
-
-            try{
-                int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
-                this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
-            } catch (RuntimeException exe){
-                this.txtInteligenciaPersonagem.setText("");
-            }
-
-            try{
-                int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
-                this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
-            } catch (RuntimeException exe){
-                this.txtSabedoriaPersonagem.setText("");
-            }
-
-            try{
-                int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
-                this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
-            } catch (RuntimeException exe){
-                this.txtCarismaPersonagem.setText("");
-            }
+            int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
+            this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
+        } catch (RuntimeException exe){
+            this.txtForcaPersonagem.setText("");
+            JOptionPane.showMessageDialog(null, "Força: Não pode usar números acima de 20 ou abaixo de 0!");
         }
-        catch(RuntimeException exe){
-            JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
+
+        try{
+            int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
+            this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
+        } catch (RuntimeException exe){
+            this.txtDestrezaPersonagem.setText("");
+            JOptionPane.showMessageDialog(null, "Destreza: Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+
+        try{
+            int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
+            this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
+        } catch (RuntimeException exe){
+            this.txtConstituicaoPersonagem.setText("");
+            JOptionPane.showMessageDialog(null, "Constituição: Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+
+        try{
+            int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
+            this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
+        } catch (RuntimeException exe){
+            this.txtInteligenciaPersonagem.setText("");
+            JOptionPane.showMessageDialog(null, "Inteligencia: Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+
+        try{
+            int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
+            this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
+        } catch (RuntimeException exe){
+            this.txtSabedoriaPersonagem.setText("");
+            JOptionPane.showMessageDialog(null, "Sabedoria: Não pode usar números acima de 20 ou abaixo de 0!");
+        }
+
+        try{
+            int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
+            this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
+        } catch (RuntimeException exe){
+            this.txtCarismaPersonagem.setText("");
+            JOptionPane.showMessageDialog(null, "Carisma: Não pode usar números acima de 20 ou abaixo de 0!");
         }
         
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_btnCalculaModificadorActionPerformed
-
-    private void txtSabedoriaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSabedoriaPersonagemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSabedoriaPersonagemActionPerformed
-
-    private void radioForcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioForcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioForcaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String classe = (String) cmbClasse.getSelectedItem();
         String raca = (String) cmbRaca.getSelectedItem();
         
         ArrayList radios = fichaController.convertRadio(radioAcrobacia.isSelected(), radioArcanismo.isSelected(), radioAtletismo.isSelected(), radioAtuacao.isSelected(), radioBlefar.isSelected(), radioFurtividade.isSelected(), radioHistoria.isSelected(), radioIntimidacao.isSelected(), radioInvestigacao.isSelected(), radioNatureza.isSelected(), radioPercepcao.isSelected(), radioPersuasao.isSelected(), radioPrestidigitacao.isSelected(), radioReligiao.isSelected(), radioSobrevivencia.isSelected(), radioForca.isSelected(), radioDestreza.isSelected(), radioLidarAnimais.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected(), radioVida1.isSelected(), radioVida2.isSelected(), radioVida3.isSelected(), radioMorte1.isSelected(), radioMorte2.isSelected(), radioMorte3.isSelected(), radioIntuicao.isSelected(), radioMedicina.isSelected());
-        Ficha f = fichaController.compactando(this.txtNombre.getText(), classe, raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
+        Ficha f = fichaController.compactando(this.txtNombre.getText(), classe, raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeUsuario.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
         
         if(codFicha == 0){
             boolean cadastrando = false;
@@ -1491,25 +1624,9 @@ public class FrmFicha extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVidaActionPerformed
-
-    private void txtClasseArmadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClasseArmadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClasseArmadActionPerformed
-
-    private void cmbRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRacaActionPerformed
-
-    }//GEN-LAST:event_cmbRacaActionPerformed
-
     private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
         //if(cmbRaca.getSelectedItem().equals("Criar nova Raça"))
     }//GEN-LAST:event_cmbRacaItemStateChanged
-
-    private void cmbClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasseActionPerformed
-        //JOptionPane.showMessageDialog(null, cmbClasseActionPerformed);
-    }//GEN-LAST:event_cmbClasseActionPerformed
 
     private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
         int i = 0;
@@ -1543,102 +1660,167 @@ public class FrmFicha extends javax.swing.JFrame {
             }
         }  
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_cmbClasseItemStateChanged
-
-    private void txtNomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeJogadorActionPerformed
-        
-    }//GEN-LAST:event_txtNomeJogadorActionPerformed
 
     private void onClickedRadioForca(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioForca
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_onClickedRadioForca
 
     private void onClickedRadioDestreza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioDestreza
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_onClickedRadioDestreza
 
     private void onClickedRadioConstituicao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioConstituicao
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_onClickedRadioConstituicao
 
     private void onClickedRadioInteligencia(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioInteligencia
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_onClickedRadioInteligencia
 
     private void onClickedRadioSabedoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioSabedoria
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_onClickedRadioSabedoria
 
     private void onClickedRadioCarisma(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioCarisma
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_onClickedRadioCarisma
 
     private void focusLostBonusProficiente(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostBonusProficiente
         atualizarResistencia();
+        atualizarPericias();
     }//GEN-LAST:event_focusLostBonusProficiente
 
-    private void focusLostNomeJogador(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostNomeJogador
+    private void onClickedRadioAcrobacia(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioAcrobacia
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioAcrobacia
+
+    private void onClickedRadioArcanismo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioArcanismo
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioArcanismo
+
+    private void onClickedRadioAtletismo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioAtletismo
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioAtletismo
+
+    private void onClickedRadioAtuacao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioAtuacao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioAtuacao
+
+    private void onClickedRadioBlefar(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioBlefar
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioBlefar
+
+    private void onClickedRadioFurtividade(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioFurtividade
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioFurtividade
+
+    private void onClickedRadioHistoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioHistoria
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioHistoria
+
+    private void onClickedRadioIntimidacao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioIntimidacao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioIntimidacao
+
+    private void onClickedRadioIntuicao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioIntuicao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioIntuicao
+
+    private void onClickedRadioInvestigacao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioInvestigacao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioInvestigacao
+
+    private void onClickedRadioLidarComAnimais(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioLidarComAnimais
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioLidarComAnimais
+
+    private void onClickedRadioMedicina(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioMedicina
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioMedicina
+
+    private void onClickedRadioNatureza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioNatureza
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioNatureza
+
+    private void onClickedRadioPercepcao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioPercepcao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioPercepcao
+
+    private void onClickedRadioPersuacao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioPersuacao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioPersuacao
+
+    private void onClickedRadioPrestidigitacao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioPrestidigitacao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioPrestidigitacao
+
+    private void onClickedRadioReligiao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioReligiao
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioReligiao
+
+    private void onClickedRadioSobrevivencia(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioSobrevivencia
+        atualizarResistencia();
+        atualizarPericias();
+    }//GEN-LAST:event_onClickedRadioSobrevivencia
+
+    private void focusLostTxtNombre(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostTxtNombre
         int i;
-        boolean alterando;
+        boolean alterandoJogador;
+        boolean alterandoFicha;
         
-        if(!this.txtNomeJogador.getText().equals(nomeJogador)){
+        if(!this.txtNombre.getText().equals(nomeJogador)){
             i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
 
             switch (i) {
                 case JOptionPane.YES_OPTION:
                     try {
-                        alterando = this.jogadorController.alteraNome(nomeJogador, codUsuario);
-                        if(alterando){
+                        alterandoJogador = this.jogadorController.alteraNome(this.txtNombre.getText(), codFicha);
+                        alterandoFicha = this.fichaController.alteraNome(this.txtNombre.getText(), codFicha);
+                        if(alterandoJogador && alterandoFicha){
                             JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
                             nomeJogador = jogadorController.buscaNome(codFicha);
                         }
                         else
                             JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
+                            this.txtNombre.setText(nomeJogador);
                     } 
                     catch (SQLException | ClassNotFoundException ex) {
                         System.out.println(ex);
                     }
                 break;
                 case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
-                    this.txtNomeJogador.setText(nomeJogador);
+                    this.txtNombre.setText(nomeJogador);
                 break;
             }
         }
         else
             JOptionPane.showMessageDialog(null, "Nome NÃO Alterado");
-    }//GEN-LAST:event_focusLostNomeJogador
-
-    private void inputTextChangedNomeJogador(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_inputTextChangedNomeJogador
-        int i;
-        boolean alterando;
-        System.out.println(this.txtNomeJogador.getSelectedText());
-        if(!this.txtNomeJogador.getText().equals(nomeJogador)){
-            System.out.println("aLOOOO");
-            i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
-            System.out.println(this.txtNomeJogador.getSelectedText());
-            switch (i) {
-                case JOptionPane.YES_OPTION:
-                    try {
-                        alterando = this.jogadorController.alteraNome(this.txtNomeJogador.getText(), codUsuario);
-                        if(alterando == true){
-                            JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
-                            nomeJogador = txtNomeJogador.getText();
-                        }
-                        else
-                            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
-                    } 
-                    catch (SQLException ex) {
-                        System.out.println(ex);
-                    }
-                break;
-                case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
-                    this.txtNomeJogador.setText(nomeJogador);
-                break;
-            }
-        }
-        else
-            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado");
-    }//GEN-LAST:event_inputTextChangedNomeJogador
+    }//GEN-LAST:event_focusLostTxtNombre
 
     public static void main(String args[]) {
         try {
@@ -1735,6 +1917,7 @@ public class FrmFicha extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioVida1;
     private javax.swing.JRadioButton radioVida2;
     private javax.swing.JRadioButton radioVida3;
+    private javax.swing.JTextField txtAcrobaciaPersonagem;
     private javax.swing.JTextField txtArcanismoPersonagem;
     private javax.swing.JTextField txtAtletismoPersonagem;
     private javax.swing.JTextField txtAtuacaoPersonagem;
@@ -1759,23 +1942,22 @@ public class FrmFicha extends javax.swing.JFrame {
     private javax.swing.JTextField txtInteligenciaModificadorPersonagem;
     private javax.swing.JTextField txtInteligenciaPersonagem;
     private javax.swing.JTextField txtIntimidacaoPersonagem;
-    private javax.swing.JTextField txtInuicaoPersonagem;
+    private javax.swing.JTextField txtIntuicaoPersonagem;
     private javax.swing.JTextField txtInvestigacaoPersonagem;
     private javax.swing.JTextField txtLidarAnimaisPersonagem;
     private javax.swing.JTextField txtMedicinaPersonagem;
     private javax.swing.JTextField txtNaturezaPersonagem;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNomeJogador;
+    private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JTextField txtOuro;
     private javax.swing.JTextField txtPercepcaoPersonagem;
-    private javax.swing.JTextField txtPericiaAcrobaciaPersonagem;
-    private javax.swing.JTextField txtPersuassaoPersonagem;
+    private javax.swing.JTextField txtPersuasaoPersonagem;
     private javax.swing.JTextField txtPlatina;
     private javax.swing.JTextField txtPontosXP;
     private javax.swing.JTextField txtPrata;
     private javax.swing.JTextField txtPrestidigitacaoPersonagem;
-    private javax.swing.JTextField txtReligaoPersonagem;
+    private javax.swing.JTextField txtReligiaoPersonagem;
     private javax.swing.JTextField txtSabedoriaModificadorPersonagem;
     private javax.swing.JTextField txtSabedoriaPersonagem;
     private javax.swing.JTextField txtSobrevivenciaPersonagem;

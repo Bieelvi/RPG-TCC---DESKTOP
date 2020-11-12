@@ -1,5 +1,5 @@
 package model.DAO;
-//Ficha
+
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -261,5 +261,28 @@ public class FichaDAO {
             con.close();
         }
         return banco;
+    }
+    
+    public boolean alteraNome(String nomeNovo, int codFicha) throws SQLException{
+        boolean passou = false;
+        System.out.println(nomeNovo);
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "UPDATE ficha SET nome = ? WHERE codigo_ficha = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nomeNovo);
+            stmt.setInt(2, codFicha);
+            stmt.execute();
+            stmt.close();
+            passou = true;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally {
+            con.close();
+        }
+        return passou;
     }
 }

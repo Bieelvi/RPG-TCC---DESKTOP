@@ -19,8 +19,8 @@ public class JogadorController {
         return banco;
     }
     
-    public boolean alteraNome(String nomeNovo, int codJogador) throws SQLException{
-        boolean alterando = jogadorDAO.alteraNome(nomeNovo, codJogador);
+    public boolean alteraNome(String nomeNovo, int codFicha) throws SQLException{
+        boolean alterando = jogadorDAO.alteraNome(nomeNovo, codFicha);
         return alterando;
     }
     

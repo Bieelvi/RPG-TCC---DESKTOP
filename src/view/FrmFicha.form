@@ -197,17 +197,12 @@
                                       <Component id="jLabel1" max="32767" attributes="0"/>
                                       <Component id="txtClasseArmad" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="txtVida" min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                          <Component id="jLabel2" min="-2" pref="38" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtVida" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" pref="53" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel3" max="32767" attributes="0"/>
                                       <Component id="txtDeslocamento" min="-2" pref="43" max="-2" attributes="0"/>
@@ -248,7 +243,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblExpPersonagem" min="-2" max="-2" attributes="0"/>
                               <Component id="lblNomeJogador" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNomeJogador" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="txtNomeUsuario" min="-2" pref="158" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -272,7 +267,7 @@
                               <Component id="cmbClasse" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtNivel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNomeJogador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNomeUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -357,12 +352,10 @@
             <Property name="text" type="java.lang.String" value="NOME DO USUARIO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNomeJogador">
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="focusLostNomeJogador"/>
-            <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="inputTextChangedNomeJogador"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeJogadorActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="txtNomeUsuario">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblExpPersonagem">
           <Properties>
@@ -384,7 +377,6 @@
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbClasseItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbClasseActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -398,13 +390,15 @@
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbRacaItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbRacaActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDeslocamento">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -423,16 +417,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtClasseArmad">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtClasseArmadActionPerformed"/>
-          </Events>
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtVida">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVidaActionPerformed"/>
-          </Events>
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombre">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="focusLostTxtNombre"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -546,6 +543,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtForcaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtForcaModificadorPersonagem">
           <Properties>
@@ -560,6 +560,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDestrezaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDestrezaModificadorPersonagem">
           <Properties>
@@ -574,6 +577,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtConstituicaoPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtConstituicaoModificadorPersonagem">
           <Properties>
@@ -588,9 +594,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtInteligenciaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtInteligenciaModificadorPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -601,9 +611,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSabedoriaPersonagem">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSabedoriaPersonagemActionPerformed"/>
-          </Events>
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSabedoriaModificadorPersonagem">
           <Properties>
@@ -618,6 +628,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCarismaPersonagem">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCarismaModificadorPersonagem">
           <Properties>
@@ -714,7 +727,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioForca"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioForcaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioDestreza">
@@ -739,7 +751,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioSabedoria"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioSabedoriaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioInteligencia">
@@ -748,7 +759,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioInteligencia"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioInteligenciaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioCarisma">
@@ -757,36 +767,41 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioCarisma"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioCarismaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTesteForcaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTesteDestrezaPersongem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTesteConstituicaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTesteInteligenciaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTesteSabedoriaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTesteCarismaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -810,7 +825,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtInuicaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtIntuicaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="radioIntuicao" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -840,14 +855,14 @@
                                   <Component id="radioPercepcao" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtPersuassaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtPersuasaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="radioPersuasao" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtPrestidigitacaoPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="txtReligaoPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txtReligiaoPersonagem" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -861,7 +876,7 @@
                                   <Component id="radioSobrevivencia" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtPericiaAcrobaciaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtAcrobaciaPersonagem" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="radioAcrobacia" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -914,7 +929,7 @@
                   <Component id="lblPericiasPersonagem" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPericiaAcrobaciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAcrobaciaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="radioAcrobacia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -954,7 +969,7 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtInuicaoPersonagem" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIntuicaoPersonagem" min="-2" max="-2" attributes="0"/>
                       <Component id="radioIntuicao" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -984,7 +999,7 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPersuassaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPersuasaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="radioPersuasao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -995,7 +1010,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="radioReligiao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtReligaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtReligiaoPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1008,8 +1023,9 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtPericiaAcrobaciaPersonagem">
+        <Component class="javax.swing.JTextField" name="txtAcrobaciaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1023,24 +1039,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Acrobacia"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioAcrobacia"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioArcanismo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Arcanismo"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioArcanismo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtArcanismoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAtuacaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAtletismoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1048,14 +1073,21 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Atletismo"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioAtletismo"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioAtuacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Atua&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioAtuacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHistoriaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1063,9 +1095,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Hist&#xf3;ria"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioHistoria"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtIntimidacaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1073,14 +1109,19 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Intimida&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioIntimidacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBlefarPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFurtividadePersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1088,44 +1129,63 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Furtividade"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioFurtividade"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioBlefar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Blefar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioBlefar"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioPrestidigitacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Prestidigita&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioPrestidigitacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrestidigitacaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPersuassaoPersonagem">
+        <Component class="javax.swing.JTextField" name="txtPersuasaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioPersuasao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Persuass&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Persuas&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioPersuacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioPercepcao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Percep&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioPercepcao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPercepcaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNaturezaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1133,19 +1193,27 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Natureza"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioNatureza"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioMedicina">
           <Properties>
             <Property name="text" type="java.lang.String" value="Medicina"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioMedicina"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMedicinaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLidarAnimaisPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1153,19 +1221,27 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Lidar com Animais"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioLidarComAnimais"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioInvestigacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Investiga&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioInvestigacao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtInvestigacaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtInuicaoPersonagem">
+        <Component class="javax.swing.JTextField" name="txtIntuicaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1173,9 +1249,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Intui&#xe7;&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioIntuicao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSobrevivenciaPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1183,9 +1263,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sobreviv&#xea;ncia"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioSobrevivencia"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtReligaoPersonagem">
+        <Component class="javax.swing.JTextField" name="txtReligiaoPersonagem">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -1193,6 +1277,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Religi&#xe3;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioReligiao"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -1275,8 +1362,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrata">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtOuro">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblOuroPersonagem">
           <Properties>
@@ -1284,6 +1377,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPlatina">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPlatinaPersonagem">
           <Properties>
@@ -1354,34 +1450,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioVida1">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioVida1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioVida2">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioVida2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioVida3">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioVida3ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioMorte1">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioMorte1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioMorte2">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioMorte2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioMorte3">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioMorte3ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSucessosPersonagem">
       <Properties>
@@ -1390,14 +1468,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBonusProficiencia">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
       <Events>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="focusLostBonusProficiente"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtInspiracao">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInspiracaoActionPerformed"/>
-      </Events>
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblInspiracaoPersonagem">
       <Properties>

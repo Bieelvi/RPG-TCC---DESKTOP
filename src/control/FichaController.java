@@ -366,4 +366,9 @@ public class FichaController {
         Ficha fichaBanco = fichaDAO.puxaFicha(codigoFicha);
         return fichaBanco;
     }
+    
+    public boolean alteraNome(String nomeNovo, int codFicha) throws SQLException{
+        boolean alterando = fichaDAO.alteraNome(nomeNovo, codFicha);
+        return alterando;
+    }
 }

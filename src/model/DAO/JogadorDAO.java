@@ -102,16 +102,16 @@ public class JogadorDAO {
         return passou;
     }
     
-    public boolean alteraNome(String nomeNovo, int codJogador) throws SQLException{
+    public boolean alteraNome(String nomeNovo, int codFicha) throws SQLException{
         boolean passou = false;
         System.out.println(nomeNovo);
         
         try{
             con = new Conexao().getConnection();
-            String sql = "UPDATE jogador SET nome_jogador = ? WHERE codigo_jogador = ?";
+            String sql = "UPDATE jogador SET nome_jogador = ? WHERE codigo_ficha = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, nomeNovo);
-            stmt.setInt(2, codJogador);
+            stmt.setInt(2, codFicha);
             stmt.execute();
             stmt.close();
             passou = true;
