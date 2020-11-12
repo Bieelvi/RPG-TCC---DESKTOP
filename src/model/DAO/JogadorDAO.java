@@ -45,6 +45,7 @@ public class JogadorDAO {
             con = new Conexao().getConnection();
             String sql = "SELECT * FROM jogador where codigo_usuario like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codUsuario);
             rs = stmt.executeQuery();
         
             while(rs.next()){
@@ -78,4 +79,79 @@ public class JogadorDAO {
         return banco;
     }
 
+    public boolean updateCodFicha(int codUsuario, int codFicha) throws SQLException{
+        boolean passou = false;
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "UPDATE jogador SET codigo_ficha = ? WHERE codigo_usuario = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codFicha);
+            stmt.setInt(2, codUsuario);
+            stmt.execute();
+            stmt.close();
+            passou = true;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+            passou = false;
+        }
+        finally {
+            con.close();
+        }
+        return passou;
+    }
+    
+    public boolean alteraNome(String nomeNovo, int codJogador) throws SQLException{
+        boolean passou = false;
+        System.out.println(nomeNovo);
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "UPDATE jogador SET nome_jogador = ? WHERE codigo_jogador = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nomeNovo);
+            stmt.setInt(2, codJogador);
+            stmt.execute();
+            stmt.close();
+            passou = true;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally {
+            con.close();
+        }
+        return passou;
+    }
+    
+    public String puxandoNome(int codFicha) throws SQLException, ClassNotFoundException{
+        
+        String nome = null;
+        ResultSet rs;
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "SELECT * FROM jogador where codigo_ficha like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codFicha);
+            rs = stmt.executeQuery();
+        
+            while(rs.next())
+                nome = rs.getString("nome_jogador");
+            
+            stmt.close();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex);
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally{
+            con.close();
+        }
+        
+        return nome;
+    }
 }

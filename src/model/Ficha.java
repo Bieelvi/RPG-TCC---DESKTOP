@@ -1,290 +1,126 @@
 package model;
+
 public class Ficha {
-   
-    //METODOS
-    public int calculaModificador(int atributo){
-        int modificacao=0;
 
-        switch (atributo) {
-            case 0:case 1:
-                modificacao = -5;
-                break;
-            case 2:case 3:
-                modificacao = -4;
-                break;
-            case 4:case 5:
-                modificacao = -3;
-                break;
-            case 6:case 7:
-                modificacao = -2;
-                break;
-            case 8:case 9:
-                modificacao = -1;
-                break;
-            case 10:case 11:
-                modificacao = 0;
-                break;
-            case 12:case 13:
-                modificacao = 1;
-                break;
-            case 14:case 15:
-                modificacao = 2;
-                break;
-            case 16:case 17:
-                modificacao = 3;
-                break;
-            case 18:case 19:
-                modificacao = 4;
-                break;
-            case 20:
-                modificacao = 5;
-                    break;
-            default:
-                if (atributo > 20 || atributo < 0){
-                    throw new RuntimeException("Numero invalido, menor que 0 ou maior que 20");
-                };
-                break;
-        }
-            return modificacao;
-    }
-
-    public int calculaPericia(boolean pericia, int modificador){
-        int valorPerificias;
-        
-        if(pericia == true){
-            valorPerificias = getBonusProficiencia() + modificador;
-        } 
-        else {
-            valorPerificias = modificador;
-        }
-        
-        return valorPerificias;
-    }
-    
-    /*public void testeResistencia(){              
-        String classe = getClasse();
-        
-        switch(classe){
-            case "Barbaro":
-                setsForca(true);
-                setsDestreza(false);
-                setsConstituicao(true);
-                setsInteligencia(false);
-                setsSabedoria(false);
-                setsCarisma(false);
-                break;
-            case "Bardo":
-                setsForca(false);
-                setsDestreza(true);
-                setsConstituicao(false);
-                setsInteligencia(false);
-                setsSabedoria(false);
-                setsCarisma(true);
-                break; 
-            case "Bruxo":
-                setsForca(false);
-                setsDestreza(false);
-                setsConstituicao(false);
-                setsInteligencia(false);
-                setsSabedoria(true);
-                setsCarisma(true);
-                break; 
-            case "Clerigo":
-                setsForca(false);
-                setsDestreza(false);
-                setsConstituicao(false);
-                setsInteligencia(false);
-                setsSabedoria(true);
-                setsCarisma(true);
-                break;
-            case "Druida":
-                setsForca(false);
-                setsDestreza(false);
-                setsConstituicao(false);
-                setsInteligencia(true);
-                setsSabedoria(true);
-                setsCarisma(false);
-                break;    
-            case "Feiticeiro":
-                setsForca(false);
-                setsDestreza(false);
-                setsConstituicao(true);
-                setsInteligencia(false);
-                setsSabedoria(false);
-                setsCarisma(true);
-                break;  
-            case "Guerreiro":
-                setsForca(true);
-                setsDestreza(false);
-                setsConstituicao(true);
-                setsInteligencia(false);
-                setsSabedoria(false);
-                setsCarisma(false);
-                break;
-            case "Ladino":
-                setsForca(false);
-                setsDestreza(true);
-                setsConstituicao(false);
-                setsInteligencia(true);
-                setsSabedoria(false);
-                setsCarisma(false);
-                break;
-            case "Mago":
-                setsForca(false);
-                setsDestreza(false);
-                setsConstituicao(false);
-                setsInteligencia(true);
-                setsSabedoria(true);
-                setsCarisma(false);
-                break;   
-            case "Monge":
-                setsForca(true);
-                setsDestreza(true);
-                setsConstituicao(false);
-                setsInteligencia(false);
-                setsSabedoria(false);
-                setsCarisma(false);
-                break;
-            case "Paladino":
-                setsForca(false);
-                setsDestreza(false);
-                setsConstituicao(false);
-                setsInteligencia(false);
-                setsSabedoria(true);
-                setsCarisma(true);
-                break;
-            case "Patrulheiro":
-                setsForca(true);
-                setsDestreza(true);
-                setsConstituicao(false);
-                setsInteligencia(false);
-                setsSabedoria(false);
-                setsCarisma(false);
-                break;       
-        }
-    }*/
-    
-    public int calculaResistencia(boolean resistencia, int modificador){
-        int valorResistencia;
-        
-        if(resistencia == true){
-            valorResistencia = getBonusProficiencia() + modificador;
-        }
-        else {
-            valorResistencia = modificador;
-        }
-        
-        return valorResistencia;
+    public Ficha(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3, boolean intuicao, boolean medicina) {
+        this.nome = nome;
+        this.classe = classe;
+        this.raca = raca;
+        this.classeArm = classeArm;
+        this.vida = vida;
+        this.desloc = desloc;
+        this.forca = forca;
+        this.inteligencia = inteligencia;
+        this.destreza = destreza;
+        this.sabedoria = sabedoria;
+        this.constituicao = constituicao;
+        this.carisma = carisma;
+        this.nivel = nivel;
+        this.tendencia = tendencia;
+        this.nomeJoga = nomeJoga;
+        this.pontosXP = pontosXP;
+        this.inspiracao = inspiracao;
+        this.bonusProficiencia = bonusProficiencia;
+        this.ouro = ouro;
+        this.prata = prata;
+        this.platina = platina;
+        this.historia = historia;
+        this.equipamentos = equipamentos;
+        this.caracteristicas = caracteristicas;
+        this.acrobacia = acrobacia;
+        this.arcanismo = arcanismo;
+        this.atletismo = atletismo;
+        this.atuacao = atuacao;
+        this.blefar = blefar;
+        this.furtividade = furtividade;
+        this.historiaPerici = historiaPerici;
+        this.intimidacao = intimidacao;
+        this.investigacao = investigacao;
+        this.natureza = natureza;
+        this.percepcao = percepcao;
+        this.persuasao = persuacao;
+        this.prestidigitacao = prestidigitacao;
+        this.religiao = religiao;
+        this.sobreviencia = sobreviencia;
+        this.forcaPrest = forcaPrest;
+        this.destrezaPrest = destrezaPrest;
+        this.lidarAnimais = acrobaciaPrest;
+        this.constituicaoPrest = constituicaoPrest;
+        this.inteligenciaPrest = inteligenciaPrest;
+        this.sabedoriaPrest = sabedoriaPrest;
+        this.carismaPrest = carismaPrest;
+        this.vida1 = vida1;
+        this.vida2 = vida2;
+        this.vida3 = vida3;
+        this.morte1 = morte1;
+        this.morte2 = morte2;
+        this.morte3 = morte3;
+        this.intuicao = intuicao;
+        this.medicina = medicina;
     }
     
-    //ATRIBUTOS E GET SET
-    private int vida;
-    private int classeArmadura;
-    private int iniciativa;
-    private double deslocamento;
-    private String nomeJogador;
-    private String nomePersonagem;
+    private String nome;
     private String classe;
     private String raca;
-    private String alinhamento;    
-    private int exp;
-    private boolean inspiracao;    
-    private int bonusProficiencia;
-    
-    private int forca;
-    private int destreza;
-    private int constituicao;
-    private int inteligencia;
-    private int sabedoria;
-    private int carisma;
-    
-    private boolean sForca;
-    private boolean sDestreza;
-    private boolean sConstituicao;
-    private boolean sInteligencia;
-    private boolean sSabedoria;
-    private boolean sCarisma;
-    
+    private float classeArm;
+    private float vida;
+    private float desloc;
+    private float forca;
+    private float inteligencia;
+    private float destreza;
+    private float sabedoria;
+    private float constituicao;
+    private float carisma;
+    private float nivel;
+    private String tendencia;
+    private String nomeJoga;
+    private float pontosXP;
+    private float inspiracao;
+    private float bonusProficiencia;
+    private float ouro;
+    private float prata;
+    private float platina;
+    private String historia;
+    private String equipamentos;
+    private String caracteristicas;
     private boolean acrobacia;
     private boolean arcanismo;
     private boolean atletismo;
     private boolean atuacao;
     private boolean blefar;
     private boolean furtividade;
-    private boolean historia;
+    private boolean historiaPerici;
+    private boolean intimidacao;
     private boolean investigacao;
-    private boolean lidarComAnimais;
-    private boolean medicina;
     private boolean natureza;
     private boolean percepcao;
     private boolean persuasao;
     private boolean prestidigitacao;
     private boolean religiao;
-    private boolean sobrevivencia;
-    
-    private int vAcrobacia;
-    private int vArcanismo;
-    private int vAtletismo;
-    private int vAtuacao;
-    private int vBlefar;
-    private int vFurtividade;
-    private int vHistoria;
-    private int vInvestigacao;
-    private int vLidarComAnimais;
-    private int vMedicina;
-    private int vNatureza;
-    private int vPercepcao;
-    private int vPersuasao;
-    private int vPrestidigitacao;
-    private int vReligiao;
-    private int vSobrevivencia;
+    private boolean sobreviencia;
+    private boolean forcaPrest;
+    private boolean destrezaPrest;
+    private boolean lidarAnimais;
+    private boolean constituicaoPrest;
+    private boolean inteligenciaPrest;
+    private boolean sabedoriaPrest;
+    private boolean carismaPrest;
+    private boolean vida1;
+    private boolean vida2;
+    private boolean vida3;
+    private boolean morte1;
+    private boolean morte2;
+    private boolean morte3;
+    private boolean intuicao;
+    private boolean medicina;
+    private int codigoUsuario;
 
-    public int getVida() {
-        return vida;
+    public String getNome() {
+        return nome;
     }
 
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-
-    public int getClasseArmadura() {
-        return classeArmadura;
-    }
-
-    public void setClasseArmadura(int classeArmadura) {
-        this.classeArmadura = classeArmadura;
-    }
-
-    public int getIniciativa() {
-        return iniciativa;
-    }
-
-    public void setIniciativa(int iniciativa) {
-        this.iniciativa = iniciativa;
-    }
-
-    public double getDeslocamento() {
-        return deslocamento;
-    }
-
-    public void setDeslocamento(double deslocamento) {
-        this.deslocamento = deslocamento;
-    }
-
-    public String getNomeJogador() {
-        return nomeJogador;
-    }
-
-    public void setNomeJogador(String nomeJogador) {
-        this.nomeJogador = nomeJogador;
-    }
-
-    public String getNomePersonagem() {
-        return nomePersonagem;
-    }
-
-    public void setNomePersonagem(String nomePersonagem) {
-        this.nomePersonagem = nomePersonagem;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getClasse() {
@@ -303,135 +139,175 @@ public class Ficha {
         this.raca = raca;
     }
 
-    public String getAlinhamento() {
-        return alinhamento;
+    public float getClasseArm() {
+        return classeArm;
     }
 
-    public void setAlinhamento(String alinhamento) {
-        this.alinhamento = alinhamento;
+    public void setClasseArm(float classeArm) {
+        this.classeArm = classeArm;
     }
 
-    public int getExp() {
-        return exp;
+    public float getVida() {
+        return vida;
     }
 
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setVida(float vida) {
+        this.vida = vida;
     }
 
-    public boolean getInspiracao() {
-        return inspiracao;
+    public float getDesloc() {
+        return desloc;
     }
 
-    public void setInspiracao(boolean inspiracao) {
-        this.inspiracao = inspiracao;
+    public void setDesloc(float desloc) {
+        this.desloc = desloc;
     }
 
-    public int getBonusProficiencia() {
-        return bonusProficiencia;
-    }
-
-    public void setBonusProficiencia(int bonusProficiencia) {
-        this.bonusProficiencia = bonusProficiencia;
-    }
-
-    public int getForca() {
+    public float getForca() {
         return forca;
     }
 
-    public void setForca(int forca) {
+    public void setForca(float forca) {
         this.forca = forca;
     }
 
-    public int getDestreza() {
-        return destreza;
-    }
-
-    public void setDestreza(int destreza) {
-        this.destreza = destreza;
-    }
-
-    public int getConstituicao() {
-        return constituicao;
-    }
-
-    public void setConstituicao(int constituicao) {
-        this.constituicao = constituicao;
-    }
-
-    public int getInteligencia() {
+    public float getInteligencia() {
         return inteligencia;
     }
 
-    public void setInteligencia(int inteligencia) {
+    public void setInteligencia(float inteligencia) {
         this.inteligencia = inteligencia;
     }
 
-    public int getSabedoria() {
+    public float getDestreza() {
+        return destreza;
+    }
+
+    public void setDestreza(float destreza) {
+        this.destreza = destreza;
+    }
+
+    public float getSabedoria() {
         return sabedoria;
     }
 
-    public void setSabedoria(int sabedoria) {
+    public void setSabedoria(float sabedoria) {
         this.sabedoria = sabedoria;
     }
 
-    public int getCarisma() {
+    public float getConstituicao() {
+        return constituicao;
+    }
+
+    public void setConstituicao(float constituicao) {
+        this.constituicao = constituicao;
+    }
+
+    public float getCarisma() {
         return carisma;
     }
 
-    public void setCarisma(int carisma) {
+    public void setCarisma(float carisma) {
         this.carisma = carisma;
     }
 
-    public boolean getsForca() {
-        return sForca;
+    public float getNivel() {
+        return nivel;
     }
 
-    public void setsForca(boolean sForca) {
-        this.sForca = sForca;
+    public void setNivel(float nivel) {
+        this.nivel = nivel;
     }
 
-    public boolean getsDestreza() {
-        return sDestreza;
+    public String getTendencia() {
+        return tendencia;
     }
 
-    public void setsDestreza(boolean sDestreza) {
-        this.sDestreza = sDestreza;
+    public void setTendencia(String tendencia) {
+        this.tendencia = tendencia;
     }
 
-    public boolean getsConstituicao() {
-        return sConstituicao;
+    public String getNomeJoga() {
+        return nomeJoga;
     }
 
-    public void setsConstituicao(boolean sConstituicao) {
-        this.sConstituicao = sConstituicao;
+    public void setNomeJoga(String nomeJoga) {
+        this.nomeJoga = nomeJoga;
     }
 
-    public boolean getsInteligencia() {
-        return sInteligencia;
+    public float getPontosXP() {
+        return pontosXP;
     }
 
-    public void setsInteligencia(boolean sInteligencia) {
-        this.sInteligencia = sInteligencia;
+    public void setPontosXP(float pontosXP) {
+        this.pontosXP = pontosXP;
     }
 
-    public boolean getsSabedoria() {
-        return sSabedoria;
+    public float getInspiracao() {
+        return inspiracao;
     }
 
-    public void setsSabedoria(boolean sSabedoria) {
-        this.sSabedoria = sSabedoria;
+    public void setInspiracao(float inspiracao) {
+        this.inspiracao = inspiracao;
     }
 
-    public boolean getsCarisma() {
-        return sCarisma;
+    public float getBonusProficiencia() {
+        return bonusProficiencia;
     }
 
-    public void setsCarisma(boolean sCarisma) {
-        this.sCarisma = sCarisma;
+    public void setBonusProficiencia(float bonusProficiencia) {
+        this.bonusProficiencia = bonusProficiencia;
     }
 
-    public boolean getAcrobacia() {
+    public float getOuro() {
+        return ouro;
+    }
+
+    public void setOuro(float ouro) {
+        this.ouro = ouro;
+    }
+
+    public float getPrata() {
+        return prata;
+    }
+
+    public void setPrata(float prata) {
+        this.prata = prata;
+    }
+
+    public float getPlatina() {
+        return platina;
+    }
+
+    public void setPlatina(float platina) {
+        this.platina = platina;
+    }
+
+    public String getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(String historia) {
+        this.historia = historia;
+    }
+
+    public String getEquipamentos() {
+        return equipamentos;
+    }
+
+    public void setEquipamentos(String equipamentos) {
+        this.equipamentos = equipamentos;
+    }
+
+    public String getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public boolean isAcrobacia() {
         return acrobacia;
     }
 
@@ -439,7 +315,7 @@ public class Ficha {
         this.acrobacia = acrobacia;
     }
 
-    public boolean getArcanismo() {
+    public boolean isArcanismo() {
         return arcanismo;
     }
 
@@ -447,7 +323,7 @@ public class Ficha {
         this.arcanismo = arcanismo;
     }
 
-    public boolean getAtletismo() {
+    public boolean isAtletismo() {
         return atletismo;
     }
 
@@ -455,7 +331,7 @@ public class Ficha {
         this.atletismo = atletismo;
     }
 
-    public boolean getAtuacao() {
+    public boolean isAtuacao() {
         return atuacao;
     }
 
@@ -463,7 +339,7 @@ public class Ficha {
         this.atuacao = atuacao;
     }
 
-    public boolean getBlefar() {
+    public boolean isBlefar() {
         return blefar;
     }
 
@@ -471,7 +347,7 @@ public class Ficha {
         this.blefar = blefar;
     }
 
-    public boolean getFurtividade() {
+    public boolean isFurtividade() {
         return furtividade;
     }
 
@@ -479,15 +355,23 @@ public class Ficha {
         this.furtividade = furtividade;
     }
 
-    public boolean getHistoria() {
-        return historia;
+    public boolean isHistoriaPerici() {
+        return historiaPerici;
     }
 
-    public void setHistoria(boolean historia) {
-        this.historia = historia;
+    public void setHistoriaPerici(boolean historiaPerici) {
+        this.historiaPerici = historiaPerici;
     }
 
-    public boolean getInvestigacao() {
+    public boolean isIntimidacao() {
+        return intimidacao;
+    }
+
+    public void setIntimidacao(boolean intimidacao) {
+        this.intimidacao = intimidacao;
+    }
+
+    public boolean isInvestigacao() {
         return investigacao;
     }
 
@@ -495,23 +379,7 @@ public class Ficha {
         this.investigacao = investigacao;
     }
 
-    public boolean getLidarComAnimais() {
-        return lidarComAnimais;
-    }
-
-    public void setLidarComAnimais(boolean lidarComAnimais) {
-        this.lidarComAnimais = lidarComAnimais;
-    }
-
-    public boolean getMedicina() {
-        return medicina;
-    }
-
-    public void setMedicina(boolean medicina) {
-        this.medicina = medicina;
-    }
-
-    public boolean getNatureza() {
+    public boolean isNatureza() {
         return natureza;
     }
 
@@ -519,7 +387,7 @@ public class Ficha {
         this.natureza = natureza;
     }
 
-    public boolean getPercepcao() {
+    public boolean isPercepcao() {
         return percepcao;
     }
 
@@ -527,7 +395,7 @@ public class Ficha {
         this.percepcao = percepcao;
     }
 
-    public boolean getPersuasao() {
+    public boolean isPersuasao() {
         return persuasao;
     }
 
@@ -535,7 +403,7 @@ public class Ficha {
         this.persuasao = persuasao;
     }
 
-    public boolean getPrestidigitacao() {
+    public boolean isPrestidigitacao() {
         return prestidigitacao;
     }
 
@@ -543,7 +411,7 @@ public class Ficha {
         this.prestidigitacao = prestidigitacao;
     }
 
-    public boolean getReligiao() {
+    public boolean isReligiao() {
         return religiao;
     }
 
@@ -551,139 +419,132 @@ public class Ficha {
         this.religiao = religiao;
     }
 
-    public boolean getSobrevivencia() {
-        return sobrevivencia;
+    public boolean isSobreviencia() {
+        return sobreviencia;
     }
 
-    public void setSobrevivencia(boolean sobrevivencia) {
-        this.sobrevivencia = sobrevivencia;
+    public void setSobreviencia(boolean sobreviencia) {
+        this.sobreviencia = sobreviencia;
     }
 
-    public int getvAcrobacia() {
-        return vAcrobacia;
+    public boolean isForcaPrest() {
+        return forcaPrest;
     }
 
-    public void setvAcrobacia(int vAcrobacia) {
-        this.vAcrobacia = vAcrobacia;
+    public void setForcaPrest(boolean forcaPrest) {
+        this.forcaPrest = forcaPrest;
     }
 
-    public int getvArcanismo() {
-        return vArcanismo;
+    public boolean isDestrezaPrest() {
+        return destrezaPrest;
     }
 
-    public void setvArcanismo(int vArcanismo) {
-        this.vArcanismo = vArcanismo;
+    public void setDestrezaPrest(boolean destrezaPrest) {
+        this.destrezaPrest = destrezaPrest;
     }
 
-    public int getvAtletismo() {
-        return vAtletismo;
+    public boolean isLidarAnimais() {
+        return lidarAnimais;
     }
 
-    public void setvAtletismo(int vAtletismo) {
-        this.vAtletismo = vAtletismo;
+    public void setLidarAnimais(boolean lidarAnimais) {
+        this.lidarAnimais = lidarAnimais;
     }
 
-    public int getvAtuacao() {
-        return vAtuacao;
+    public boolean isConstituicaoPrest() {
+        return constituicaoPrest;
     }
 
-    public void setvAtuacao(int vAtuacao) {
-        this.vAtuacao = vAtuacao;
+    public void setConstituicaoPrest(boolean constituicaoPrest) {
+        this.constituicaoPrest = constituicaoPrest;
     }
 
-    public int getvBlefar() {
-        return vBlefar;
+    public boolean isInteligenciaPrest() {
+        return inteligenciaPrest;
     }
 
-    public void setvBlefar(int vBlefar) {
-        this.vBlefar = vBlefar;
+    public void setInteligenciaPrest(boolean inteligenciaPrest) {
+        this.inteligenciaPrest = inteligenciaPrest;
     }
 
-    public int getvFurtividade() {
-        return vFurtividade;
+    public boolean isSabedoriaPrest() {
+        return sabedoriaPrest;
     }
 
-    public void setvFurtividade(int vFurtividade) {
-        this.vFurtividade = vFurtividade;
+    public void setSabedoriaPrest(boolean sabedoriaPrest) {
+        this.sabedoriaPrest = sabedoriaPrest;
     }
 
-    public int getvHistoria() {
-        return vHistoria;
+    public boolean isCarismaPrest() {
+        return carismaPrest;
     }
 
-    public void setvHistoria(int vHistoria) {
-        this.vHistoria = vHistoria;
+    public void setCarismaPrest(boolean carismaPrest) {
+        this.carismaPrest = carismaPrest;
     }
 
-    public int getvInvestigacao() {
-        return vInvestigacao;
+    public boolean isVida1() {
+        return vida1;
     }
 
-    public void setvInvestigacao(int vInvestigacao) {
-        this.vInvestigacao = vInvestigacao;
+    public void setVida1(boolean vida1) {
+        this.vida1 = vida1;
     }
 
-    public int getvLidarComAnimais() {
-        return vLidarComAnimais;
+    public boolean isVida2() {
+        return vida2;
     }
 
-    public void setvLidarComAnimais(int vLidarComAnimais) {
-        this.vLidarComAnimais = vLidarComAnimais;
+    public void setVida2(boolean vida2) {
+        this.vida2 = vida2;
     }
 
-    public int getvMedicina() {
-        return vMedicina;
+    public boolean isVida3() {
+        return vida3;
     }
 
-    public void setvMedicina(int vMedicina) {
-        this.vMedicina = vMedicina;
+    public void setVida3(boolean vida3) {
+        this.vida3 = vida3;
     }
 
-    public int getvNatureza() {
-        return vNatureza;
+    public boolean isMorte1() {
+        return morte1;
     }
 
-    public void setvNatureza(int vNatureza) {
-        this.vNatureza = vNatureza;
+    public void setMorte1(boolean morte1) {
+        this.morte1 = morte1;
     }
 
-    public int getvPercepcao() {
-        return vPercepcao;
+    public boolean isMorte2() {
+        return morte2;
     }
 
-    public void setvPercepcao(int vPercepcao) {
-        this.vPercepcao = vPercepcao;
+    public void setMorte2(boolean morte2) {
+        this.morte2 = morte2;
     }
 
-    public int getvPersuasao() {
-        return vPersuasao;
+    public boolean isMorte3() {
+        return morte3;
     }
 
-    public void setvPersuasao(int vPersuasao) {
-        this.vPersuasao = vPersuasao;
+    public void setMorte3(boolean morte3) {
+        this.morte3 = morte3;
     }
 
-    public int getvPrestidigitacao() {
-        return vPrestidigitacao;
+    public boolean isIntuicao() {
+        return intuicao;
     }
 
-    public void setvPrestidigitacao(int vPrestidigitacao) {
-        this.vPrestidigitacao = vPrestidigitacao;
+    public void setIntuicao(boolean intuicao) {
+        this.intuicao = intuicao;
     }
 
-    public int getvReligiao() {
-        return vReligiao;
+    public boolean isMedicina() {
+        return medicina;
     }
 
-    public void setvReligiao(int vReligiao) {
-        this.vReligiao = vReligiao;
+    public void setMedicina(boolean medicina) {
+        this.medicina = medicina;
     }
-
-    public int getvSobrevivencia() {
-        return vSobrevivencia;
-    }
-
-    public void setvSobrevivencia(int vSobrevivencia) {
-        this.vSobrevivencia = vSobrevivencia;
-    }
-}    
+    
+}

@@ -18,4 +18,14 @@ public class JogadorController {
         ArrayList<Jogador> banco = jogadorDAO.puxandoPersonagens(codUsuario);
         return banco;
     }
+    
+    public boolean alteraNome(String nomeNovo, int codJogador) throws SQLException{
+        boolean alterando = jogadorDAO.alteraNome(nomeNovo, codJogador);
+        return alterando;
+    }
+    
+    public String buscaNome(int codFicha) throws SQLException, ClassNotFoundException{
+        String alterando = jogadorDAO.puxandoNome(codFicha);
+        return alterando;
+    }
 }

@@ -203,7 +203,7 @@ public class FrmJogador extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Este personagem Não possui ficha cadastrada!");
                 
                 try{
-                    new FrmFicha(codUsuario, j.getCodigoFicha()).setVisible(true);
+                    new FrmFicha(codUsuario, j.getCodigoFicha(), nomeJogador).setVisible(true);
                     setVisible(false);
                 }
                 catch(Exception ex){

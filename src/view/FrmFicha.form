@@ -358,6 +358,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeJogador">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="focusLostNomeJogador"/>
+            <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="inputTextChangedNomeJogador"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeJogadorActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblExpPersonagem">
           <Properties>
@@ -708,6 +713,7 @@
             <Property name="text" type="java.lang.String" value="FOR&#xc7;A"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioForca"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioForcaActionPerformed"/>
           </Events>
         </Component>
@@ -715,17 +721,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="DESTREZA"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioDestreza"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioConstituicao">
           <Properties>
             <Property name="text" type="java.lang.String" value="CONSTITUI&#xc7;&#xc3;O"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioConstituicao"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioSabedoria">
           <Properties>
             <Property name="text" type="java.lang.String" value="SABEDORIA"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioSabedoria"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioSabedoriaActionPerformed"/>
           </Events>
         </Component>
@@ -734,6 +747,7 @@
             <Property name="text" type="java.lang.String" value="INTELIG&#xca;NCIA"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioInteligencia"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioInteligenciaActionPerformed"/>
           </Events>
         </Component>
@@ -742,6 +756,7 @@
             <Property name="text" type="java.lang.String" value="CARISMA"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="onClickedRadioCarisma"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioCarismaActionPerformed"/>
           </Events>
         </Component>
@@ -1251,7 +1266,7 @@
         <Component class="javax.swing.JLabel" name="lblDinheiroEquipamentosPersonagem">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Dinheiro e Equipamentos"/>
+            <Property name="text" type="java.lang.String" value="DINHEIRO E EQUIPAMENTOS"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrataPersonagem">
@@ -1307,7 +1322,7 @@
         <Component class="javax.swing.JLabel" name="lblCaracteristicasPersonagem">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Caracteristicas"/>
+            <Property name="text" type="java.lang.String" value="CARACTER&#xcd;STICAS"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -1375,6 +1390,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBonusProficiencia">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="focusLostBonusProficiente"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtInspiracao">
       <Events>
@@ -1428,7 +1446,7 @@
     <Component class="javax.swing.JLabel" name="lblHistoriaPersonagem">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="HISTORIA"/>
+        <Property name="text" type="java.lang.String" value="HIST&#xd3;RIA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

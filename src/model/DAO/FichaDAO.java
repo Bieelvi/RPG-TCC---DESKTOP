@@ -5,13 +5,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.FichaTop;
+import model.Ficha;
 
 public class FichaDAO {
     
     Connection con;
+    JogadorDAO jogadorDAO;
     
-    public boolean passaFicha(FichaTop f, int codUsuario) throws SQLException{
+    public boolean passaFicha(Ficha f, int codUsuario) throws SQLException{
+        jogadorDAO = new JogadorDAO();
         boolean passou = false;
         ResultSet rs;
         int i = 0;
@@ -58,7 +60,7 @@ public class FichaDAO {
             stmt.setBoolean(36, f.isMedicina());
             stmt.setBoolean(37, f.isNatureza());
             stmt.setBoolean(38, f.isPercepcao());
-            stmt.setBoolean(39, f.isPersuacao());
+            stmt.setBoolean(39, f.isPersuasao());
             stmt.setBoolean(40, f.isPrestidigitacao());
             stmt.setBoolean(41, f.isReligiao());
             stmt.setBoolean(42, f.isSobreviencia());
@@ -81,16 +83,15 @@ public class FichaDAO {
             stmt = con.prepareStatement(sql);
             
             rs = stmt.executeQuery();
-            int codFicha = 0101010;
+            int codFicha = 0;
             
             while(rs.next() && i == 0){
                 i++;
                 codFicha = rs.getInt("codigo_ficha");
             }
             
-            System.out.println(codFicha);
             stmt.close();
-            passou = true;
+            passou = jogadorDAO.updateCodFicha(codUsuario, codFicha);;
         }
         catch(Exception ex){
             System.out.println(ex);
@@ -102,7 +103,7 @@ public class FichaDAO {
     }
     
     
-    public boolean atualicao(FichaTop f, int codFicha) throws SQLException{
+    public boolean atualicao(Ficha f, int codFicha) throws SQLException{
         boolean passou = false;
         
         try{
@@ -148,7 +149,7 @@ public class FichaDAO {
             stmt.setBoolean(36, f.isMedicina());
             stmt.setBoolean(37, f.isNatureza());
             stmt.setBoolean(38, f.isPercepcao());
-            stmt.setBoolean(39, f.isPersuacao());
+            stmt.setBoolean(39, f.isPersuasao());
             stmt.setBoolean(40, f.isPrestidigitacao());
             stmt.setBoolean(41, f.isReligiao());
             stmt.setBoolean(42, f.isSobreviencia());

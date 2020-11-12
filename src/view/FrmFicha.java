@@ -1,53 +1,67 @@
 package view;
 
 import control.FichaController;
+import control.JogadorController;
 import control.RacaClasseController;
-import control.UsuarioController;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
 import model.Ficha;
-import model.FichaTop;
 import model.Raca; 
 
 public class FrmFicha extends javax.swing.JFrame {
     
-    Ficha ficha;
-    int codUsuario;
-    RacaClasseController racaClasseRPG;
-    String emailUsua;
-    UsuarioController usuarioController;
-    FichaController fichaController;
-    String raca;
-    String classe;
     int codFicha;
+    int codUsuario;
+    String nomeJogador;
+    FichaController fichaController;
+    RacaClasseController racaClasseRPG;
+    JogadorController jogadorController;
     
-    public FrmFicha(int codigoUsuario, int codigoFicha) throws SQLException {
+    public FrmFicha(int codigoUsuario, int codigoFicha, String nomeJogador) throws SQLException {
         initComponents();
-        ficha = new Ficha();
-        racaClasseRPG = new RacaClasseController();
-        codUsuario = codigoUsuario;
         codFicha = codigoFicha;
-        usuarioController = new UsuarioController();
-        emailUsua = usuarioController.emailViaCodUsuario(codUsuario);
-        classeRPG();
-        racaRPG();
-        fichaController = new FichaController();
-        txtEquipamentos.setLineWrap(true);
-        txtEquipamentos.setWrapStyleWord(true);
+        codUsuario = codigoUsuario;
+        this.nomeJogador = nomeJogador;
         txtHistoria.setLineWrap(true);
         txtHistoria.setWrapStyleWord(true);
+        txtEquipamentos.setLineWrap(true);
+        txtEquipamentos.setWrapStyleWord(true);
         txtCaracteristicas.setLineWrap(true);
         txtCaracteristicas.setWrapStyleWord(true);
-        raca = "Não definida";
-        classe = "Não definida";
+        fichaController = new FichaController();
+        racaClasseRPG = new RacaClasseController();
+        jogadorController = new JogadorController();
+        this.txtNomeJogador.setText(nomeJogador);
+        classeRPG();
+        racaRPG();
     }
+
+    public FrmFicha() throws SQLException {
+        initComponents();
+        codFicha = 0;
+        codUsuario = 1;
+        txtHistoria.setLineWrap(true);
+        txtHistoria.setWrapStyleWord(true);
+        txtEquipamentos.setLineWrap(true);
+        txtEquipamentos.setWrapStyleWord(true);
+        txtCaracteristicas.setLineWrap(true);
+        txtCaracteristicas.setWrapStyleWord(true);
+        fichaController = new FichaController();
+        racaClasseRPG = new RacaClasseController();
+        jogadorController = new JogadorController();
+        this.txtNomeJogador.setText("Teste");
+        classeRPG();
+        racaRPG();
+    }
+    
+    
     
     /*public void reconhecimentoFicha(int codigoFicha){
         if(codigoFicha > 0){
-            FichaTop ficha = fichaController.puxaDados();
+            Ficha fichaControl = fichaController.puxaDados(codigoFicha);
         }
     }*/
     
@@ -55,10 +69,10 @@ public class FrmFicha extends javax.swing.JFrame {
         DefaultComboBoxModel classeBox = new DefaultComboBoxModel();
         ArrayList <Classe> cla = racaClasseRPG.classe();
         classeBox.addElement("<Selecione>");
-        for (Classe c: cla){
+        
+        for (Classe c: cla)
             classeBox.addElement(c.getNome());
-        }
-        classeBox.addElement("Criar nova Classe");
+        
         cmbClasse.setModel(classeBox);
     }
     
@@ -66,13 +80,63 @@ public class FrmFicha extends javax.swing.JFrame {
         DefaultComboBoxModel classeBox = new DefaultComboBoxModel();
         ArrayList <Raca> rac = racaClasseRPG.raca();
         classeBox.addElement("<Selecione>");
-        for (Raca c: rac){
+        
+        for (Raca c: rac)
             classeBox.addElement(c.getNome());
-        }
-        classeBox.addElement("Criar nova Raça");
+        
         cmbRaca.setModel(classeBox);
     }
 
+    public void atualizarResistencia(){
+        int bonusProficiencia;
+            if(txtBonusProficiencia.getText().equals(""))
+                bonusProficiencia = 0;
+            else
+                bonusProficiencia = Integer.parseInt(this.txtBonusProficiencia.getText());
+            
+        try{
+            this.txtTesteForcaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioForca.isSelected(), Integer.parseInt(this.txtForcaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtTesteForcaPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtTesteDestrezaPersongem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioDestreza.isSelected(), Integer.parseInt(this.txtDestrezaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtTesteDestrezaPersongem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtTesteConstituicaoPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioConstituicao.isSelected(), Integer.parseInt(this.txtConstituicaoModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtTesteConstituicaoPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtTesteInteligenciaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioInteligencia.isSelected(), Integer.parseInt(this.txtInteligenciaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtTesteInteligenciaPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtTesteSabedoriaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioSabedoria.isSelected(), Integer.parseInt(this.txtSabedoriaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtTesteSabedoriaPersonagem.setText(Integer.toString(0));
+        }
+        
+        try{
+            this.txtTesteCarismaPersonagem.setText(Integer.toString(fichaController.calculaResistenciaOuPericia(this.radioCarisma.isSelected(), Integer.parseInt(this.txtCarismaModificadorPersonagem.getText()), bonusProficiencia)));
+        }
+        catch(NumberFormatException nfe){
+            this.txtTesteCarismaPersonagem.setText(Integer.toString(0));
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -214,6 +278,24 @@ public class FrmFicha extends javax.swing.JFrame {
         lblTendenciaPersonagem.setText("TENDÊNCIA");
 
         lblNomeJogador.setText("NOME DO USUARIO");
+
+        txtNomeJogador.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                focusLostNomeJogador(evt);
+            }
+        });
+        txtNomeJogador.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                inputTextChangedNomeJogador(evt);
+            }
+        });
+        txtNomeJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeJogadorActionPerformed(evt);
+            }
+        });
 
         lblExpPersonagem.setText("PONTOS DE EXPERIÊNCIA");
 
@@ -500,6 +582,11 @@ public class FrmFicha extends javax.swing.JFrame {
         );
 
         radioForca.setText("FORÇA");
+        radioForca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioForca(evt);
+            }
+        });
         radioForca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioForcaActionPerformed(evt);
@@ -507,10 +594,25 @@ public class FrmFicha extends javax.swing.JFrame {
         });
 
         radioDestreza.setText("DESTREZA");
+        radioDestreza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioDestreza(evt);
+            }
+        });
 
         radioConstituicao.setText("CONSTITUIÇÃO");
+        radioConstituicao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioConstituicao(evt);
+            }
+        });
 
         radioSabedoria.setText("SABEDORIA");
+        radioSabedoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioSabedoria(evt);
+            }
+        });
         radioSabedoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioSabedoriaActionPerformed(evt);
@@ -518,6 +620,11 @@ public class FrmFicha extends javax.swing.JFrame {
         });
 
         radioInteligencia.setText("INTELIGÊNCIA");
+        radioInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioInteligencia(evt);
+            }
+        });
         radioInteligencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioInteligenciaActionPerformed(evt);
@@ -525,6 +632,11 @@ public class FrmFicha extends javax.swing.JFrame {
         });
 
         radioCarisma.setText("CARISMA");
+        radioCarisma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onClickedRadioCarisma(evt);
+            }
+        });
         radioCarisma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioCarismaActionPerformed(evt);
@@ -847,7 +959,7 @@ public class FrmFicha extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtEquipamentos);
 
         lblDinheiroEquipamentosPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDinheiroEquipamentosPersonagem.setText("Dinheiro e Equipamentos");
+        lblDinheiroEquipamentosPersonagem.setText("DINHEIRO E EQUIPAMENTOS");
 
         lblPrataPersonagem.setText("Prata");
 
@@ -898,7 +1010,7 @@ public class FrmFicha extends javax.swing.JFrame {
         );
 
         lblCaracteristicasPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCaracteristicasPersonagem.setText("Caracteristicas");
+        lblCaracteristicasPersonagem.setText("CARACTERÍSTICAS");
 
         txtCaracteristicas.setColumns(20);
         txtCaracteristicas.setRows(5);
@@ -968,6 +1080,12 @@ public class FrmFicha extends javax.swing.JFrame {
         lblSucessosPersonagem.setText("SUCESSOS");
         lblSucessosPersonagem.setName(""); // NOI18N
 
+        txtBonusProficiencia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                focusLostBonusProficiente(evt);
+            }
+        });
+
         txtInspiracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtInspiracaoActionPerformed(evt);
@@ -995,7 +1113,7 @@ public class FrmFicha extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txtHistoria);
 
         lblHistoriaPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHistoriaPersonagem.setText("HISTORIA");
+        lblHistoriaPersonagem.setText("HISTÓRIA");
 
         jButton1.setText("SALVAR FICHA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1170,34 +1288,31 @@ public class FrmFicha extends javax.swing.JFrame {
     private void btnCalculaModificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaModificadorActionPerformed
         try{
             int forca = Integer.parseInt(this.txtForcaPersonagem.getText());
-            this.txtForcaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(forca)));
+            this.txtForcaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(forca)));
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
             this.txtForcaPersonagem.setText("");
         }
 
         try{
             int destreza = Integer.parseInt(this.txtDestrezaPersonagem.getText());
-            this.txtDestrezaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(destreza)));
+            this.txtDestrezaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(destreza)));
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
             this.txtDestrezaPersonagem.setText("");
         }
 
         try{
             int constituicao = Integer.parseInt(this.txtConstituicaoPersonagem.getText());
-            this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(constituicao)));
+            this.txtConstituicaoModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(constituicao)));
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
             this.txtConstituicaoPersonagem.setText("");
         }
 
         try{
             int inteligencia = Integer.parseInt(this.txtInteligenciaPersonagem.getText());
-            this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(inteligencia)));
+            this.txtInteligenciaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(inteligencia)));
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
             System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
@@ -1206,22 +1321,21 @@ public class FrmFicha extends javax.swing.JFrame {
 
         try{
             int sabedoria = Integer.parseInt(this.txtSabedoriaPersonagem.getText());
-            this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(sabedoria)));
+            this.txtSabedoriaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(sabedoria)));
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
             this.txtSabedoriaPersonagem.setText("");
         }
 
         try{
             int carisma = Integer.parseInt(this.txtCarismaPersonagem.getText());
-            this.txtCarismaModificadorPersonagem.setText(Integer.toString(ficha.calculaModificador(carisma)));
+            this.txtCarismaModificadorPersonagem.setText(Integer.toString(fichaController.calculaModificador(carisma)));
         } catch (RuntimeException exe){
             JOptionPane.showMessageDialog(null, "Não pode usar números acima de 20 ou abaixo de 0!");
-            System.out.println("Não pode usar números acima de 20 ou abaixo de 0!");
             this.txtCarismaPersonagem.setText("");
         }
-
+        
+        atualizarResistencia();
     }//GEN-LAST:event_btnCalculaModificadorActionPerformed
 
     private void txtSabedoriaPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSabedoriaPersonagemActionPerformed
@@ -1233,9 +1347,11 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_radioForcaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String classe = (String) cmbClasse.getSelectedItem();
+        String raca = (String) cmbRaca.getSelectedItem();
         
         ArrayList radios = fichaController.convertRadio(radioAcrobacia.isSelected(), radioArcanismo.isSelected(), radioAtletismo.isSelected(), radioAtuacao.isSelected(), radioBlefar.isSelected(), radioFurtividade.isSelected(), radioHistoria.isSelected(), radioIntimidacao.isSelected(), radioInvestigacao.isSelected(), radioNatureza.isSelected(), radioPercepcao.isSelected(), radioPersuasao.isSelected(), radioPrestidigitacao.isSelected(), radioReligiao.isSelected(), radioSobrevivencia.isSelected(), radioForca.isSelected(), radioDestreza.isSelected(), radioLidarAnimais.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected(), radioVida1.isSelected(), radioVida2.isSelected(), radioVida3.isSelected(), radioMorte1.isSelected(), radioMorte2.isSelected(), radioMorte3.isSelected(), radioIntuicao.isSelected(), radioMedicina.isSelected());
-        FichaTop f = fichaController.compactando(this.txtNombre.getText(), this.classe, this.raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
+        Ficha f = fichaController.compactando(this.txtNombre.getText(), classe, raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeJogador.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
         
         if(codFicha == 0){
             boolean cadastrando = false;
@@ -1278,12 +1394,7 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbRacaActionPerformed
 
     private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
-
-        raca = (String) cmbRaca.getSelectedItem();
-
-        if(cmbRaca.getSelectedItem().equals("Criar nova Raça")){
-            new AddRaca().setVisible(true);
-        }
+        //if(cmbRaca.getSelectedItem().equals("Criar nova Raça"))
     }//GEN-LAST:event_cmbRacaItemStateChanged
 
     private void cmbClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClasseActionPerformed
@@ -1291,14 +1402,135 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbClasseActionPerformed
 
     private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
-
-        classe = (String) cmbClasse.getSelectedItem();
-
-        if(cmbClasse.getSelectedItem().equals("Criar nova Classe")){
-            new AddClasse(emailUsua).setVisible(true);
-        }
+        int i = 0;
+        ArrayList prest;
+        String classe = (String) cmbClasse.getSelectedItem();
+        
+        if(!cmbClasse.getSelectedItem().equals("<Selecione>")){
+            prest = fichaController.testeResistencia(classe, radioForca.isSelected(), radioDestreza.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected());
+            for(Object o: prest){
+                switch(i){
+                    case 0:
+                        radioForca.setSelected((boolean) o);
+                    break;
+                    case 1:
+                        radioDestreza.setSelected((boolean) o);
+                    break;
+                    case 2:
+                        radioConstituicao.setSelected((boolean) o);
+                    break;
+                    case 3:
+                        radioInteligencia.setSelected((boolean) o);
+                    break;
+                    case 4:
+                        radioSabedoria.setSelected((boolean) o);
+                    break;
+                    case 5:
+                        radioCarisma.setSelected((boolean) o);
+                    break;
+                }
+                i++;
+            }
+        }  
+        atualizarResistencia();
     }//GEN-LAST:event_cmbClasseItemStateChanged
 
+    private void txtNomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeJogadorActionPerformed
+        
+    }//GEN-LAST:event_txtNomeJogadorActionPerformed
+
+    private void onClickedRadioForca(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioForca
+        atualizarResistencia();
+    }//GEN-LAST:event_onClickedRadioForca
+
+    private void onClickedRadioDestreza(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioDestreza
+        atualizarResistencia();
+    }//GEN-LAST:event_onClickedRadioDestreza
+
+    private void onClickedRadioConstituicao(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioConstituicao
+        atualizarResistencia();
+    }//GEN-LAST:event_onClickedRadioConstituicao
+
+    private void onClickedRadioInteligencia(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioInteligencia
+        atualizarResistencia();
+    }//GEN-LAST:event_onClickedRadioInteligencia
+
+    private void onClickedRadioSabedoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioSabedoria
+        atualizarResistencia();
+    }//GEN-LAST:event_onClickedRadioSabedoria
+
+    private void onClickedRadioCarisma(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onClickedRadioCarisma
+        atualizarResistencia();
+    }//GEN-LAST:event_onClickedRadioCarisma
+
+    private void focusLostBonusProficiente(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostBonusProficiente
+        atualizarResistencia();
+    }//GEN-LAST:event_focusLostBonusProficiente
+
+    private void focusLostNomeJogador(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostNomeJogador
+        int i;
+        boolean alterando;
+        
+        if(!this.txtNomeJogador.getText().equals(nomeJogador)){
+            i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
+
+            switch (i) {
+                case JOptionPane.YES_OPTION:
+                    try {
+                        alterando = this.jogadorController.alteraNome(nomeJogador, codUsuario);
+                        if(alterando){
+                            JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
+                            nomeJogador = jogadorController.buscaNome(codFicha);
+                        }
+                        else
+                            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
+                    } 
+                    catch (SQLException ex) {
+                        System.out.println(ex);
+                    } 
+                    catch (ClassNotFoundException ex) {
+                        System.out.println(ex);
+                    }
+                break;
+                case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
+                    this.txtNomeJogador.setText(nomeJogador);
+                break;
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado");
+    }//GEN-LAST:event_focusLostNomeJogador
+
+    private void inputTextChangedNomeJogador(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_inputTextChangedNomeJogador
+        int i;
+        boolean alterando;
+        
+        if(!this.txtNomeJogador.getText().equals(nomeJogador)){
+            i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
+
+            switch (i) {
+                case JOptionPane.YES_OPTION:
+                    try {
+                        alterando = this.jogadorController.alteraNome(this.txtNomeJogador.getText(), codUsuario);
+                        if(alterando == true){
+                            JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
+                            nomeJogador = txtNomeJogador.getText();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
+                    } 
+                    catch (SQLException ex) {
+                        System.out.println(ex);
+                    }
+                break;
+                case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
+                    this.txtNomeJogador.setText(nomeJogador);
+                break;
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado");
+    }//GEN-LAST:event_inputTextChangedNomeJogador
 
     public static void main(String args[]) {
         try {
@@ -1311,11 +1543,15 @@ public class FrmFicha extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                try {
+                    new FrmFicha().setVisible(true);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Baguiu deu erro mermão");
+                }
             }
         });
     }

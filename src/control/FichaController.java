@@ -2,14 +2,14 @@ package control;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.FichaTop;
+import model.Ficha;
 import model.DAO.FichaDAO;
 
 public class FichaController {
     
     FichaDAO fichaDAO = new FichaDAO();
         
-    public boolean cadastraFicha(FichaTop f, int codUsuario) throws SQLException{
+    public boolean cadastraFicha(Ficha f, int codUsuario) throws SQLException{
         boolean cadastro;
         cadastro = fichaDAO.passaFicha(f, codUsuario);
         
@@ -54,12 +54,12 @@ public class FichaController {
         return conjunto;
     }
     
-    public boolean atualizacao(FichaTop f, int codFicha) throws SQLException{
+    public boolean atualizacao(Ficha f, int codFicha) throws SQLException{
         boolean atualizando = fichaDAO.atualicao(f, codFicha);
         return atualizando;
     }
     
-    public FichaTop compactando(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, ArrayList radios){
+    public Ficha compactando(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, ArrayList radios){
         int i = 0;
         
         boolean acrobacia = false; 
@@ -189,9 +189,176 @@ public class FichaController {
             i++;
         }
         
-        FichaTop f = new FichaTop(nome, classe, raca, classeArm, vida, desloc, forca, inteligencia, destreza, sabedoria, constituicao, carisma, nivel, tendencia, nomeJoga, pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, historia, equipamentos, caracteristicas, acrobacia, arcanismo, atletismo, atuacao, blefar, furtividade, historiaPerici, intimidacao, investigacao, natureza, percepcao, persuacao, prestidigitacao, religiao, sobreviencia, forcaPrest, destrezaPrest, acrobaciaPrest, constituicaoPrest, inteligenciaPrest, sabedoriaPrest, carismaPrest, vida1, vida2, vida3, morte1, morte2, morte3, intuicao, medicina);
+        Ficha f = new Ficha(nome, classe, raca, classeArm, vida, desloc, forca, inteligencia, destreza, sabedoria, constituicao, carisma, nivel, tendencia, nomeJoga, pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, historia, equipamentos, caracteristicas, acrobacia, arcanismo, atletismo, atuacao, blefar, furtividade, historiaPerici, intimidacao, investigacao, natureza, percepcao, persuacao, prestidigitacao, religiao, sobreviencia, forcaPrest, destrezaPrest, acrobaciaPrest, constituicaoPrest, inteligenciaPrest, sabedoriaPrest, carismaPrest, vida1, vida2, vida3, morte1, morte2, morte3, intuicao, medicina);
         
         return f;
     }
-}
+    
+    public int calculaModificador(int atributo){
+        int modificacao = 0;
 
+        switch (atributo) {
+            case 0:case 1:
+                modificacao = -5;
+            break;
+            case 2:case 3:
+                modificacao = -4;
+            break;
+            case 4:case 5:  
+                modificacao = -3;
+            break;
+            case 6:case 7:
+                modificacao = -2;
+            break;
+            case 8:case 9:
+                modificacao = -1;
+            break;
+            case 10:case 11:
+                modificacao = 0;
+            break;
+            case 12:case 13:
+                modificacao = 1;
+            break;
+            case 14:case 15:
+                modificacao = 2;
+            break;
+            case 16:case 17:
+                modificacao = 3;
+            break;
+            case 18:case 19:
+                modificacao = 4;
+            break;
+            case 20:
+                modificacao = 5;
+            break;
+            default:
+                if (atributo > 20 || atributo < 0)
+                    throw new RuntimeException("Numero invalido, menor que 0 ou maior que 20");
+            break;
+        }
+        return modificacao;
+    }
+    
+    public ArrayList testeResistencia(String classe, boolean forcaPrest, boolean destrezaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest){
+        ArrayList prest = new ArrayList();
+        
+        switch(classe){
+            case "Barbaro":
+                forcaPrest = true;
+                destrezaPrest = false;
+                constituicaoPrest = true;
+                inteligenciaPrest = false;
+                sabedoriaPrest = false;
+                carismaPrest = false;
+            break;
+            case "Bardo":
+                forcaPrest = false;
+                destrezaPrest = true;
+                constituicaoPrest = false;
+                inteligenciaPrest = false;
+                sabedoriaPrest = false;
+                carismaPrest = true;
+            break; 
+            case "Bruxo":
+                forcaPrest = false;
+                destrezaPrest = false;
+                constituicaoPrest = false;
+                inteligenciaPrest = false;
+                sabedoriaPrest = true;
+                carismaPrest = true;
+                break; 
+            case "Clerigo":
+                forcaPrest = false;
+                destrezaPrest = false;
+                constituicaoPrest = false;
+                inteligenciaPrest = false;
+                sabedoriaPrest = true;
+                carismaPrest = true;
+            break;
+            case "Druida":
+                forcaPrest = false;
+                destrezaPrest = false;
+                constituicaoPrest = false;
+                inteligenciaPrest = true;
+                sabedoriaPrest = true;
+                carismaPrest = false;
+            break;    
+            case "Feiticeiro":
+                forcaPrest = false;
+                destrezaPrest = false;
+                constituicaoPrest = true;
+                inteligenciaPrest = false;
+                sabedoriaPrest = false;
+                carismaPrest = true;
+            break;  
+            case "Guerreiro":
+                forcaPrest = true;
+                destrezaPrest = false;
+                constituicaoPrest = true;
+                inteligenciaPrest = false;
+                sabedoriaPrest = false;
+                carismaPrest = false;
+            break;
+            case "Ladino":
+                forcaPrest = false;
+                destrezaPrest = true;
+                constituicaoPrest = false;
+                inteligenciaPrest = true;
+                sabedoriaPrest = false;
+                carismaPrest = false;
+            break;
+            case "Mago":
+                forcaPrest = false;
+                destrezaPrest = false;
+                constituicaoPrest = false;
+                inteligenciaPrest = true;
+                sabedoriaPrest = true;
+                carismaPrest = false;
+            break;   
+            case "Monge":
+                forcaPrest = true;
+                destrezaPrest = true;
+                constituicaoPrest = false;
+                inteligenciaPrest = false;
+                sabedoriaPrest = false;
+                carismaPrest = false;
+            break;
+            case "Paladino":
+                forcaPrest = false;
+                destrezaPrest = false;
+                constituicaoPrest = false;
+                inteligenciaPrest = false;
+                sabedoriaPrest = true;
+                carismaPrest = true;
+            break;
+            case "Patrulheiro":
+                forcaPrest = true;
+                destrezaPrest = true;
+                constituicaoPrest = false;
+                inteligenciaPrest = false;
+                sabedoriaPrest = false;
+                carismaPrest = false;
+            break;       
+        }
+        
+        prest.add(forcaPrest);
+        prest.add(destrezaPrest);
+        prest.add(constituicaoPrest);
+        prest.add(inteligenciaPrest);
+        prest.add(sabedoriaPrest);
+        prest.add(carismaPrest);
+        
+        return prest;
+    }
+    
+    public int calculaResistenciaOuPericia(boolean resistencia, int modificador, int bonusProficiencia){
+        int valorResistencia;
+        
+        if(resistencia == true)
+            valorResistencia = bonusProficiencia + modificador;
+        else 
+            valorResistencia = modificador;
+        
+        return valorResistencia;
+    }
+}
