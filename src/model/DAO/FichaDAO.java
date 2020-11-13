@@ -265,7 +265,6 @@ public class FichaDAO {
     
     public boolean alteraNome(String nomeNovo, int codFicha) throws SQLException{
         boolean passou = false;
-        System.out.println(nomeNovo);
         
         try{
             con = new Conexao().getConnection();
