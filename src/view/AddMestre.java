@@ -1,22 +1,23 @@
 package view;
 
 import control.JogadorController;
+import control.MestreController;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class AddPersonagem extends javax.swing.JFrame {
+public class AddMestre extends javax.swing.JFrame {
 
-    JogadorController jogadorController;
+    MestreController mestreController;
     int codUsuario;
 
-    public AddPersonagem(int codUsuario){
-        this.jogadorController = new JogadorController();
+    public AddMestre(int codUsuario){
+        this.mestreController = new MestreController();
         this.codUsuario = codUsuario;
         initComponents();
     }
     
-    public AddPersonagem() {
-        this.jogadorController = new JogadorController();
+    public AddMestre() {
+        this.mestreController = new MestreController();
         this.codUsuario = 1;
         initComponents();
     }
@@ -26,20 +27,20 @@ public class AddPersonagem extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        textNomePerso = new javax.swing.JTextField();
+        txtNomeMestre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        textNomePerso.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        textNomePerso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNomeMestre.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        txtNomeMestre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        jLabel1.setText("Digite o nome de seu personagem");
+        jLabel1.setText("Digite o nome de seu Mestre");
 
         btnSalvar.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
-        btnSalvar.setText("Adicionar Personagem");
+        btnSalvar.setText("Adicionar Mestre");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -51,19 +52,17 @@ public class AddPersonagem extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(textNomePerso, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                        .addGap(100, 100, 100)))
-                .addContainerGap())
+                .addGap(100, 100, 100)
+                .addComponent(txtNomeMestre, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addGap(100, 100, 100))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +70,7 @@ public class AddPersonagem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
-                .addComponent(textNomePerso)
+                .addComponent(txtNomeMestre)
                 .addGap(61, 61, 61)
                 .addComponent(btnSalvar)
                 .addGap(30, 30, 30))
@@ -100,11 +99,12 @@ public class AddPersonagem extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         boolean passando = false;
         
-        if(this.textNomePerso.getText().isEmpty())
-            JOptionPane.showMessageDialog(null, "PREENCHA O NOME DO PERSONAGEM!!!");
+        if(this.txtNomeMestre.getText().isEmpty())
+            JOptionPane.showMessageDialog(null, "PREENCHA O NOME DO MESTRE!!!");
         else{
             try {
-                passando = jogadorController.addJogador(this.textNomePerso.getText(), codUsuario);
+                String nome = (String) this.txtNomeMestre.getText();
+                passando = mestreController.addMestre(nome, codUsuario);
                 if(passando = true){
                     JOptionPane.showMessageDialog(null, "Personagem adicionado com sucesso!!!");
                     setVisible(false);
@@ -127,19 +127,34 @@ public class AddPersonagem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPersonagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPersonagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPersonagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPersonagem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPersonagem().setVisible(true);
+                new AddMestre().setVisible(true);
             }
         });
     }
@@ -148,6 +163,6 @@ public class AddPersonagem extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textNomePerso;
+    private javax.swing.JTextField txtNomeMestre;
     // End of variables declaration//GEN-END:variables
 }
