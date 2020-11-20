@@ -72,36 +72,13 @@ public class MestreDAO {
         
         return banco;
     }
-    /*
-    public boolean updateCodFicha(int codMestre, int codFicha) throws SQLException{
-        boolean passou = false;
-        
-        try{
-            con = new Conexao().getConnection();
-            String sql = "UPDATE mestre SET codigo_mestre = ? WHERE codigo_usuario = ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, codFicha);
-            stmt.setInt(2, codMestre);
-            stmt.execute();
-            stmt.close();
-            passou = true;
-        }
-        catch(Exception ex){
-            System.out.println(ex);
-            passou = false;
-        }
-        finally {
-            con.close();
-        }
-        return passou;
-    }
     
     public boolean alteraNomeMestre(String nomeNovo, int codMestre) throws SQLException{
         boolean passou = false;
         
         try{
             con = new Conexao().getConnection();
-            String sql = "UPDATE mestre SET nome_jogador = ? WHERE codigo_mestre = ?";
+            String sql = "UPDATE mestre SET nome_mestre = ? WHERE codigo_mestre = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, nomeNovo);
             stmt.setInt(2, codMestre);
@@ -116,6 +93,6 @@ public class MestreDAO {
             con.close();
         }
         return passou;
-    }*/
+    }
     
 }

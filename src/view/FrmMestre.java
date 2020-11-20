@@ -4,30 +4,37 @@ import control.FichaMestreController;
 import control.MestreController;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import model.FichaMestre;
 import model.Mestre;
 
 public class FrmMestre extends javax.swing.JFrame {
 
-    int codUsuario;
+    int codUsuario;    
+    int codMestre = 0;
     int codFichaMestre = 0;
     MestreController mestreController;
     FichaMestreController fichaMestreController;
-    Mestre mestre;
     ArrayList<Mestre> mestres;
-    ArrayList<FichaMestre> fichas;
+    ArrayList<FichaMestre> fichas = null;
     
     public FrmMestre(int codUsuario){
-        this.codUsuario = codUsuario;
-        this.mestreController = new MestreController();
         initComponents();
+        this.mestreController = new MestreController();
+        fichaMestreController = new FichaMestreController();
+        this.codUsuario = codUsuario;
+        buscaMestres(); 
     }
 
     public FrmMestre(){
-        this.codUsuario = 3;
-        this.mestreController = new MestreController();
         initComponents();
+        this.codUsuario = 1;
+        this.mestreController = new MestreController();
+        fichaMestreController = new FichaMestreController();
+        buscaMestres();
     }
     
     public final void buscaMestres(){
@@ -49,23 +56,21 @@ public class FrmMestre extends javax.swing.JFrame {
         cmbMestre.setModel(mestreCBM);
     }
     
-    public final void buscaFichas(int codMestre){
-        
+    public void buscaFichas(int codMestre){
         try {
             fichas = fichaMestreController.puxaFichas(codMestre);
-        } 
-        catch(SQLException ex){
-            System.out.println("Mano deu error relacionado ao SQL. ERROR: " + ex);
-        } 
-        
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex);
+        }
         DefaultComboBoxModel fichaCBM = new DefaultComboBoxModel();
         fichaCBM.addElement("<Selecione>");
         
-        for(FichaMestre f: fichas)
-            fichaCBM.addElement(f.getNome());
-            
+        for(FichaMestre fm: fichas)
+            fichaCBM.addElement(fm.getNome());
+        
         fichaCBM.addElement("<Criar Nova Ficha>");
-        cmbMestre.setModel(fichaCBM);
+        cmbFichas.setModel(fichaCBM);
     }
 
     @SuppressWarnings("unchecked")
@@ -84,27 +89,31 @@ public class FrmMestre extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 255, 51));
+
+        jPanel1.setForeground(new java.awt.Color(51, 255, 0));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Selecione uma Ficha");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Acessar Ficha:");
+        jLabel1.setText("Abrir Ficha Seleionada:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Entrar Sala:");
+        jLabel3.setText("Funções do Mestre");
 
         btnFicha.setBackground(new java.awt.Color(255, 255, 255));
         btnFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/iconeFicha.jpeg"))); // NOI18N
-        btnFicha.setText("Ficha");
+        btnFicha.setText("Ficha Selecionada");
         btnFicha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFichaActionPerformed(evt);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/d20.png"))); // NOI18N
-        jButton1.setText("Jogar");
+        jButton1.setText("Funções");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -143,30 +152,32 @@ public class FrmMestre extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnFicha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(120, 120, 120)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3)))
                     .addComponent(cmbMestre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbFichas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(165, 165, 165))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(189, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addGap(153, 153, 153)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(cmbMestre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -183,11 +194,6 @@ public class FrmMestre extends javax.swing.JFrame {
                     .addComponent(btnFicha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addGap(285, 285, 285)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,16 +217,28 @@ public class FrmMestre extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaActionPerformed
+        String mestreSelec = (String) this.cmbMestre.getSelectedItem();
+        String fichaSelec = (String) this.cmbFichas.getSelectedItem();
+        
         try {
-            new FrmFichaMestre().setVisible(true);
-            setVisible(false);
+            if(fichaSelec.isEmpty() || mestreSelec.isEmpty() || fichaSelec.equals("<Selecione>") || mestreSelec.equals("<Selecione>"))
+                if(fichaSelec.isEmpty() || fichaSelec.equals("<Selecione>"))
+                    JOptionPane.showMessageDialog(null, "Selecione um mestre e depois uma ficha correspondente a este mestre");
+                if(mestreSelec.isEmpty() || mestreSelec.equals("<Selecione>"))
+                    JOptionPane.showMessageDialog(null, "Selecione uma ficha !!!");
+            else{
+                new FrmFichaMestre(codUsuario, codFichaMestre, codMestre).setVisible(true);
+                setVisible(false);
+            }
         } 
         catch (SQLException ex) {
             System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmMestre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnFichaActionPerformed
 
@@ -235,16 +253,19 @@ public class FrmMestre extends javax.swing.JFrame {
             new AddMestre(this.codUsuario).setVisible(true);
         else
             for(Mestre j: mestres)
-                if(j.getNomeMestre().equals(itemCmbPerso))
+                if(j.getNomeMestre().equals(itemCmbPerso)){
+                    codMestre = j.getCodigoMestre();
                     this.buscaFichas(j.getCodigoMestre());
+                }
+        
     }//GEN-LAST:event_cmbMestreItemStateChanged
 
     private void cmbFichasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbFichasItemStateChanged
-        if(this.cmbMestre.getSelectedItem().equals("<Criar Nova Ficha>"))
-            System.out.println("Em desenvolvimento");
+        if(this.cmbFichas.getSelectedItem().equals("<Criar Nova Ficha>"))
+            codFichaMestre = 0;
         else
             for(FichaMestre f: fichas)
-                if(f.getNome().equals(this.cmbMestre.getSelectedItem()))
+                if(f.getNome().equals(this.cmbFichas.getSelectedItem()))
                     codFichaMestre = f.getCodFichaMestre();
     }//GEN-LAST:event_cmbFichasItemStateChanged
 
@@ -256,20 +277,12 @@ public class FrmMestre extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmMestre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmMestre().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmMestre().setVisible(true);
         });
     }
 

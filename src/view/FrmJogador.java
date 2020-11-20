@@ -15,6 +15,7 @@ public class FrmJogador extends javax.swing.JFrame {
     ArrayList<Jogador> jogadores;
     
     public FrmJogador(int codUsuario){
+        initComponents();
         this.codUsuario = codUsuario;
         this.jogadorController = new JogadorController();
         
@@ -27,10 +28,10 @@ public class FrmJogador extends javax.swing.JFrame {
         catch(ClassNotFoundException ex){
             System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
         }
-        initComponents();
     }
 
     public FrmJogador(){
+        initComponents();
         this.codUsuario = 3;
         this.jogadorController = new JogadorController();
         
@@ -43,7 +44,6 @@ public class FrmJogador extends javax.swing.JFrame {
         catch(ClassNotFoundException ex){
             System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
         }
-        initComponents();
     }
     
     public final void jogadores(){

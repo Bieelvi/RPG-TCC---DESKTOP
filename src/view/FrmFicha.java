@@ -3,8 +3,11 @@ package view;
 import control.FichaController;
 import control.JogadorController;
 import control.RacaClasseController;
+import control.UsuarioController;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
@@ -16,6 +19,7 @@ public class FrmFicha extends javax.swing.JFrame {
     int codFicha;
     int codUsuario;
     String nomeJogador;
+    UsuarioController usuarioController;
     FichaController fichaController;
     RacaClasseController racaClasseRPG;
     JogadorController jogadorController;
@@ -34,7 +38,7 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        this.txtNomeUsuario.setText(nomeJogador);
+        usuarioController = new UsuarioController();
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codigoFicha);
@@ -58,8 +62,6 @@ public class FrmFicha extends javax.swing.JFrame {
         racaRPG();
         reconhecimentoFicha(codFicha);
     }
-    
-    
     
     public final void reconhecimentoFicha(int codigoFicha){
         if(codigoFicha > 0){
@@ -176,6 +178,16 @@ public class FrmFicha extends javax.swing.JFrame {
             
             atualizarResistencia();
             atualizarPericias();
+        }
+        else{
+            try {
+                this.txtNomeUsuario.setText(usuarioController.pegaNome(codUsuario));
+            }
+            catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            
+            this.txtNombre.setText(this.nomeJogador);
         }
     }
     

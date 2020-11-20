@@ -13,49 +13,6 @@ public class RacaClasseDAO {
     
     Connection con;
     
-    public boolean passaRaca(String nome, float desloc) throws SQLException{
-        boolean passou = false;
-        
-        try{
-            con = new Conexao().getConnection();
-            String sql = "INSERT INTO raca (nomeRaca, deslocamentoPersonagemRaca) values (?, ?);";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.setFloat(2, desloc);
-            stmt.execute();
-            stmt.close();
-            passou = true;
-        }
-        catch(Exception ex){
-            System.out.println(ex);
-        }
-        finally {
-            con.close();
-        }
-        return passou;
-    }
-    
-    public boolean passaClasse(String nome) throws SQLException{
-        boolean passou = false;
-        
-        try{
-            con = new Conexao().getConnection();
-            String sql = "INSERT INTO classe (nomeClasse) values (?);";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.execute();
-            stmt.close();
-            passou = true;
-        }
-        catch(Exception ex){
-            System.out.println(ex);
-        }
-        finally {
-            con.close();
-        }
-        return passou;
-    }
-    
     public ArrayList bancoRaca() throws SQLException{
         
         ResultSet rs;

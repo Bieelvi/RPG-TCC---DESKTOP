@@ -131,4 +131,33 @@ public class UsuarioDAO {
         
         return email;
     }
+    
+    public String procuraNome(int codUsuario) throws SQLException{
+        
+        ResultSet rs;
+        String nome = null;
+        
+        try{
+            con = new Conexao().getConnection();
+            String sql = "SELECT * FROM usuario WHERE codigo_usuario = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, codUsuario);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                String nomeUsuario = rs.getString("email_usuario");
+                
+                nome = nomeUsuario;
+            }
+            
+            stmt.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        finally {
+            con.close();
+        }
+        return nome;
+    }
 }

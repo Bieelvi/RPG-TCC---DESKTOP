@@ -18,14 +18,9 @@ public class MestreController {
         ArrayList<Mestre> banco = mestreDAO.puxandoMestre(codUsuario);
         return banco;
     }
-    /*
+    
     public boolean alteraNome(String nomeNovo, int codFicha) throws SQLException{
         boolean alterando = mestreDAO.alteraNomeMestre(nomeNovo, codFicha);
         return alterando;
     }
-    
-    public String buscaNome(int codFicha) throws SQLException, ClassNotFoundException{
-        String alterando = mestreDAO.puxandoNome(codFicha);
-        return alterando;
-    }*/
 }

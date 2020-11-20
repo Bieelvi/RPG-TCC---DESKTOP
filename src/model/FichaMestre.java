@@ -1,7 +1,8 @@
 package model;
 
 public class FichaMestre {
-    public FichaMestre(String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, boolean acrobacia, boolean arcanismo, boolean atletismo, boolean atuacao, boolean blefar, boolean furtividade, boolean historiaPerici, boolean intimidacao, boolean investigacao, boolean natureza, boolean percepcao, boolean persuacao, boolean prestidigitacao, boolean religiao, boolean sobreviencia, boolean forcaPrest, boolean destrezaPrest, boolean acrobaciaPrest, boolean constituicaoPrest, boolean inteligenciaPrest, boolean sabedoriaPrest, boolean carismaPrest, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3, boolean intuicao, boolean medicina) {
+    public FichaMestre(int codFichaMestre, String nome, String classe, String raca, float classeArm, float vida, float desloc, float forca, float inteligencia, float destreza, float sabedoria, float constituicao, float carisma, float nivel, String tendencia, String nomeJoga, float pontosXP, float inspiracao, float bonusProficiencia, float ouro, float prata, float platina, String historia, String equipamentos, String caracteristicas, boolean vida1, boolean vida2, boolean vida3, boolean morte1, boolean morte2, boolean morte3) {
+        this.codFichaMestre = codFichaMestre;
         this.nome = nome;
         this.classe = classe;
         this.raca = raca;
@@ -26,36 +27,12 @@ public class FichaMestre {
         this.historiaPersonagem = historia;
         this.equipamentos = equipamentos;
         this.caracteristicas = caracteristicas;
-        this.acrobacia = acrobacia;
-        this.arcanismo = arcanismo;
-        this.atletismo = atletismo;
-        this.atuacao = atuacao;
-        this.blefar = blefar;
-        this.furtividade = furtividade;
-        this.historia = historiaPerici;
-        this.intimidacao = intimidacao;
-        this.investigacao = investigacao;
-        this.natureza = natureza;
-        this.percepcao = percepcao;
-        this.persuasao = persuacao;
-        this.prestidigitacao = prestidigitacao;
-        this.religiao = religiao;
-        this.sobrevivencia = sobreviencia;
-        this.forcaPrest = forcaPrest;
-        this.destrezaPrest = destrezaPrest;
-        this.lidarComAnimais = acrobaciaPrest;
-        this.constituicaoPrest = constituicaoPrest;
-        this.inteligenciaPrest = inteligenciaPrest;
-        this.sabedoriaPrest = sabedoriaPrest;
-        this.carismaPrest = carismaPrest;
         this.vida1 = vida1;
         this.vida2 = vida2;
         this.vida3 = vida3;
         this.morte1 = morte1;
         this.morte2 = morte2;
         this.morte3 = morte3;
-        this.intuicao = intuicao;
-        this.medicina = medicina;
     }
     
     private int codFichaMestre;
@@ -83,36 +60,12 @@ public class FichaMestre {
     private String historiaPersonagem;
     private String equipamentos;
     private String caracteristicas;
-    private boolean acrobacia;
-    private boolean arcanismo;
-    private boolean atletismo;
-    private boolean atuacao;
-    private boolean blefar;
-    private boolean furtividade;
-    private boolean historia;
-    private boolean intimidacao;
-    private boolean investigacao;
-    private boolean natureza;
-    private boolean percepcao;
-    private boolean persuasao;
-    private boolean prestidigitacao;
-    private boolean religiao;
-    private boolean sobrevivencia;
-    private boolean forcaPrest;
-    private boolean destrezaPrest;
-    private boolean lidarComAnimais;
-    private boolean constituicaoPrest;
-    private boolean inteligenciaPrest;
-    private boolean sabedoriaPrest;
-    private boolean carismaPrest;
     private boolean vida1;
     private boolean vida2;
     private boolean vida3;
     private boolean morte1;
     private boolean morte2;
     private boolean morte3;
-    private boolean intuicao;
-    private boolean medicina;
     
     public String getNome() {
         return nome;
@@ -306,182 +259,6 @@ public class FichaMestre {
         this.caracteristicas = caracteristicas;
     }
 
-    public boolean isAcrobacia() {
-        return acrobacia;
-    }
-
-    public void setAcrobacia(boolean acrobacia) {
-        this.acrobacia = acrobacia;
-    }
-
-    public boolean isArcanismo() {
-        return arcanismo;
-    }
-
-    public void setArcanismo(boolean arcanismo) {
-        this.arcanismo = arcanismo;
-    }
-
-    public boolean isAtletismo() {
-        return atletismo;
-    }
-
-    public void setAtletismo(boolean atletismo) {
-        this.atletismo = atletismo;
-    }
-
-    public boolean isAtuacao() {
-        return atuacao;
-    }
-
-    public void setAtuacao(boolean atuacao) {
-        this.atuacao = atuacao;
-    }
-
-    public boolean isBlefar() {
-        return blefar;
-    }
-
-    public void setBlefar(boolean blefar) {
-        this.blefar = blefar;
-    }
-
-    public boolean isFurtividade() {
-        return furtividade;
-    }
-
-    public void setFurtividade(boolean furtividade) {
-        this.furtividade = furtividade;
-    }
-
-    public boolean isHistoria() {
-        return historia;
-    }
-
-    public void setHistoria(boolean historia) {
-        this.historia = historia;
-    }
-
-    public boolean isIntimidacao() {
-        return intimidacao;
-    }
-
-    public void setIntimidacao(boolean intimidacao) {
-        this.intimidacao = intimidacao;
-    }
-
-    public boolean isInvestigacao() {
-        return investigacao;
-    }
-
-    public void setInvestigacao(boolean investigacao) {
-        this.investigacao = investigacao;
-    }
-
-    public boolean isNatureza() {
-        return natureza;
-    }
-
-    public void setNatureza(boolean natureza) {
-        this.natureza = natureza;
-    }
-
-    public boolean isPercepcao() {
-        return percepcao;
-    }
-
-    public void setPercepcao(boolean percepcao) {
-        this.percepcao = percepcao;
-    }
-
-    public boolean isPersuasao() {
-        return persuasao;
-    }
-
-    public void setPersuasao(boolean persuasao) {
-        this.persuasao = persuasao;
-    }
-
-    public boolean isPrestidigitacao() {
-        return prestidigitacao;
-    }
-
-    public void setPrestidigitacao(boolean prestidigitacao) {
-        this.prestidigitacao = prestidigitacao;
-    }
-
-    public boolean isReligiao() {
-        return religiao;
-    }
-
-    public void setReligiao(boolean religiao) {
-        this.religiao = religiao;
-    }
-
-    public boolean isSobrevivencia() {
-        return sobrevivencia;
-    }
-
-    public void setSobrevivencia(boolean sobrevivencia) {
-        this.sobrevivencia = sobrevivencia;
-    }
-
-    public boolean isForcaPrest() {
-        return forcaPrest;
-    }
-
-    public void setForcaPrest(boolean forcaPrest) {
-        this.forcaPrest = forcaPrest;
-    }
-
-    public boolean isDestrezaPrest() {
-        return destrezaPrest;
-    }
-
-    public void setDestrezaPrest(boolean destrezaPrest) {
-        this.destrezaPrest = destrezaPrest;
-    }
-
-    public boolean isLidarComAnimais() {
-        return lidarComAnimais;
-    }
-
-    public void setLidarComAnimais(boolean lidarComAnimais) {
-        this.lidarComAnimais = lidarComAnimais;
-    }
-
-    public boolean isConstituicaoPrest() {
-        return constituicaoPrest;
-    }
-
-    public void setConstituicaoPrest(boolean constituicaoPrest) {
-        this.constituicaoPrest = constituicaoPrest;
-    }
-
-    public boolean isInteligenciaPrest() {
-        return inteligenciaPrest;
-    }
-
-    public void setInteligenciaPrest(boolean inteligenciaPrest) {
-        this.inteligenciaPrest = inteligenciaPrest;
-    }
-
-    public boolean isSabedoriaPrest() {
-        return sabedoriaPrest;
-    }
-
-    public void setSabedoriaPrest(boolean sabedoriaPrest) {
-        this.sabedoriaPrest = sabedoriaPrest;
-    }
-
-    public boolean isCarismaPrest() {
-        return carismaPrest;
-    }
-
-    public void setCarismaPrest(boolean carismaPrest) {
-        this.carismaPrest = carismaPrest;
-    }
-
     public boolean isVida1() {
         return vida1;
     }
@@ -528,22 +305,6 @@ public class FichaMestre {
 
     public void setMorte3(boolean morte3) {
         this.morte3 = morte3;
-    }
-
-    public boolean isIntuicao() {
-        return intuicao;
-    }
-
-    public void setIntuicao(boolean intuicao) {
-        this.intuicao = intuicao;
-    }
-
-    public boolean isMedicina() {
-        return medicina;
-    }
-
-    public void setMedicina(boolean medicina) {
-        this.medicina = medicina;
     }
 
     public int getCodFichaMestre() {
