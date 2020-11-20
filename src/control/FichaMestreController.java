@@ -9,8 +9,9 @@ public class FichaMestreController {
     
     FichaMestreDAO fichaMestreDAO = new FichaMestreDAO();
         
-    public boolean cadastraFicha(FichaMestre fm, int codUsuario) throws SQLException{
-        return fichaMestreDAO.passaFicha(fm, codUsuario);
+    public int cadastraFicha(FichaMestre fm, int codMestre) throws SQLException{
+        int cf = fichaMestreDAO.passaFicha(fm, codMestre);
+        return cf;
     }
     public boolean atualizacao(FichaMestre f) throws SQLException{
         boolean atualizando = fichaMestreDAO.atualicao(f);

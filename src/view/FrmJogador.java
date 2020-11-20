@@ -15,39 +15,20 @@ public class FrmJogador extends javax.swing.JFrame {
     ArrayList<Jogador> jogadores;
     
     public FrmJogador(int codUsuario){
-        initComponents();
-        this.codUsuario = codUsuario;
         this.jogadorController = new JogadorController();
-        
-        try {
-            jogadores = jogadorController.jogadoresBanco(codUsuario);
-        } 
-        catch(SQLException ex){
-            System.out.println("Mano deu erro relacionado ao SQL. ERROR: " + ex);
-        } 
-        catch(ClassNotFoundException ex){
-            System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
-        }
+        this.codUsuario = codUsuario;
+        initComponents();
+        jogadores();
     }
 
     public FrmJogador(){
-        initComponents();
-        this.codUsuario = 3;
         this.jogadorController = new JogadorController();
-        
-        try {
-            jogadores = jogadorController.jogadoresBanco(codUsuario);
-        } 
-        catch(SQLException ex){
-            System.out.println("Mano deu erro relacionado ao SQL. ERROR: " + ex);
-        } 
-        catch(ClassNotFoundException ex){
-            System.out.println("Mano deu erro de classe mano. ERROR: " + ex);
-        }
+        this.codUsuario = 3;
+        initComponents();
+        jogadores();
     }
     
     public final void jogadores(){
-        
         try {
             jogadores = jogadorController.jogadoresBanco(codUsuario);
         } 

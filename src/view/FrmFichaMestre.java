@@ -6,8 +6,6 @@ import control.RacaClasseController;
 import control.UsuarioController;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
@@ -16,6 +14,7 @@ import model.Raca;
 
 public class FrmFichaMestre extends javax.swing.JFrame {
     
+    int cont = 0;
     int codMestre;
     int codUsuario;
     int codFichaMestre;
@@ -61,6 +60,111 @@ public class FrmFichaMestre extends javax.swing.JFrame {
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codFichaMestre);
+    }
+    
+    public FichaMestre compacta(){
+        String classe = (String) cmbClasse.getSelectedItem();
+        String raca = (String) cmbRaca.getSelectedItem();
+        
+        float classeArm;
+        float vida;
+        float desloc;
+        float forca;
+        float destreza;
+        float constituicao;
+        float inteligencia;
+        float sabedoria;
+        float carisma;
+        float nivel;
+        float pontosXP;
+        float inspiracao;
+        float bonusProficiencia;
+        float prata;
+        float ouro;
+        float platina;
+        
+        if(this.txtClasseArmad.getText().isEmpty())
+            classeArm = 0;
+        else
+            classeArm = Float.parseFloat(this.txtClasseArmad.getText());
+        
+        if(this.txtVida.getText().isEmpty())
+            vida = 0;
+        else
+            vida = Float.parseFloat(this.txtVida.getText());
+        
+        if(this.txtDeslocamento.getText().isEmpty())
+            desloc = 0;
+        else
+            desloc = Float.parseFloat(this.txtDeslocamento.getText());
+        
+        if(this.txtForcaPersonagem.getText().isEmpty())
+            forca = 0;
+        else
+            forca = Float.parseFloat(this.txtForcaPersonagem.getText());
+        
+        if(this.txtDestrezaPersonagem.getText().isEmpty())
+            destreza = 0;
+        else
+            destreza = Float.parseFloat(this.txtDestrezaPersonagem.getText());
+        
+        if(this.txtConstituicaoPersonagem.getText().isEmpty())
+            constituicao = 0;
+        else
+            constituicao = Float.parseFloat(this.txtConstituicaoPersonagem.getText());
+        
+        if(this.txtInteligenciaPersonagem.getText().isEmpty())
+            inteligencia = 0;
+        else
+            inteligencia = Float.parseFloat(this.txtInteligenciaPersonagem.getText());
+        
+        if(this.txtSabedoriaPersonagem.getText().isEmpty())
+            sabedoria = 0;
+        else
+            sabedoria = Float.parseFloat(this.txtSabedoriaPersonagem.getText());
+        
+        if(this.txtCarismaPersonagem.getText().isEmpty())
+            carisma = 0;
+        else
+            carisma = Float.parseFloat(this.txtCarismaPersonagem.getText());
+        
+        if(this.txtNivel.getText().isEmpty())
+            nivel = 0;
+        else
+            nivel = Float.parseFloat(this.txtNivel.getText());
+        
+        if(this.txtPontosXP.getText().isEmpty())
+            pontosXP = 0;
+        else
+            pontosXP = Float.parseFloat(this.txtPontosXP.getText());
+        
+        if(this.txtInspiracao.getText().isEmpty())
+            inspiracao = 0;
+        else
+            inspiracao = Float.parseFloat(this.txtInspiracao.getText());
+        
+        if(this.txtBonusProficiencia.getText().isEmpty())
+            bonusProficiencia = 0;
+        else
+            bonusProficiencia = Float.parseFloat(this.txtBonusProficiencia.getText());
+        
+        if(this.txtPrata.getText().isEmpty())
+            prata = 0;
+        else
+            prata = Float.parseFloat(this.txtPrata.getText());
+        
+        if(this.txtOuro.getText().isEmpty())
+            ouro = 0;
+        else
+            ouro = Float.parseFloat(this.txtOuro.getText());
+        
+        if(this.txtPlatina.getText().isEmpty())
+            platina = 0;
+        else
+            platina = Float.parseFloat(this.txtPlatina.getText());
+        
+        FichaMestre fm = fichaMestreController.compactando(codFichaMestre, this.txtNombre.getText(), classe, raca, classeArm, vida, desloc, forca, inteligencia, destreza, sabedoria, constituicao, carisma, nivel, this.txtTendencia.getText(), this.txtNomeUsuario.getText(), pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), this.radioVida1.isSelected(), this.radioVida2.isSelected(), this.radioVida3.isSelected(), this.radioMorte1.isSelected(), this.radioMorte2.isSelected(), this.radioMorte3.isSelected());                                                             
+        return fm;
     }
     
     public void calculaMod(){
@@ -290,12 +394,6 @@ public class FrmFichaMestre extends javax.swing.JFrame {
 
         lblNomePersonagem.setText("NOME DO PERSONAGEM");
 
-        cmbClasse.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbClasseItemStateChanged(evt);
-            }
-        });
-
         cmbRaca.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbRacaItemStateChanged(evt);
@@ -314,12 +412,6 @@ public class FrmFichaMestre extends javax.swing.JFrame {
         txtClasseArmad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtVida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                focusLostTxtNombre(evt);
-            }
-        });
 
         jButton1.setText("SALVAR FICHA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -360,9 +452,9 @@ public class FrmFichaMestre extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtDeslocamento, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(cmbRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbRaca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(txtTendencia, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -679,11 +771,6 @@ public class FrmFichaMestre extends javax.swing.JFrame {
         lblSucessosPersonagem.setName(""); // NOI18N
 
         txtBonusProficiencia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtBonusProficiencia.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                focusLostBonusProficiente(evt);
-            }
-        });
 
         txtInspiracao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -795,15 +882,12 @@ public class FrmFichaMestre extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String classe = (String) cmbClasse.getSelectedItem();
-        String raca = (String) cmbRaca.getSelectedItem();
-        
-        FichaMestre f = fichaMestreController.compactando(codFichaMestre, this.txtNombre.getText(), classe, raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeUsuario.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), this.radioVida1.isSelected(), this.radioVida2.isSelected(), this.radioVida3.isSelected(), this.radioMorte1.isSelected(), this.radioMorte2.isSelected(), this.radioMorte3.isSelected());                                                             
+        FichaMestre fm = this.compacta();
         
         if(codFichaMestre == 0){
             boolean cadastrando = false;
             try {
-                cadastrando = fichaMestreController.cadastraFicha(f, codUsuario);   
+                codFichaMestre = fichaMestreController.cadastraFicha(fm, codMestre);   
             } 
             catch(SQLException ex){
                 System.out.println(ex);
@@ -816,7 +900,7 @@ public class FrmFichaMestre extends javax.swing.JFrame {
         else{
             boolean atualizando = false;
             try {
-                atualizando = fichaMestreController.atualizacao(f);
+                atualizando = fichaMestreController.atualizacao(fm);
             }
             catch (SQLException ex) {
                 System.out.println(ex);
@@ -833,50 +917,6 @@ public class FrmFichaMestre extends javax.swing.JFrame {
             if(r.getNome().equals(this.cmbRaca.getSelectedItem()))
                 this.txtDeslocamento.setText(Float.toString(r.getDeslocPersonagem()));
     }//GEN-LAST:event_cmbRacaItemStateChanged
-
-    private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
-        
-    }//GEN-LAST:event_cmbClasseItemStateChanged
-
-    private void focusLostBonusProficiente(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostBonusProficiente
-    }//GEN-LAST:event_focusLostBonusProficiente
-
-    private void focusLostTxtNombre(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focusLostTxtNombre
-        int i;
-        boolean alterandoFicha;
-        
-        try {
-            if(!this.txtNombre.getText().equals(fichaMestreController.buscaNome(codFichaMestre))){
-                i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
-                
-                switch (i) {
-                    case JOptionPane.YES_OPTION:
-                        try {
-                            alterandoFicha = this.fichaMestreController.alteraNome(this.txtNombre.getText(), codFichaMestre);
-                            if(alterandoFicha){
-                                JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
-                            }
-                            else
-                                JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
-                            this.txtNombre.setText(fichaMestreController.buscaNome(codFichaMestre));
-                        }
-                        catch (SQLException | ClassNotFoundException ex) {
-                            System.out.println(ex);
-                        }
-                        break;
-                    case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
-                        this.txtNombre.setText(fichaMestreController.buscaNome(codFichaMestre));
-                        break;
-                }
-            }
-            else
-                JOptionPane.showMessageDialog(null, "Nome NÃO Alterado");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
-        }
-    }//GEN-LAST:event_focusLostTxtNombre
 
     private void btnCalculaModificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaModificadorActionPerformed
         calculaMod();

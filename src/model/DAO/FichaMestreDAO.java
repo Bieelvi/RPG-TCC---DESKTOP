@@ -12,56 +12,68 @@ public class FichaMestreDAO {
     
     Connection con;
     
-    public boolean passaFicha(FichaMestre fm, int codMestre) throws SQLException{
-        boolean passou = false;
+    public int passaFicha(FichaMestre fm, int codMestre) throws SQLException{
+        ResultSet rs;
+        int codFicha = 0;
+        int i = 0;
         
         try{
             con = new Conexao().getConnection();
-            String sql = "INSERT INTO ficha (codigo_mestre, nome, classe, raca, classeArm, vida, desloc, forca, destreza, constituicao, inteligencia, sabedoria, carisma, nivel, tendencia, nomeJoga, pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, historiaPersonagem, equipamentos, caracteristicas, vida1, vida2, vida3, morte1, morte2, morte3) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO ficha_mestre (nome, classe, raca, classeArm, vida, desloc, forca, destreza, constituicao, inteligencia, sabedoria, carisma, nivel, tendencia, nomeJoga, pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, historiaPersonagem, equipamentos, caracteristicas, vida1, vida2, vida3, morte1, morte2, morte3, codigo_mestre) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, codMestre);
-            stmt.setString(2, fm.getNome());
-            stmt.setString(3, fm.getClasse());
-            stmt.setString(4, fm.getRaca());
-            stmt.setFloat(5, fm.getClasseArm());
-            stmt.setFloat(6, fm.getVida());
-            stmt.setFloat(7, fm.getDesloc());
-            stmt.setFloat(8, fm.getForca());
-            stmt.setFloat(9, fm.getDestreza());
-            stmt.setFloat(10, fm.getConstituicao());
-            stmt.setFloat(11, fm.getInteligencia());
-            stmt.setFloat(12, fm.getSabedoria());
-            stmt.setFloat(13, fm.getCarisma());
-            stmt.setFloat(14, fm.getNivel());
-            stmt.setString(15, fm.getTendencia());
-            stmt.setString(16, fm.getNomeJoga());
-            stmt.setFloat(17, fm.getPontosXP());
-            stmt.setFloat(18, fm.getInspiracao());
-            stmt.setFloat(19, fm.getBonusProficiencia());
-            stmt.setFloat(20, fm.getOuro());
-            stmt.setFloat(21, fm.getPrata());
-            stmt.setFloat(22, fm.getPlatina());
-            stmt.setString(23, fm.getHistoriaPersonagem());
-            stmt.setString(24, fm.getEquipamentos());
-            stmt.setString(25, fm.getCaracteristicas());
-            stmt.setBoolean(26, fm.isVida1());
-            stmt.setBoolean(27, fm.isVida2());
-            stmt.setBoolean(28, fm.isVida3());
-            stmt.setBoolean(29, fm.isMorte1());
-            stmt.setBoolean(30, fm.isMorte2());
-            stmt.setBoolean(31, fm.isMorte3());
-            stmt.close();
+            stmt.setString(1, fm.getNome());
+            stmt.setString(2, fm.getClasse());
+            stmt.setString(3, fm.getRaca());
+            stmt.setFloat(4, fm.getClasseArm());
+            stmt.setFloat(5, fm.getVida());
+            stmt.setFloat(6, fm.getDesloc());
+            stmt.setFloat(7, fm.getForca());
+            stmt.setFloat(8, fm.getDestreza());
+            stmt.setFloat(9, fm.getConstituicao());
+            stmt.setFloat(10, fm.getInteligencia());
+            stmt.setFloat(11, fm.getSabedoria());
+            stmt.setFloat(12, fm.getCarisma());
+            stmt.setFloat(13, fm.getNivel());
+            stmt.setString(14, fm.getTendencia());
+            stmt.setString(15, fm.getNomeJoga());
+            stmt.setFloat(16, fm.getPontosXP());
+            stmt.setFloat(17, fm.getInspiracao());
+            stmt.setFloat(18, fm.getBonusProficiencia());
+            stmt.setFloat(19, fm.getOuro());
+            stmt.setFloat(20, fm.getPrata());
+            stmt.setFloat(21, fm.getPlatina());
+            stmt.setString(22, fm.getHistoriaPersonagem());
+            stmt.setString(23, fm.getEquipamentos());
+            stmt.setString(24, fm.getCaracteristicas());
+            stmt.setBoolean(25, fm.isVida1());
+            stmt.setBoolean(26, fm.isVida2());
+            stmt.setBoolean(27, fm.isVida3());
+            stmt.setBoolean(28, fm.isMorte1());
+            stmt.setBoolean(29, fm.isMorte2());
+            stmt.setBoolean(30, fm.isMorte3());
+            stmt.setInt(31, codMestre);
             
-            passou = true;
+            stmt.execute();
+            
+            sql = "Select * from ficha_mestre order by codigo_ficha_mestre desc";
+            stmt = con.prepareStatement(sql);
+            
+            rs = stmt.executeQuery();
+            
+            while(rs.next() && i == 0){
+                codFicha = rs.getInt("codigo_ficha_mestre");
+                i++;
+            }
+            
+            stmt.close();
         }
         catch(Exception ex){
             System.out.println(ex);
-            passou = false;
         }
         finally {
             con.close();
         }
-        return passou;
+        return codFicha;
     }
 
     public boolean atualicao(FichaMestre f) throws SQLException{
