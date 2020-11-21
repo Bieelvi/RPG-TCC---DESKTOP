@@ -3,11 +3,8 @@ package view;
 import control.FichaController;
 import control.JogadorController;
 import control.RacaClasseController;
-import control.UsuarioController;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Classe;
@@ -18,8 +15,9 @@ public class FrmFicha extends javax.swing.JFrame {
     
     int codFicha;
     int codUsuario;
+    int controle = -1;
     String nomeJogador;
-    UsuarioController usuarioController;
+    ArrayList<Raca> rac;
     FichaController fichaController;
     RacaClasseController racaClasseRPG;
     JogadorController jogadorController;
@@ -38,7 +36,7 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        usuarioController = new UsuarioController();
+        this.txtNomeUsuario.setText(nomeJogador);
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codigoFicha);
@@ -179,16 +177,114 @@ public class FrmFicha extends javax.swing.JFrame {
             atualizarResistencia();
             atualizarPericias();
         }
-        else{
-            try {
-                this.txtNomeUsuario.setText(usuarioController.pegaNome(codUsuario));
-            }
-            catch (SQLException ex) {
-                System.out.println(ex);
-            }
-            
-            this.txtNombre.setText(this.nomeJogador);
-        }
+    }
+    
+    public Ficha compactando(){
+        String classe = (String) cmbClasse.getSelectedItem();
+        String raca = (String) cmbRaca.getSelectedItem();
+        
+        
+        float classeArm;
+        float vida;
+        float desloc;
+        float forca;
+        float destreza;
+        float constituicao;
+        float inteligencia;
+        float sabedoria;
+        float carisma;
+        float nivel;
+        float pontosXP;
+        float inspiracao;
+        float bonusProficiencia;
+        float prata;
+        float ouro;
+        float platina;
+        
+        if(this.txtClasseArmad.getText().isEmpty())
+            classeArm = 0;
+        else
+            classeArm = Float.parseFloat(this.txtClasseArmad.getText());
+        
+        if(this.txtVida.getText().isEmpty())
+            vida = 0;
+        else
+            vida = Float.parseFloat(this.txtVida.getText());
+        
+        if(this.txtDeslocamento.getText().isEmpty())
+            desloc = 0;
+        else
+            desloc = Float.parseFloat(this.txtDeslocamento.getText());
+        
+        if(this.txtForcaPersonagem.getText().isEmpty())
+            forca = 0;
+        else
+            forca = Float.parseFloat(this.txtForcaPersonagem.getText());
+        
+        if(this.txtDestrezaPersonagem.getText().isEmpty())
+            destreza = 0;
+        else
+            destreza = Float.parseFloat(this.txtDestrezaPersonagem.getText());
+        
+        if(this.txtConstituicaoPersonagem.getText().isEmpty())
+            constituicao = 0;
+        else
+            constituicao = Float.parseFloat(this.txtConstituicaoPersonagem.getText());
+        
+        if(this.txtInteligenciaPersonagem.getText().isEmpty())
+            inteligencia = 0;
+        else
+            inteligencia = Float.parseFloat(this.txtInteligenciaPersonagem.getText());
+        
+        if(this.txtSabedoriaPersonagem.getText().isEmpty())
+            sabedoria = 0;
+        else
+            sabedoria = Float.parseFloat(this.txtSabedoriaPersonagem.getText());
+        
+        if(this.txtCarismaPersonagem.getText().isEmpty())
+            carisma = 0;
+        else
+            carisma = Float.parseFloat(this.txtCarismaPersonagem.getText());
+        
+        if(this.txtNivel.getText().isEmpty())
+            nivel = 0;
+        else
+            nivel = Float.parseFloat(this.txtNivel.getText());
+        
+        if(this.txtPontosXP.getText().isEmpty())
+            pontosXP = 0;
+        else
+            pontosXP = Float.parseFloat(this.txtPontosXP.getText());
+        
+        if(this.txtInspiracao.getText().isEmpty())
+            inspiracao = 0;
+        else
+            inspiracao = Float.parseFloat(this.txtInspiracao.getText());
+        
+        if(this.txtBonusProficiencia.getText().isEmpty())
+            bonusProficiencia = 0;
+        else
+            bonusProficiencia = Float.parseFloat(this.txtBonusProficiencia.getText());
+        
+        if(this.txtPrata.getText().isEmpty())
+            prata = 0;
+        else
+            prata = Float.parseFloat(this.txtPrata.getText());
+        
+        if(this.txtOuro.getText().isEmpty())
+            ouro = 0;
+        else
+            ouro = Float.parseFloat(this.txtOuro.getText());
+        
+        if(this.txtPlatina.getText().isEmpty())
+            platina = 0;
+        else
+            platina = Float.parseFloat(this.txtPlatina.getText());
+        
+        ArrayList radios = fichaController.convertRadio(radioAcrobacia.isSelected(), radioArcanismo.isSelected(), radioAtletismo.isSelected(), radioAtuacao.isSelected(), radioBlefar.isSelected(), radioFurtividade.isSelected(), radioHistoria.isSelected(), radioIntimidacao.isSelected(), radioInvestigacao.isSelected(), radioNatureza.isSelected(), radioPercepcao.isSelected(), radioPersuasao.isSelected(), radioPrestidigitacao.isSelected(), radioReligiao.isSelected(), radioSobrevivencia.isSelected(), radioForca.isSelected(), radioDestreza.isSelected(), radioLidarAnimais.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected(), radioVida1.isSelected(), radioVida2.isSelected(), radioVida3.isSelected(), radioMorte1.isSelected(), radioMorte2.isSelected(), radioMorte3.isSelected(), radioIntuicao.isSelected(), radioMedicina.isSelected());
+        Ficha f = fichaController.compactando(this.txtNombre.getText(), classe, raca, classeArm, vida, desloc, forca, inteligencia, destreza, sabedoria, constituicao, carisma, nivel, this.txtTendencia.getText(), this.txtNomeUsuario.getText(), pontosXP, inspiracao, bonusProficiencia, ouro, prata, platina, this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
+        
+        return f;
     }
     
     public final void classeRPG() throws SQLException{
@@ -204,7 +300,7 @@ public class FrmFicha extends javax.swing.JFrame {
     
     public final void racaRPG() throws SQLException{
         DefaultComboBoxModel classeBox = new DefaultComboBoxModel();
-        ArrayList <Raca> rac = racaClasseRPG.raca();
+        rac = racaClasseRPG.raca();
         classeBox.addElement("<Selecione>");
         
         for (Raca c: rac)
@@ -530,6 +626,7 @@ public class FrmFicha extends javax.swing.JFrame {
         txtHistoria = new javax.swing.JTextArea();
         lblHistoriaPersonagem = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1425,6 +1522,13 @@ public class FrmFicha extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("VOLTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1485,7 +1589,9 @@ public class FrmFicha extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1500,8 +1606,10 @@ public class FrmFicha extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton1)))
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton1)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1602,11 +1710,8 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalculaModificadorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String classe = (String) cmbClasse.getSelectedItem();
-        String raca = (String) cmbRaca.getSelectedItem();
         
-        ArrayList radios = fichaController.convertRadio(radioAcrobacia.isSelected(), radioArcanismo.isSelected(), radioAtletismo.isSelected(), radioAtuacao.isSelected(), radioBlefar.isSelected(), radioFurtividade.isSelected(), radioHistoria.isSelected(), radioIntimidacao.isSelected(), radioInvestigacao.isSelected(), radioNatureza.isSelected(), radioPercepcao.isSelected(), radioPersuasao.isSelected(), radioPrestidigitacao.isSelected(), radioReligiao.isSelected(), radioSobrevivencia.isSelected(), radioForca.isSelected(), radioDestreza.isSelected(), radioLidarAnimais.isSelected(), radioConstituicao.isSelected(), radioInteligencia.isSelected(), radioSabedoria.isSelected(), radioCarisma.isSelected(), radioVida1.isSelected(), radioVida2.isSelected(), radioVida3.isSelected(), radioMorte1.isSelected(), radioMorte2.isSelected(), radioMorte3.isSelected(), radioIntuicao.isSelected(), radioMedicina.isSelected());
-        Ficha f = fichaController.compactando(this.txtNombre.getText(), classe, raca, Float.parseFloat(this.txtClasseArmad.getText()), Float.parseFloat(this.txtVida.getText()), Float.parseFloat(this.txtDeslocamento.getText()), Float.parseFloat(this.txtForcaPersonagem.getText()), Float.parseFloat(this.txtInteligenciaPersonagem.getText()), Float.parseFloat(this.txtDestrezaPersonagem.getText()), Float.parseFloat(this.txtSabedoriaPersonagem.getText()), Float.parseFloat(this.txtConstituicaoPersonagem.getText()), Float.parseFloat(this.txtCarismaPersonagem.getText()), Float.parseFloat(this.txtNivel.getText()), this.txtTendencia.getText(), this.txtNomeUsuario.getText(), Float.parseFloat(this.txtPontosXP.getText()), Float.parseFloat(this.txtInspiracao.getText()), Float.parseFloat(this.txtBonusProficiencia.getText()), Float.parseFloat(this.txtOuro.getText()), Float.parseFloat(this.txtPrata.getText()), Float.parseFloat(this.txtPlatina.getText()), this.txtHistoria.getText(), this.txtEquipamentos.getText(), this.txtCaracteristicas.getText(), radios);
+        Ficha f = compactando();
         
         if(codFicha == 0){
             boolean cadastrando = false;
@@ -1637,7 +1742,9 @@ public class FrmFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmbRacaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRacaItemStateChanged
-        //if(cmbRaca.getSelectedItem().equals("Criar nova Raça"))
+        for(Raca r: rac)
+            if(r.getNome().equals(this.cmbRaca.getSelectedItem()))
+                this.txtDeslocamento.setText(Float.toString(r.getDeslocPersonagem()));
     }//GEN-LAST:event_cmbRacaItemStateChanged
 
     private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
@@ -1804,35 +1911,46 @@ public class FrmFicha extends javax.swing.JFrame {
         int i;
         boolean alterandoJogador;
         boolean alterandoFicha;
+        controle++;
         
-        if(!this.txtNombre.getText().equals(nomeJogador)){
-            i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
+        if(controle > 0){
+            if(!this.txtNombre.getText().equals(nomeJogador)){
+                i = JOptionPane.showConfirmDialog(null, "Deseja alterar o nome de seu personagem?");
 
-            switch (i) {
-                case JOptionPane.YES_OPTION:
-                    try {
-                        alterandoJogador = this.jogadorController.alteraNome(this.txtNombre.getText(), codFicha);
-                        alterandoFicha = this.fichaController.alteraNome(this.txtNombre.getText(), codFicha);
-                        if(alterandoJogador && alterandoFicha){
-                            JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
-                            nomeJogador = jogadorController.buscaNome(codFicha);
+                switch (i) {
+                    case JOptionPane.YES_OPTION:
+                        try {
+                            alterandoJogador = this.jogadorController.alteraNome(this.txtNombre.getText(), codFicha);
+                            alterandoFicha = this.fichaController.alteraNome(this.txtNombre.getText(), codFicha);
+                            if(alterandoJogador && alterandoFicha){
+                                JOptionPane.showMessageDialog(null, "Nome Alterado com sucesso");
+                                nomeJogador = jogadorController.buscaNome(codFicha);
+                            }
+                            else
+                                JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
+                                this.txtNombre.setText(nomeJogador);
+                        } 
+                        catch (SQLException | ClassNotFoundException ex) {
+                            System.out.println(ex);
                         }
-                        else
-                            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado com sucesso");
-                            this.txtNombre.setText(nomeJogador);
-                    } 
-                    catch (SQLException | ClassNotFoundException ex) {
-                        System.out.println(ex);
-                    }
-                break;
-                case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
-                    this.txtNombre.setText(nomeJogador);
-                break;
+                    break;
+                    case JOptionPane.NO_OPTION: case JOptionPane.CANCEL_OPTION:
+                        this.txtNombre.setText(nomeJogador);
+                    break;
+                }
             }
         }
-        else
-            JOptionPane.showMessageDialog(null, "Nome NÃO Alterado");
     }//GEN-LAST:event_focusLostTxtNombre
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        setVisible(false);
+        try{
+            new FrmJogador(codUsuario).setVisible(true);
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -1860,6 +1978,7 @@ public class FrmFicha extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbClasse;
     private javax.swing.JComboBox<String> cmbRaca;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

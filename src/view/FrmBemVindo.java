@@ -1,6 +1,8 @@
 package view;
 
 import control.UsuarioController;
+import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 public class FrmBemVindo extends javax.swing.JFrame {
     
     UsuarioController usuarioController;
@@ -8,18 +10,38 @@ public class FrmBemVindo extends javax.swing.JFrame {
     String email;
     
     public FrmBemVindo(int codigoUsuario){
+        initComponents();
         usuarioController = new UsuarioController();
         this.codUsuario = codigoUsuario;
-        initComponents();
+        login();
     }
 
     public FrmBemVindo(){
+        initComponents();
         this.usuarioController = new UsuarioController();
         this.codUsuario = 1;
-        initComponents();
+        login();
     }
     
-    
+    public final void login(){
+        boolean hierar = false;
+        try {
+            email = usuarioController.emailViaCodUsuario(codUsuario);
+            hierar = usuarioController.hierarquia(email);
+        } 
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        DefaultComboBoxModel loginCBM = new DefaultComboBoxModel();
+        loginCBM.addElement("");
+        loginCBM.addElement("Login");
+        
+        if(hierar)
+            loginCBM.addElement("Admin");
+        
+        this.cmbLogin.setModel(loginCBM);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,6 +52,7 @@ public class FrmBemVindo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        cmbLogin = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,11 +77,22 @@ public class FrmBemVindo extends javax.swing.JFrame {
             }
         });
 
+        cmbLogin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbLoginItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cmbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
@@ -72,7 +106,9 @@ public class FrmBemVindo extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -120,6 +156,21 @@ public class FrmBemVindo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void cmbLoginItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLoginItemStateChanged
+        String login = (String) this.cmbLogin.getSelectedItem();
+        
+        switch(login){
+            case "Login":
+                setVisible(false);
+                new FrmLogin().setVisible(true);
+            break;
+            case "Admin":
+                new FrmAdmin(codUsuario).setVisible(true);
+                setVisible(false);
+            break;
+        }
+    }//GEN-LAST:event_cmbLoginItemStateChanged
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -137,8 +188,6 @@ public class FrmBemVindo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmBemVindo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -148,6 +197,7 @@ public class FrmBemVindo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbLogin;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
