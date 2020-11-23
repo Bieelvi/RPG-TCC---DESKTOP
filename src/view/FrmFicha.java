@@ -3,6 +3,7 @@ package view;
 import control.FichaController;
 import control.JogadorController;
 import control.RacaClasseController;
+import control.UsuarioController;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -21,6 +22,7 @@ public class FrmFicha extends javax.swing.JFrame {
     FichaController fichaController;
     RacaClasseController racaClasseRPG;
     JogadorController jogadorController;
+    UsuarioController usuarioController;
     
     public FrmFicha(int codigoUsuario, int codigoFicha, String nomeJogador) throws SQLException {
         initComponents();
@@ -36,7 +38,9 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        this.txtNomeUsuario.setText(nomeJogador);
+        usuarioController = new UsuarioController();
+        this.txtNomeUsuario.setText(usuarioController.pegaNome(codUsuario));
+        this.txtNombre.setText(nomeJogador);
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codigoFicha);
@@ -55,7 +59,9 @@ public class FrmFicha extends javax.swing.JFrame {
         fichaController = new FichaController();
         racaClasseRPG = new RacaClasseController();
         jogadorController = new JogadorController();
-        this.txtNomeUsuario.setText("Ghannor");
+        usuarioController = new UsuarioController();
+        this.txtNomeUsuario.setText(usuarioController.pegaNome(codUsuario));
+        this.txtNombre.setText(nomeJogador);
         classeRPG();
         racaRPG();
         reconhecimentoFicha(codFicha);
@@ -639,8 +645,6 @@ public class FrmFicha extends javax.swing.JFrame {
         lblTendenciaPersonagem.setText("TENDÊNCIA");
 
         lblNomeJogador.setText("NOME DO USUARIO");
-
-        txtNomeUsuario.setEnabled(false);
 
         lblExpPersonagem.setText("PONTOS DE EXPERIÊNCIA");
 
