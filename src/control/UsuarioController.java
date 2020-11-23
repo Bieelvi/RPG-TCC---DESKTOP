@@ -92,4 +92,8 @@ public class UsuarioController {
         String nome = usuarioDAO.procuraNome(CodUsuario);
         return nome;
     }
+    
+    public boolean remove(int cod) throws SQLException{
+        return usuarioDAO.exclui(cod);
+    }
 }

@@ -8,6 +8,8 @@ public class FrmBemVindo extends javax.swing.JFrame {
     UsuarioController usuarioController;
     int codUsuario;
     String email;
+    int l = 0;
+    int a = 0;
     
     public FrmBemVindo(int codigoUsuario){
         initComponents();
@@ -21,6 +23,22 @@ public class FrmBemVindo extends javax.swing.JFrame {
         this.usuarioController = new UsuarioController();
         this.codUsuario = 1;
         login();
+    }
+    
+    public void paraLogin(){
+        if(l == 0){
+            setVisible(false);
+            new FrmLogin().setVisible(true);
+            l++;
+        }
+    }
+    
+    public void paraAdmin(){
+        if(a == 0){
+            setVisible(false);
+            new FrmAdmin(codUsuario).setVisible(true);
+            l++;
+        }
     }
     
     public final void login(){
@@ -161,12 +179,10 @@ public class FrmBemVindo extends javax.swing.JFrame {
         
         switch(login){
             case "Login":
-                setVisible(false);
-                new FrmLogin().setVisible(true);
+                paraLogin();
             break;
             case "Admin":
-                new FrmAdmin(codUsuario).setVisible(true);
-                setVisible(false);
+                paraAdmin();
             break;
         }
     }//GEN-LAST:event_cmbLoginItemStateChanged

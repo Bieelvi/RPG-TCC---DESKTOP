@@ -1,13 +1,15 @@
 package model;
 public class Usuario {
 
-    public Usuario(String nomeUsuario, String emailUsuario, String senhaUsuario, int hierarquiaUsuario) {
+    public Usuario(int codUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario, int hierarquiaUsuario) {
+        this.codUsuario = codUsuario;
         this.nomeUsuario = nomeUsuario;
         this.emailUsuario = emailUsuario;
         this.senhaUsuario = senhaUsuario;
         this.hierarquiaUsuario = hierarquiaUsuario;
     }
 
+    private int codUsuario;
     private String nomeUsuario;
     private String emailUsuario;
     private String senhaUsuario;
@@ -43,6 +45,14 @@ public class Usuario {
 
     public void setHierarquiaUsuario(int hierarquiaUsuario) {
         this.hierarquiaUsuario = hierarquiaUsuario;
+    }
+
+    public int getCodUsuario() {
+        return codUsuario;
+    }
+
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
     }
     
 }

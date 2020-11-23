@@ -13,6 +13,7 @@ import model.Mestre;
 
 public class FrmMestre extends javax.swing.JFrame {
 
+    int a = 0;
     int codUsuario;    
     int codMestre = 0;
     int codFichaMestre = 0;
@@ -35,6 +36,13 @@ public class FrmMestre extends javax.swing.JFrame {
         this.mestreController = new MestreController();
         fichaMestreController = new FichaMestreController();
         buscaMestres();
+    }
+    
+    public void add(){
+        if(a == 0){
+            new AddMestre(this.codUsuario).setVisible(true);
+            a++;
+        }
     }
     
     public final void buscaMestres(){
@@ -230,7 +238,7 @@ public class FrmMestre extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new FrmUploads().setVisible(true);
+        new FrmUploads(codMestre, codUsuario).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -264,7 +272,7 @@ public class FrmMestre extends javax.swing.JFrame {
         String itemCmbPerso = (String) this.cmbMestre.getSelectedItem();
         
         if(itemCmbPerso.equals("<Criar Novo Mestre>"))
-            new AddMestre(this.codUsuario).setVisible(true);
+            add();
         else
             for(Mestre j: mestres)
                 if(j.getNomeMestre().equals(itemCmbPerso)){

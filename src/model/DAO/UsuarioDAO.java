@@ -49,12 +49,13 @@ public class UsuarioDAO {
             rs = stmt.executeQuery();
             
             while(rs.next()){
+                int cod = rs.getInt("codigo_usuario");
                 String nome = rs.getString("nome_usuario");
                 String email = rs.getString("email_usuario");
                 String senha = rs.getString("senha_usuario");
                 int hierarquia = rs.getInt("hierarquia");
                 
-                Usuario u = new Usuario(nome, email, senha, hierarquia);
+                Usuario u = new Usuario(cod, nome, email, senha, hierarquia);
                 banco.add(u);
             }
             stmt.close();
@@ -159,5 +160,30 @@ public class UsuarioDAO {
             con.close();
         }
         return nome;
+    }
+    
+    public boolean exclui(int cod) throws SQLException{
+        
+        boolean del = false;
+        
+        try{
+            
+            con = new Conexao().getConnection();
+            String sql = "DELETE FROM `cl19458`.`usuario` WHERE (`codigo_usuario` = ?);";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, cod);
+            stmt.execute();
+            stmt.close();
+            del = true;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+            del = false;
+        }
+        finally {
+            con.close();
+        }
+        
+        return del;
     }
 }
